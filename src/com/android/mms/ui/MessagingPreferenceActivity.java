@@ -32,6 +32,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
@@ -39,6 +40,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.provider.SearchRecentSuggestions;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -50,6 +52,7 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.mms.MmsApp;
 import com.android.mms.MmsConfig;
 import com.android.mms.R;
+import com.android.mms.templates.TemplatesListActivity;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.Recycler;
 
@@ -73,6 +76,12 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String RETRIEVAL_DURING_ROAMING = "pref_key_mms_retrieval_during_roaming";
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
     public static final String GROUP_MMS_MODE           = "pref_key_mms_group_mms";
+
+	// Templates
+    public static final String MANAGE_TEMPLATES         = "pref_key_templates_manage";
+    public static final String SHOW_GESTURE             = "pref_key_templates_show_gesture";
+    public static final String GESTURE_SENSITIVITY      = "pref_key_templates_gestures_sensitivity";
+    public static final String GESTURE_SENSITIVITY_VALUE = "pref_key_templates_gestures_sensitivity_value";
 
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
@@ -101,6 +110,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private Recycler mSmsRecycler;
     private Recycler mMmsRecycler;
     private static final int CONFIRM_CLEAR_SEARCH_HISTORY_DIALOG = 3;
+
+    // Templates
+    private Preference mManageTemplate;
+    private ListPreference mGestureSensitivity;
 
     // Whether or not we are currently enabled for SMS. This field is updated in onResume to make
     // sure we notice if the user has changed the default SMS app.
@@ -203,6 +216,9 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         }
         mRingtonePref = (RingtonePreference) findPreference(NOTIFICATION_RINGTONE);
 
+        mManageTemplate = findPreference(MANAGE_TEMPLATES);
+        mGestureSensitivity = (ListPreference) findPreference(GESTURE_SENSITIVITY);
+
         setMessagePreferences();
     }
 
@@ -257,7 +273,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
         // If needed, migrate vibration setting from the previous tri-state setting stored in
         // NOTIFICATION_VIBRATE_WHEN to the boolean setting stored in NOTIFICATION_VIBRATE.
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (mVibratePref != null && sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN)) {
             String vibrateWhen = sharedPreferences.
                     getString(MessagingPreferenceActivity.NOTIFICATION_VIBRATE_WHEN, null);
@@ -268,6 +284,29 @@ public class MessagingPreferenceActivity extends PreferenceActivity
             prefsEditor.apply();
             mVibratePref.setChecked(vibrate);
         }
+
+        mManageTemplate.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(MessagingPreferenceActivity.this,
+                        TemplatesListActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
+
+        String gestureSensitivity = String.valueOf(sharedPreferences.getInt(GESTURE_SENSITIVITY_VALUE, 3));
+        mGestureSensitivity.setSummary(gestureSensitivity);
+        mGestureSensitivity.setValue(gestureSensitivity);
+        mGestureSensitivity.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            @Override
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                int value = Integer.parseInt((String) newValue);
+                sharedPreferences.edit().putInt(GESTURE_SENSITIVITY_VALUE, value).commit();
+                mGestureSensitivity.setSummary(String.valueOf(value));
+                return true;
+            }
+        });
 
         mSmsRecycler = Recycler.getSmsRecycler();
         mMmsRecycler = Recycler.getMmsRecycler();
