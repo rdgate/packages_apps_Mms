@@ -126,8 +126,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     // Blacklist
     public static final String BLACKLIST                 = "pref_blacklist";
 
+    // Font Size
+    public static final String MESSAGE_FONT_SIZE         = "pref_key_mms_message_font_size";
+
     // Menu entries
-    private static final int MENU_RESTORE_DEFAULTS    = 1;
+    private static final int MENU_RESTORE_DEFAULTS       = 1;
 
     // Preferences for enabling and disabling SMS
     private Preference mSmsDisabledPref;

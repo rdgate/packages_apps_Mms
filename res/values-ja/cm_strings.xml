@@ -395,4 +395,10 @@
 
     <!-- Copy message text-->
     <string name="copy_empty_string">コピーするテキストがありません</string>
+
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">メッセージフォントサイズ</string>
+    <string name="pref_summary_mms_message_font_size">メッセージビューのフォントサイズを変更</string>
+    <string name="pref_dialogtitle_mms_message_font_size">フォントサイズ選択</string>
+
 </resources>
