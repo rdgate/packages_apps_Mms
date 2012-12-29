@@ -276,5 +276,16 @@
             android:title="@string/pref_title_input_type"
             android:entries="@array/pref_entries_input_type"
             android:entryValues="@array/pref_values_input_type" />
+
+        <ListPreference
+            android:key="pref_key_mms_message_font_size"
+            android:defaultValue="18"
+            android:title="@string/pref_title_mms_message_font_size"
+            android:summary="@string/pref_summary_mms_message_font_size"
+            android:entries="@array/pref_mms_message_font_size_entries"
+            android:entryValues="@array/pref_mms_message_font_size_values"
+            android:dialogTitle="@string/pref_dialogtitle_mms_message_font_size"/>
+
     </PreferenceCategory>
+
 </PreferenceScreen>

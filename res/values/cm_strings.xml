@@ -167,4 +167,9 @@
     <string name="pref_mms_notification_vibrate_mult_short">Multiple short</string>
     <string name="pref_mms_notification_vibrate_mult_long">Multiple long</string>
 
+    <!-- Message Font size -->
+    <string name="pref_title_mms_message_font_size">Message font size</string>
+    <string name="pref_summary_mms_message_font_size">Change font size of message view</string>
+    <string name="pref_dialogtitle_mms_message_font_size">Select font size</string>
+
 </resources>
