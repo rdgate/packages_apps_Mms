@@ -4357,8 +4357,8 @@ public class ComposeMessageActivity extends Activity
 
             gridView.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    // We use the new unified Unicode 6.1 emoji code points
-                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mEmojiTexts[position]);
+                    // We use Softbank private Unicode emoji code points
+                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mSoftbankEmojiTexts[position]);
                     editText.append(emoji);
                 }
             });
@@ -4367,8 +4367,8 @@ public class ComposeMessageActivity extends Activity
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
                         long id) {
-                    // We use the new unified Unicode 6.1 emoji code points
-                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mEmojiTexts[position]);
+                    // We use Softbank private Unicode emoji code points
+                    CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(EmojiParser.mSoftbankEmojiTexts[position]);
                     if (mSubjectTextEditor != null && mSubjectTextEditor.hasFocus()) {
                         mSubjectTextEditor.append(emoji);
                     } else {
