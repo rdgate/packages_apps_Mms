@@ -58,6 +58,9 @@ public class UserAgentListPreference extends ListPreference {
  
         View v = inflater.inflate(R.layout.custom_user_agent_dialog, null);
         mUserAgentCustom = (EditText) v.findViewById(R.id.CustomUserAgentEditText);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
+        mUserAgentCustom.setText(prefs.getString(MessagingPreferenceActivity.USER_AGENT_CUSTOM, "Android-Mms/2.0"));
  
         new AlertDialog.Builder(mContext).setIcon(
                 android.R.drawable.ic_dialog_info).setTitle(

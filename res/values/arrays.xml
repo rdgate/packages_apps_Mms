@@ -81,7 +81,7 @@
         <item>@string/pref_mms_custom_option</item>
     </string-array>
     <string-array name="pref_mms_user_agent_values">
-        <item>@string/pref_key_mms_user_agent_default</item>
+        <item>default</item>
         <item>NokiaN95/11.0.026; Series60/3.1 Profile/MIDP-2.0 Configuration/CLDC-1.1</item>
         <item>iPhoneOS/3.0 (7A341)</item>
         <item>BlackBerry8800/4.2.1 Profile/MIDP-2.0 Configuration/CLDC-1.1 VendorID/100</item>

@@ -309,9 +309,11 @@ public class HttpUtils {
     private static AndroidHttpClient createHttpClient(Context context) {
         // Get Shared Preferences and User Defined User Agent for MMS
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        mUserAgent = prefs.getString(MessagingPreferenceActivity.USER_AGENT, context.getString(R.string.pref_key_mms_user_agent_default));
-        if (mUserAgent.equals("custom")) {
-            mUserAgent = prefs.getString(MessagingPreferenceActivity.USER_AGENT_CUSTOM, context.getString(R.string.pref_key_mms_user_agent_default));
+        mUserAgent = prefs.getString(MessagingPreferenceActivity.USER_AGENT, MmsConfig.getUserAgent());
+        if (mUserAgent == null || mUserAgent.equals("") || mUserAgent.equals("default")) {
+            mUserAgent = MmsConfig.getUserAgent();
+        } else if (mUserAgent.equals("custom")) {
+            mUserAgent = prefs.getString(MessagingPreferenceActivity.USER_AGENT_CUSTOM, MmsConfig.getUserAgent());
         }
         AndroidHttpClient client = AndroidHttpClient.newInstance(mUserAgent, context);
         HttpParams params = client.getParams();
