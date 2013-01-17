@@ -653,9 +653,9 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
 
             gridView.setOnItemClickListener(new OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                    // We use the new unified Unicode 6.1 emoji code points
+                    // We use Softbank private Unicode emoji code points
                     CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
-                            EmojiParser.mEmojiTexts[position]);
+                            EmojiParser.mSoftbankEmojiTexts[position]);
                     editText.append(emoji);
                 }
             });
@@ -664,9 +664,9 @@ public class QuickReply extends Activity implements OnDismissListener, OnClickLi
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position,
                         long id) {
-                    // We use the new unified Unicode 6.1 emoji code points
+                    // We use Softbank private Unicode emoji code points
                     CharSequence emoji = EmojiParser.getInstance().addEmojiSpans(
-                            EmojiParser.mEmojiTexts[position]);
+                            EmojiParser.mSoftbankEmojiTexts[position]);
                     textBox.append(emoji);
 
                     mEmojiDialog.dismiss();
