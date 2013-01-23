@@ -29,10 +29,10 @@
     <int name="maxMessageSize">307200</int>
 
     <!-- Maximum height for an attached image -->
-    <int name="maxImageHeight">480</int>
+    <int name="maxImageHeight">1300</int>
 
     <!-- Maximum width for an attached image -->
-    <int name="maxImageWidth">640</int>
+    <int name="maxImageWidth">1300</int>
 
     <!-- Maximum number of SMS message to save per thread before auto-delete kicks in.
          This is the default value. -->
@@ -51,7 +51,7 @@
     <int name="maxMessageCountPerThread">5000</int>
 
     <!-- UAProf URL -->
-    <string name="uaProfUrl">http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
+    <string name="uaProfUrl">http://uaprof.softbank.ne.jp/uaprof/mms-myriad01.xml</string>
 
     <!-- Maximum number of recipients allowed per message. Use a value of -1
          to indicate no limit. -->
@@ -83,9 +83,7 @@
 
     <!-- User-Agent parameter used in MMS http request -->
     <!-- this is default to "Android-Mms/0.1". Override if necessary. Optional -->
-    <!--
     <string name="userAgent">Android-Mms/0.1</string>
-    -->
 
     <!-- UAProf parameter tag name -->
     <!-- this is default to "x-wap-profile". Override if necessary. Optional -->
