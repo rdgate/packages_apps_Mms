@@ -247,7 +247,7 @@ public abstract class BaseRecipientAdapter extends BaseAdapter implements Filter
 
                     if (defaultDirectoryCursor2 != null) {
                         while (defaultDirectoryCursor2.moveToNext()) {
-                            if (mQuery == Queries.EMAIL &&
+                            if (mQuery2 == Queries.EMAIL &&
                                     !Mms.isEmailAddress(defaultDirectoryCursor2.getString(Queries.Query.DESTINATION)))
                                 continue;
                             // Note: At this point each entry doesn't contain any photo
@@ -548,6 +548,8 @@ public abstract class BaseRecipientAdapter extends BaseAdapter implements Filter
 
     private final DelayedMessageHandler mDelayedMessageHandler = new DelayedMessageHandler();
 
+    private EntriesUpdatedObserver mEntriesUpdatedObserver;
+
     /**
      * Constructor for email queries.
      */
@@ -761,9 +763,14 @@ public abstract class BaseRecipientAdapter extends BaseAdapter implements Filter
         return entries;
     }
 
+    public void registerUpdateObserver(EntriesUpdatedObserver observer) {
+        mEntriesUpdatedObserver = observer;
+    }
+
     /** Resets {@link #mEntries} and notify the event to its parent ListView. */
     private void updateEntries(List<RecipientEntry> newEntries) {
         mEntries = newEntries;
+        mEntriesUpdatedObserver.onChanged(newEntries);
         notifyDataSetChanged();
     }
 
@@ -957,6 +964,7 @@ public abstract class BaseRecipientAdapter extends BaseAdapter implements Filter
                 final CharSequence destinationType = query
                         .getTypeLabel(mContext.getResources(), entry.getDestinationType(),
                                 entry.getDestinationLabel()).toString().toUpperCase();
+
                 destinationTypeView.setText(destinationType);
             }
         }
@@ -1033,5 +1041,13 @@ public abstract class BaseRecipientAdapter extends BaseAdapter implements Filter
      */
     protected int getPhotoId() {
         return android.R.id.icon;
+    }
+
+    /**
+     * Interface called before the BaseRecipientAdapter updates recipient
+     * results in the popup window.
+     */
+    protected interface EntriesUpdatedObserver {
+        public void onChanged(List<RecipientEntry> entries);
     }
 }
