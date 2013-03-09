@@ -154,4 +154,8 @@
     <string name="send_delay_30seconds">30 seconds</string>
     <string name="sent_countdown">Message delivery countdown</string>
 
+    <!-- Breathing Notifications -->
+    <string name="sms_breath">Breathing SMS</string>
+    <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar.</string>
+
 </resources>
