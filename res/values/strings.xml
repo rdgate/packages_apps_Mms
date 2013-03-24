@@ -384,6 +384,9 @@
     <!-- Settings item for boolean option to show the mark read button in the quick reply notification -->
     <string name="pref_title_quickreply_mark_read">Show mark read button</string>
     <string name="pref_summary_quickreply_mark_read">Show the mark as read button in the quick reply notification</string>
+    <!-- Settings to enabled pm.goToSleep after sending a sms via qr from lockscreen -->
+    <string name="pref_title_quickreply_resume_sleep">Enable device to return to sleep</string>
+    <string name="pref_summary_quickreply_resume_sleep">When sending a sms via quickreply from the lockscreen, allow device to return to sleep</string>
 
     <!-- The vibrate notification modes -->
     <string-array name="prefEntries_vibrateWhen">
@@ -883,6 +886,10 @@
     <!-- Extra Settings: -->
     <string name="pref_extra_settings">Extra settings</string>
 
+    <!-- Strip unicode -->
+    <string name="pref_title_strip_unicode">Strip unicode</string>
+    <string name="pref_summary_strip_unicode">Substitute common characters that are not supported in 160 character SMS messages</string>
+
     <!-- Enable emojis -->
     <string name="pref_title_enable_emojis">Emoji support</string>
     <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
@@ -905,6 +912,7 @@
     <string name="qr_alert_no">No</string>
     <string name="qr_alert_read">Mark Read</string>
     <string name="qr_mark_read">Mark Read &amp; Close</string>
+    <string name="qr_mark_open">Open</string>
     <string name="qr_pick_smiley">Insert Smiley</string>
     <string name="qr_pick_emoji">Insert Emoji</string>
     <string name="qr_close_popup">Close</string>
@@ -912,6 +920,7 @@
     <string name="quick_reply_hint">Type Message</string>
     <string name="only_three_please">Only select three options at once</string>
     <string name="pref_title_quick_reply">Quick Reply</string>
+    
 
     <!-- Send on enter -->
     <string name="pref_title_mms_send_on_enter">Send on Enter</string>
