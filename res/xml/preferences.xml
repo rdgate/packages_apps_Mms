@@ -201,11 +201,6 @@
             android:summary="@string/pref_summary_strip_unicode"
             android:defaultValue="false" />
 
-        <CheckBoxPreference android:key="pref_key_mms_send_on_enter"
-            android:title="@string/pref_title_mms_send_on_enter"
-            android:summary="@string/pref_summary_mms_send_on_enter"
-            android:defaultValue="true" />
-
         <com.android.mms.preferences.UserAgentListPreference
             android:key="pref_key_mms_user_agent"
             android:defaultValue="default"

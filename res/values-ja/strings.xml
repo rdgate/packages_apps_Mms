@@ -425,10 +425,6 @@
     <string name="only_three_please">3つまでしか選択できません</string>
     <string name="pref_title_quick_reply">クイックリプライ</string>
 
-    <!-- Send on Enter -->
-    <string name="pref_title_mms_send_on_enter">Enterキーで送信</string>
-    <string name="pref_summary_mms_send_on_enter">Enterキーの押下でメッセージを送信するかどうか切り替える</string>
-
     <!-- Custom user-agent -->
     <string name="pref_mms_custom_option">カスタム..</string>
     <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
