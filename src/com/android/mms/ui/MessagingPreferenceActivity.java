@@ -109,6 +109,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     // Keyboard input type
     public static final String INPUT_TYPE                = "pref_key_mms_input_type";
 
+    // Custom User-Agent
+    public static final String USER_AGENT               = "pref_key_mms_user_agent";
+    public static final String USER_AGENT_CUSTOM        = "pref_key_mms_user_agent_custom";
+
     // QuickMessage
     public static final String QUICKMESSAGE_ENABLED      = "pref_key_quickmessage";
     public static final String QM_LOCKSCREEN_ENABLED     = "pref_key_qm_lockscreen";
