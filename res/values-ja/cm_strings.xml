@@ -185,4 +185,10 @@
     <string name="alert_dialog_yes">はい</string>
     <string name="alert_dialog_no">いいえ</string>
 
+    <!-- Toast when storage is full -->
+    <string name="storage_is_full">メッセージデータベースがいっぱいです。いくつかの会話を削除してください。</string>
+
+    <!-- Context menu item on an failed message for resending -->
+    <string name="menu_resend">再送信</string>
+
 </resources>
