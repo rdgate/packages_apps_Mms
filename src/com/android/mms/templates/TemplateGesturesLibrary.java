@@ -4,8 +4,8 @@ package com.android.mms.templates;
 import java.io.File;
 
 import android.content.Context;
-import com.android.mms.gesture.GestureLibraries;
-import com.android.mms.gesture.GestureLibrary;
+import android.gesture.GestureLibraries;
+import android.gesture.GestureLibrary;
 
 public class TemplateGesturesLibrary {
 

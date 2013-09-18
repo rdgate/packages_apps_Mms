@@ -30,7 +30,7 @@
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:padding="15dip" />
 
-  <com.android.mms.gesture.GestureOverlayView
+  <android.gesture.GestureOverlayView
     android:id="@+id/gestures_overlay"
     android:layout_width="match_parent"
     android:layout_height="0dip"
