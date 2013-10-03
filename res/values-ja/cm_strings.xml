@@ -191,4 +191,14 @@
     <!-- Context menu item on an failed message for resending -->
     <string name="menu_resend">再送信</string>
 
+    <!-- Multi recipients -->
+    <string name="select_recipients">宛先選択</string>
+    <string name="groups_header">グループ</string>
+    <string name="no_recipients">連絡先が見つかりません</string>
+    <string name="no_recipients_mobile_only">マッチする連絡先が見つかりません。「携帯番号のみ」のフィルターを外してみてください。</string>
+    <string name="menu_done">完了</string>
+    <string name="menu_mobile">携帯番号のみ</string>
+    <string name="menu_groups">グループを表示</string>
+    <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+
 </resources>
