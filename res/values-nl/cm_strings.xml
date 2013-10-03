@@ -106,4 +106,14 @@
     <string name="add_to_blacklist_message">Berichten van %s worden geblokkeerd</string>
     <string name="alert_dialog_yes">Ja</string>
     <string name="alert_dialog_no">Nee</string>
+    <string name="storage_is_full">De berichtendatabase is vol. Verwijder enkele gesprekken.</string>
+    <string name="menu_resend">Opnieuw verzenden</string>
+    <string name="select_recipients">Ontvangers kiezen</string>
+    <string name="groups_header">Groepen</string>
+    <string name="no_recipients">Geen contacten gevonden</string>
+    <string name="no_recipients_mobile_only">Geen overeenkomende contacten gevonden. Probeer zonder het filter \'Alleen mobiele nummers\'</string>
+    <string name="menu_done">Gereed</string>
+    <string name="menu_mobile">Alleen mobiele nummers</string>
+    <string name="menu_groups">Groepen tonen</string>
+    <string name="fastscroll_index_groups">GRP</string>
 </resources>

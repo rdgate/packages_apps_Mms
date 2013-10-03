@@ -13,10 +13,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <plurals name="template_confirm_delete_conversation">
-        <item quantity="one">Szablon zostanie usunięty.</item>
-        <item quantity="few"><xliff:g id="number" example="15">%1$s</xliff:g> szablony zostaną usunięte.</item>
-        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> szablonów zostanie usuniętych.</item>
-    </plurals>
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- QuickMessage -->
+    <integer name="qm_message_response_max_lines">2</integer>
+
 </resources>

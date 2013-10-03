@@ -108,4 +108,12 @@
     <string name="alert_dialog_no">Nem</string>
     <string name="storage_is_full">Az üzeneteket tároló adatbázis megtelt. Töröljön néhány beszélgetést.</string>
     <string name="menu_resend">Újraküldés</string>
+    <string name="select_recipients">Válasszon címzetteket</string>
+    <string name="groups_header">Csoportok</string>
+    <string name="no_recipients">Nincs találat</string>
+    <string name="no_recipients_mobile_only">Nincs találat. Próbálja meg a \'Csak mobil számok\' szűrőfeltétel nélkül</string>
+    <string name="menu_done">Kész</string>
+    <string name="menu_mobile">Csak mobil számok</string>
+    <string name="menu_groups">Csoportok megjelenítése</string>
+    <string name="fastscroll_index_groups">Cs</string>
 </resources>

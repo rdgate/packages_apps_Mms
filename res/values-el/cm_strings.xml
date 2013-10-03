@@ -106,4 +106,14 @@
     <string name="add_to_blacklist_message">Μελλοντικά μηνύματα από το %s θα απορρίπτονται</string>
     <string name="alert_dialog_yes">Ναι</string>
     <string name="alert_dialog_no">Όχι</string>
+    <string name="storage_is_full">Η βάση δεδομένων μηνυμάτων είναι πλήρης. Παρακαλώ διαγράψτε ορισμένες συζητήσεις.</string>
+    <string name="menu_resend">Επανάληψη αποστολής</string>
+    <string name="select_recipients">Επιλέξτε παραλήπτες</string>
+    <string name="groups_header">Ομάδες</string>
+    <string name="no_recipients">Δεν βρέθηκαν επαφές</string>
+    <string name="no_recipients_mobile_only">Δεν βρέθηκαν επαφές που ταιριάζουν. Δοκιμάστε χωρίς τo φίλτρο \'Μόνο κινητά τηλέφωνα\'</string>
+    <string name="menu_done">Τέλος</string>
+    <string name="menu_mobile">Μόνο κινητά τηλέφωνα</string>
+    <string name="menu_groups">Εμφάνιση ομάδων</string>
+    <string name="fastscroll_index_groups">OM</string> <!-- CHAR LIMIT=3 -->
 </resources>

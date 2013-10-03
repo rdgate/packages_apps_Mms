@@ -110,4 +110,12 @@
     <string name="alert_dialog_no">No</string>
     <string name="storage_is_full">Il database per la messaggistica è pieno. Si consiglia di eliminare alcune conversazioni.</string>
     <string name="menu_resend">Reinvia</string>
+    <string name="select_recipients">Seleziona destinatari</string>
+    <string name="groups_header">Gruppi</string>
+    <string name="no_recipients">Nessun contatto trovato</string>
+    <string name="no_recipients_mobile_only">Nessun contatto trovato. Prova senza il filtro \'Solo numeri cellulare\'</string>
+    <string name="menu_done">Fatto</string>
+    <string name="menu_mobile">Solo numeri cellulare</string>
+    <string name="menu_groups">Mostra gruppi</string>
+    <string name="fastscroll_index_groups">GR</string>
 </resources>

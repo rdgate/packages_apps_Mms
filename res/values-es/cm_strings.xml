@@ -109,4 +109,12 @@
     <string name="alert_dialog_no">No</string>
     <string name="storage_is_full">La base de datos de mensajes está llena. Por favor, elimina algunas conversaciones.</string>
     <string name="menu_resend">Reenviar</string>
+    <string name="select_recipients">Seleccionar destinatarios</string>
+    <string name="groups_header">Grupos</string>
+    <string name="no_recipients">No se han encontrado contactos</string>
+    <string name="no_recipients_mobile_only">No hay contactos coincidentes. Prueba sin el filtro \u00ABSolo números de teléfono\u00BB</string>
+    <string name="menu_done">Hecho</string>
+    <string name="menu_mobile">Solo números de teléfono</string>
+    <string name="menu_groups">Mostrar grupos</string>
+    <string name="fastscroll_index_groups">GRP</string>
 </resources>

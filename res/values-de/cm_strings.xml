@@ -106,4 +106,14 @@
     <string name="add_to_blacklist_message">Zukünftige Nachrichten von %s werden abgewiesen</string>
     <string name="alert_dialog_yes">Ja</string>
     <string name="alert_dialog_no">Nein</string>
+    <string name="storage_is_full">Der Nachrichtenspeicher ist voll. Bitte einige Konversationen löschen</string>
+    <string name="menu_resend">Erneut senden</string>
+    <string name="select_recipients">Empfänger auswählen</string>
+    <string name="groups_header">Gruppen</string>
+    <string name="no_recipients">Keine Kontakte gefunden</string>
+    <string name="no_recipients_mobile_only">Keine passenden Kontakte gefunden. Sie können versuchen, die Option \"Nur Mobilnummern anzeigen\" zu deaktivieren.</string>
+    <string name="menu_done">Fertig</string>
+    <string name="menu_mobile">Nur Mobilnummern anzeigen</string>
+    <string name="menu_groups">Gruppen anzeigen</string>
+    <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
 </resources>

@@ -106,4 +106,14 @@
     <string name="add_to_blacklist_message">Futuras mensagens de %s serão bloqueadas</string>
     <string name="alert_dialog_yes">Sim</string>
     <string name="alert_dialog_no">Não</string>
+    <string name="storage_is_full">O banco de dados de mensagem está cheio. Favor apagar algumas conversas.</string>
+    <string name="menu_resend">Reenviar</string>
+    <string name="select_recipients">Selecionar destinatários</string>
+    <string name="groups_header">Grupos</string>
+    <string name="no_recipients">Nenhum contato encontrado</string>
+    <string name="no_recipients_mobile_only">Nenhum contato correspondente encontrado. Tente sem o filtro \'Somente números de celular\'</string>
+    <string name="menu_done">Pronto</string>
+    <string name="menu_mobile">Somente números de celular</string>
+    <string name="menu_groups">Exibir grupos</string>
+    <string name="fastscroll_index_groups">GR</string>
 </resources>

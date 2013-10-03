@@ -91,4 +91,27 @@
     <string name="pref_summary_enable_quick_emojis">Wyświetlaj przycisk emotikon Emoji obok pola tekstowego</string>
     <string name="label_mms_push">Wysyłanie oczekujących MMS-ów</string>
     <string name="desc_mms_push">Wysyłaj wiadomości MMS ze skrzynki nadawczej do sieci</string>
+    <string name="blacklist_title">Czarna lista</string>
+    <string name="blacklist_summary_disabled">Wyłączona</string>
+    <string name="blacklist_summary">Przychodzące wiadomości z numerów znajdujących się na czarnej liście będą zablokowane</string>
+    <string name="blacklist_notification">Zablokowano wiadomość od %s</string>
+    <string name="blacklist_notification_private_number">Zablokowano wiadomość od numeru prywatnego</string>
+    <string name="blacklist_notification_list_private">Numery prywatne</string>
+    <string name="blacklist_notification_unknown_number">Zablokowano wiadomość od nieznanego numeru %s</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> wiadomości zablokowano</string>
+    <string name="unblock_number">Odblokuj</string>
+    <string name="add_to_blacklist">Dodaj do czarnej listy</string>
+    <string name="add_to_blacklist_message">Przyszłe wiadomości od %s będą zablokowane</string>
+    <string name="alert_dialog_yes">Tak</string>
+    <string name="alert_dialog_no">Nie</string>
+    <string name="storage_is_full">Pamięć wiadomości jest pełna. Proszę usunąć część konwersacji</string>
+    <string name="menu_resend">Wyślij ponownie</string>
+    <string name="select_recipients">Wybierz adresatów</string>
+    <string name="groups_header">Grupy</string>
+    <string name="no_recipients">Nie znaleziono kontaktów.</string>
+    <string name="no_recipients_mobile_only">Nie znaleziono pasujących kontaktów. Wyłącz filtr \'Tylko numery komórkowe\' i spróbuj ponownie.</string>
+    <string name="menu_done">Gotowe</string>
+    <string name="menu_mobile">Tylko numery komórkowe</string>
+    <string name="menu_groups">Pokaż grupy</string>
+    <string name="fastscroll_index_groups">GR</string>
 </resources>
