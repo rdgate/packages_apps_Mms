@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <!-- Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
@@ -93,4 +94,27 @@
     <string name="insert_contact_info_positive_button">Voeg by</string>
     <string name="label_mms_push">MMS stoot</string>
     <string name="desc_mms_push">Stoot MMS van uitkassie na die netwerk toe</string>
+    <string name="blacklist_title">Blokeringslys</string>
+    <string name="blacklist_summary_disabled">Gedeaktiveer</string>
+    <string name="blacklist_summary">Inkomende boodskappe van telefoon nommers in die blokeringslys sal geblokkeer word</string>
+    <string name="blacklist_notification">\'n Boodskap van %s geblokkeer</string>
+    <string name="blacklist_notification_private_number">\'n Boodskap van \'n private nommer geblokkeer</string>
+    <string name="blacklist_notification_list_private">Privaat</string>
+    <string name="blacklist_notification_unknown_number">\'n Boodskap van onbekende nommer %s geblokkeer</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g> boodskappe is geblokkeer</string>
+    <string name="unblock_number">Onblokkeer</string>
+    <string name="add_to_blacklist">Voeg tot blokeringslys</string>
+    <string name="add_to_blacklist_message">Toekomstige boodskappe van %s sal geblokkeer word</string>
+    <string name="alert_dialog_yes">Ja</string>
+    <string name="alert_dialog_no">Nee</string>
+    <string name="storage_is_full">Die boodskap databasis is vol. Verwyder \'n aantal gesprekke.</string>
+    <string name="menu_resend">Herstuur</string>
+    <string name="select_recipients">Kies ontvangers</string>
+    <string name="groups_header">Groepe</string>
+    <string name="no_recipients">Geen kontakte gevind nie</string>
+    <string name="no_recipients_mobile_only">Geen ooreenkomstige kontakte gevind nie. Probeer sonder die \'Slegs mobiele nommers\' filter</string>
+    <string name="menu_done">Klaar</string>
+    <string name="menu_mobile">Slegs mobiele nommers</string>
+    <string name="menu_groups">Wys groepe</string>
+    <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
 </resources>
