@@ -100,6 +100,12 @@
             android:key="pref_key_manage_sim_messages"
             android:summary="@string/pref_summary_manage_sim_messages"
             android:title="@string/pref_title_manage_sim_messages" />
+
+        <Preference
+            android:key="pref_key_compose_edit_lines"
+            android:defaultValue="3"
+            android:summary="@string/pref_compose_edit_lines"
+            android:title="@string/pref_compose_edit_lines" />
     </PreferenceCategory>
 
     <!-- MMS Settings -->
