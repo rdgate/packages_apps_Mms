@@ -73,6 +73,8 @@ public class MmsConfig {
     private static int mMinimumSlideElementDuration = 7;        // default to 7 sec
     private static boolean mNotifyWapMMSC = false;
     private static boolean mAllowAttachAudio = true;
+    private static int mSmsMinEditLines=1;
+    private static int mSmsMaxEditLines=10;
 
     // If mEnableMultipartSMS is true, long sms messages are always sent as multi-part sms
     // messages, with no checked limit on the number of segments.
@@ -136,6 +138,14 @@ public class MmsConfig {
             return true;
         }
         return false;
+    }
+
+    public static int getSmsMinEditLines() {
+        return mSmsMinEditLines;
+    }
+
+    public static int getSmsMaxEditLines() {
+        return mSmsMaxEditLines;
     }
 
     public static boolean isSmsPromoDismissed(Context context) {
