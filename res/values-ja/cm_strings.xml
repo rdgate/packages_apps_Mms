@@ -14,21 +14,69 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="pref_title_sms_split_counter">分割カウンタ</string>
-    <string name="pref_summary_sms_split_counter">メッセージに分割数のカウンタを追加する。例: (1/2)</string>
+    <!-- Message options - Add SMS to calendar -->
+    <string name="menu_add_to_calendar">カレンダーに追加</string>
+
+    <!-- QM - Dialog box buttons -->
+    <string name="button_close">閉じる</string>
+    <string name="button_view">開く</string>
+    <string name="button_templates">テンプレート</string>
+
+    <!-- QM - Hint text in message body field when keyboard is exposed -->
+    <string name="type_to_reply_text_enter_to_send">返信を書く</string>
+
+    <!-- QM - Toast -->
+    <string name="toast_sending_message">メッセージ送信中</string>
+
+    <!-- QM - Quick reply -->
+    <string name="qm_quick_reply">返信</string>
+    <string name="qm_mark_read">既読</string>
+
+    <!-- QM - Counter separator -->
+    <string name="message_counter_separator">/</string>
+
+    <!-- NOTIFICATIONS -->
+    <!-- Privacy mode -->
+    <string name="pref_title_notification_privacy_mode_enabled">プライバシーモード</string>
+    <string name="pref_summary_notification_privacy_mode_enabled">送信者とメッセージをステータスバーに表示せず、クイックリプライを無効にする</string>
+    <string name="notification_single_title_privacy_mode">新しいメッセージ</string>
+    <string name="notification_single_text_privacy_mode">1通の未読メッセージ</string>
+    <string name="notification_multiple_title_privacy_mode">新しいメッセージ</string>
+    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g>通の未読メッセージ</string>
+    <string name="notification_ticker_privacy_mode">新しいメッセージを受信しました</string>
+
+    <!-- QUICKMESSAGE -->
+    <string name="pref_quickmessage">クイックリプライ</string>
+
+    <!-- Use dark theme -->
+    <string name="pref_dark_theme_title">ダークテーマを使用</string>
+    <string name="pref_dark_theme_summary">非選択時はデフォルトのライトテーマを使用する</string>
+
+    <!-- Show pop-up -->
+    <string name="pref_quickmessage_title">ポップアップを表示</string>
+    <string name="pref_quickmessage_summary">SMSメッセージ受信時にクイックメッセージポップアップを表示する</string>
+
+    <!-- Wake and unlock -->
+    <string name="pref_wake_unlock_title">ウェイク&amp;アンロック</string>
+    <string name="pref_wake_unlock_summary">メッセージ受信時にデバイスをウェイク、アンロックする (非セキュアロック画面のみ)</string>
+
+    <!-- Close all messages -->
+    <string name="pref_close_all_title">すべて閉じる</string>
+    <string name="pref_close_all_summary">閉じるボタンですべてのメッセージを閉じる</string>
+
+    <!-- SMS TEMPLATES -->
     <string name="prefs_templates_settings">SMSテンプレート</string>
+
+    <!-- Manage SMS templates -->
     <string name="pref_title_templates_manage">テンプレート</string>
     <string name="pref_summary_templates_manage">SMSテンプレートの管理</string>
-    <string name="pref_title_templates_show_gesture">ジェスチャー</string>
-    <string name="pref_summary_templates_show_gesture">ジェスチャーの軌跡を表示</string>
-    <string name="pref_title_template_gestures_sensitivity">ジェスチャーの感度</string>
-    <string name="template_save">保存</string>
+    <string name="template_explanation">テンプレートテキストを挿入あるいは編集し、必要であればジェスチャーを描いて定義します</string>
     <string name="template_insert_hint">テンプレートテキストを挿入</string>
     <string name="template_empty_text">テキストフィールドは空にできません</string>
-    <string name="template_explanation">テンプレートテキストを挿入あるいは編集し、必要であればジェスチャーを描いて定義します</string>
+    <string name="template_save">保存</string>
+    <string name="template_ctx_menu_title">アクション</string>
     <string name="template_edit">編集</string>
     <string name="template_delete">削除</string>
-    <string name="template_ctx_menu_title">アクション</string>
     <string name="template_list_title">テンプレート</string>
     <string name="template_new_title">新規テンプレート</string>
     <string name="template_insert">テンプレートを挿入</string>
@@ -36,16 +84,93 @@
     <string name="template_not_present_error">テンプレートは定義されてません</string>
     <string name="template_not_present_error_title">エラー</string>
     <string name="template_select">テンプレートを選択</string>
+    <string name="template_confirm_dialog_title">削除しますか?</string>
     <string name="gestures_already_present">警告: 他のテンプレートに似たようなジェスチャーが設定されています!</string>
+    <string name="select_template">テンプレートを選択</string>
+
+    <!-- Show gesture trace -->
+    <string name="pref_title_templates_show_gesture">ジェスチャー</string>
+    <string name="pref_summary_templates_show_gesture">ジェスチャーの軌跡を表示</string>
+
+    <!-- Gesture sensitivity -->
+    <string name="pref_title_template_gestures_sensitivity">ジェスチャーの感度</string>
+
+    <!-- EXTRA SETTINGS -->
     <string name="pref_extra_settings">拡張設定</string>
+
+    <!-- Strip unicode -->
+    <string name="pref_title_unicode_stripping">ユニコードを取り除く</string>
+    <string name="pref_unicode_stripping_leave_intact">取り除かない</string>
+    <string name="pref_unicode_stripping_non_encodable">エンコードできない文字を取り除く</string>
+    <string name="pref_unicode_stripping_all">すべてのユニコード文字を取り除く</string>
+
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">絵文字サポート</string>
+    <string name="pref_summary_enable_emojis">ユニコード絵文字サポートを有効にする, 471個のステキな絵文字</string>
+    <string name="menu_insert_smiley">顔文字を挿入</string>
+    <string name="menu_insert_emoji">絵文字を挿入</string>
+
+    <!-- Enable quick emojis -->
+    <string name="pref_title_enable_quick_emojis">クイック絵文字ボタン</string>
+    <string name="pref_summary_enable_quick_emojis">絵文字を素早く入力するためにテキスト入力エリアの横に絵文字ボタンを表示する</string>
+
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank絵文字</string>
+    <string name="pref_summary_enable_softbank_encoding">SoftBankの絵文字変換ルールを使用する</string>
+
+    <!-- Full timestamps -->
     <string name="pref_title_mms_full_timestamp">完全なタイムスタンプ</string>
     <string name="pref_summary_mms_full_timestamp">タイムスタンプに日付と時刻の両方を表示する</string>
+
+    <!-- Original timestamps -->
     <string name="pref_title_mms_use_sent_timestamp">送信時刻表示</string>
     <string name="pref_summary_mms_use_sent_timestamp">着信時刻の代わりに送信時刻を表示する</string>
-    <string name="pref_title_mms_notification_vibrate_pattern">振動パターン</string>
-    <string name="pref_summary_mms_notification_vibrate_pattern">振動パターンを変更する</string>
-    <string name="pref_title_mms_notification_vibrate_custom">カスタム振動パターン</string>
-    <string name="pref_text_mms_notification_vibrate_custom">オフ/オンをミリ秒で記述: オフ, オン, オフ, オン, ...</string>
+
+    <!-- Soft keyboard type -->
+    <string name="pref_title_input_type">ソフトキーボードタイプ</string>
+    <string name="pref_keyboard_emoji">顔文字キーを表示</string>
+    <string name="pref_keyboard_new_line">エンターキーを表示</string>
+    <string name="pref_keyboard_unknown">不明です、再選択してください</string>
+
+    <!-- Settings item for boolean option for SMS Split Counter -->
+    <string name="pref_title_sms_split_counter">分割カウンタ</string>
+    <!-- Settings item description for boolean SMS Split 160 characters setting -->
+    <string name="pref_summary_sms_split_counter">メッセージに分割数のカウンタを追加する。例: (1/2)</string>
+
+    <!-- Blacklist preferences -->
+    <string name="blacklist_title">ブラックリスト</string>
+    <string name="blacklist_summary_disabled">無効</string>
+    <string name="blacklist_summary">ブラックリストに登録された電話番号からの受信メッセージをブロックする</string>
+
+    <!-- Blacklist notifications -->
+    <string name="blacklist_notification">%s からのメッセージをブロックしました。</string>
+    <string name="blacklist_notification_private_number">番号非通知からのメッセージをブロックしました。</string>
+    <string name="blacklist_notification_list_private">番号非通知</string>
+    <string name="blacklist_notification_unknown_number">不明な番号 %s からのメッセージをブロックしました。</string>
+    <string name="blacklist_notification_multiple"><xliff:g id="count">%d</xliff:g>通のメッセージをブロック</string>
+    <string name="unblock_number">ブロック解除</string>
+
+    <!-- Blacklist management -->
+    <string name="add_to_blacklist">ブラックリストに追加</string>
+    <string name="add_to_blacklist_message">今後 %s からのメッセージをブロックする</string>
+
+    <!-- Generic blacklist handling -->
+    <string name="alert_dialog_yes">はい</string>
+    <string name="alert_dialog_no">いいえ</string>
+
+    <!-- Multi recipients -->
+    <string name="select_recipients">宛先選択</string>
+    <string name="groups_header">グループ</string>
+    <string name="no_recipients">連絡先が見つかりません</string>
+    <string name="no_recipients_mobile_only">マッチする連絡先が見つかりません。「携帯番号のみ」のフィルターを外してみてください。</string>
+    <string name="menu_done">完了</string>
+    <string name="menu_mobile">携帯番号のみ</string>
+    <string name="menu_groups">グループを表示</string>
+    <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+    
+    <!-- MMS push permission -->
+    <string name="label_mms_push">MMSプッシュ</string>
+    <string name="desc_mms_push">送信箱からネットワークにMMSをプッシュする</string>
 
     <!-- Custom user-agent -->
     <string name="pref_mms_ua_default_android">Androidデフォルト</string>
