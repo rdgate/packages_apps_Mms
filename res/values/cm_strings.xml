@@ -144,6 +144,9 @@
     <string name="alert_dialog_yes">Yes</string>
     <string name="alert_dialog_no">No</string>
 
+    <!-- Context menu item on a message for marking as unread -->
+    <string name="menu_as_unread">Mark as unread</string>
+
     <!-- Delay delivery -->
     <string name="pref_title_send_delay">Delivery delay</string>
     <string name="send_delay_immediate">Send immediately</string>
@@ -153,6 +156,7 @@
     <string name="send_delay_20seconds">20 seconds</string>
     <string name="send_delay_30seconds">30 seconds</string>
     <string name="sent_countdown">Message delivery countdown</string>
+
 
     <!-- Vibrate pattern -->
     <string name="pref_title_mms_notification_vibrate_pattern">Vibrate pattern</string>
