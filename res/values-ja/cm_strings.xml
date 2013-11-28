@@ -42,4 +42,23 @@
     <string name="pref_summary_mms_full_timestamp">タイムスタンプに日付と時刻の両方を表示する</string>
     <string name="pref_title_mms_use_sent_timestamp">送信時刻表示</string>
     <string name="pref_summary_mms_use_sent_timestamp">着信時刻の代わりに送信時刻を表示する</string>
+    <string name="pref_title_mms_notification_vibrate_pattern">振動パターン</string>
+    <string name="pref_summary_mms_notification_vibrate_pattern">振動パターンを変更する</string>
+    <string name="pref_title_mms_notification_vibrate_custom">カスタム振動パターン</string>
+    <string name="pref_text_mms_notification_vibrate_custom">オフ/オンをミリ秒で記述: オフ, オン, オフ, オン, ...</string>
+
+    <!-- Custom user-agent -->
+    <string name="pref_mms_ua_default_android">Androidデフォルト</string>
+    <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
+    <string name="pref_mms_ua_iphone_3_0">iPhone (3.0)</string>
+    <string name="pref_mms_ua_blackberry_8800">BlackBerry 8800</string>
+    <string name="pref_mms_ua_sonyericsson_w800i">Sony Ericsson W800i</string>
+    <string name="pref_mms_ua_softbank_x01t">SoftBank X01T</string>
+    <string name="pref_mms_ua_softbank_myrmms">SoftBank MyrMMS</string>
+    <string name="pref_mms_ua_nexus5">Nexus 5</string>
+    <string name="pref_mms_ua_custom_option">カスタム\u2026</string>
+    <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
+    <string name="pref_summary_mms_user_agent">MMSクライアントのUser-Agent文字列を変更する</string>
+    <string name="pref_mms_user_agent_custom_set">設定されているUser-Agent:\n</string>
+
 </resources>
