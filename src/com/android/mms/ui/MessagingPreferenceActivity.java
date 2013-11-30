@@ -111,6 +111,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     // Blacklist
     public static final String BLACKLIST                 = "pref_blacklist";
 
+	// Emoji and Unicode
+    public static final String ENABLE_EMOJIS             = "pref_key_enable_emojis";
+    public static final String STRIP_UNICODE             = "pref_key_strip_unicode";
+
     // Menu entries
     private static final int MENU_RESTORE_DEFAULTS    = 1;
 

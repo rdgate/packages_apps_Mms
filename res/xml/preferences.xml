@@ -235,6 +235,12 @@
             android:entryValues="@array/pref_unicode_stripping_values" />
 
         <CheckBoxPreference
+            android:key="pref_key_enable_emojis"
+            android:title="@string/pref_title_enable_emojis"
+            android:summary="@string/pref_summary_enable_emojis"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:key="pref_key_mms_full_timestamp"
             android:title="@string/pref_title_mms_full_timestamp"
             android:summary="@string/pref_summary_mms_full_timestamp"
@@ -262,4 +268,5 @@
             android:dialogTitle="@string/pref_title_mms_user_agent" />
 
     </PreferenceCategory>
+
 </PreferenceScreen>
