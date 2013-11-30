@@ -104,6 +104,20 @@
     <string name="pref_unicode_stripping_non_encodable">Strip non-encodable characters</string>
     <string name="pref_unicode_stripping_all">Strip all unicode characters</string>
 
+    <!-- Enable emojis -->
+    <string name="pref_title_enable_emojis">Emoji support</string>
+    <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
+    <string name="menu_insert_smiley">Insert smiley</string>
+    <string name="menu_insert_emoji">Insert emojis</string>
+
+    <!-- Enable quick emojis -->
+    <string name="pref_title_enable_quick_emojis">Quick emoji button</string>
+    <string name="pref_summary_enable_quick_emojis">Display a button next to the text-input area for quick emoji access</string>
+
+    <!-- Enable SoftBank emoji encoding -->
+    <string name="pref_title_enable_softbank_encoding">SoftBank emoji</string>
+    <string name="pref_summary_enable_softbank_encoding">Use SoftBank emoji encoding</string>
+
     <!-- Full timestamps -->
     <string name="pref_title_mms_full_timestamp">Full timestamps</string>
     <string name="pref_summary_mms_full_timestamp">Display both date and time in timestamps</string>
@@ -171,13 +185,5 @@
     <string name="pref_title_mms_user_agent">Custom User-Agent</string>
     <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
     <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
-
-    <!-- Enable emojis -->
-    <string name="pref_title_enable_emojis">Emoji support</string>
-    <string name="pref_summary_enable_emojis">Enable support for unicode emojis, a set of 471 nice emoticons</string>
-
-    <!-- Emoji Menu item -->
-    <string name="menu_insert_smiley">Insert smiley</string>
-    <string name="menu_insert_emoji">Insert emojis</string>
 
 </resources>

@@ -73,6 +73,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String AUTO_DELETE              = "pref_key_auto_delete";
     public static final String GROUP_MMS_MODE           = "pref_key_mms_group_mms";
 
+    // Emoji
+    public static final String ENABLE_EMOJIS             = "pref_key_enable_emojis";
+    public static final String ENABLE_QUICK_EMOJIS       = "pref_key_enable_quick_emojis";
+    public static final String SOFTBANK_EMOJIS           = "pref_key_enable_softbank_encoding";
+
     // Unicode
     public static final String UNICODE_STRIPPING            = "pref_key_unicode_stripping";
     public static final String UNICODE_STRIPPING_VALUE      = "pref_key_unicode_stripping_value";
@@ -111,8 +116,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     // Blacklist
     public static final String BLACKLIST                 = "pref_blacklist";
 
-	// Emoji and Unicode
-    public static final String ENABLE_EMOJIS             = "pref_key_enable_emojis";
+	// Unicode
     public static final String STRIP_UNICODE             = "pref_key_strip_unicode";
 
     // Menu entries
