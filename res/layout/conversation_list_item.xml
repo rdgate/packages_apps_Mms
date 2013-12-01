@@ -18,7 +18,7 @@
  */
 -->
 
-<com.android.mms.ui.ConversationListItem xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.mms2.ui.ConversationListItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:background="?android:attr/activatedBackgroundIndicator"
@@ -86,4 +86,4 @@
         android:layout_toLeftOf="@id/date"
         android:ellipsize="end" />
 
-</com.android.mms.ui.ConversationListItem>
+</com.android.mms2.ui.ConversationListItem>

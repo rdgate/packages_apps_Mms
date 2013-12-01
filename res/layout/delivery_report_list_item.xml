@@ -18,7 +18,7 @@
  */
 -->
 
-<com.android.mms.ui.DeliveryReportListItem xmlns:android="http://schemas.android.com/apk/res/android"
+<com.android.mms2.ui.DeliveryReportListItem xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:background="@color/background"
@@ -62,4 +62,4 @@
         android:layout_marginRight="5dip"
         android:layout_gravity="right"/>
 
-</com.android.mms.ui.DeliveryReportListItem>
+</com.android.mms2.ui.DeliveryReportListItem>
