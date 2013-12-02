@@ -205,6 +205,7 @@
         <activity android:name=".ui.ClassZeroActivity"
             android:label="@string/class_0_message_activity"
             android:theme="@android:style/Theme.Translucent"
+            android:launchMode="singleTop"
             android:excludeFromRecents="true">
         </activity>
 
@@ -250,6 +251,10 @@
             </intent-filter>
         </activity>
 
+        <service android:name=".ui.SelectMmsSubscription"
+            android:exported="true">
+        </service>
+
         <!-- Require sender permissions to prevent SMS spoofing -->
         <receiver android:name=".transaction.PrivilegedSmsReceiver"
             android:permission="android.permission.BROADCAST_SMS">
@@ -276,6 +281,12 @@
                 <action android:name="com.android.mms.transaction.MESSAGE_SENT" />
                 <!-- TODO Do a better data match here. -->
                 <data android:scheme="content" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND_MESSAGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.android.mms.transaction.SEND_MESSAGE" />
             </intent-filter>
         </receiver>
 

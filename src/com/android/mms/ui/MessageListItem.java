@@ -36,10 +36,13 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract.Profile;
 import android.provider.Telephony.Sms;
+import android.provider.Telephony.Mms;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.MSimTelephonyManager;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.style.ForegroundColorSpan;
@@ -65,12 +68,14 @@ import com.android.mms.data.Contact;
 import com.android.mms.data.WorkingMessage;
 import com.android.mms.model.SlideModel;
 import com.android.mms.model.SlideshowModel;
+import com.android.mms.transaction.SmsReceiverService;
 import com.android.mms.transaction.Transaction;
 import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.EmojiParser;
+import com.android.mms.util.MultiSimUtility;
 import com.android.mms.util.SmileyParser;
 import com.android.mms.util.ThumbnailManager.ImageLoaded;
 import com.google.android.mms.ContentType;
@@ -208,6 +213,7 @@ public class MessageListItem extends LinearLayout implements
                                 + mContext.getString(R.string.kilobyte);
 
         mBodyTextView.setText(formatMessage(mMessageItem, null,
+                                            mMessageItem.mSubscription,
                                             mMessageItem.mSubject,
                                             mMessageItem.mHighlight,
                                             mMessageItem.mTextContentType));
@@ -249,10 +255,26 @@ public class MessageListItem extends LinearLayout implements
                         intent.putExtra(TransactionBundle.URI, mMessageItem.mMessageUri.toString());
                         intent.putExtra(TransactionBundle.TRANSACTION_TYPE,
                                 Transaction.RETRIEVE_TRANSACTION);
-                        mContext.startService(intent);
+                        intent.putExtra(Mms.SUB_ID, mMessageItem.mSubscription); //destination subId
+                        intent.putExtra(MultiSimUtility.ORIGIN_SUB_ID,
+                                MultiSimUtility.getCurrentDataSubscription(mContext));
+
+                        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+                            Log.d(TAG, "Download button pressed for sub=" +
+                                       mMessageItem.mSubscription);
+                            Log.d(TAG, "Manual download is always silent transaction");
+
+                            Intent silentIntent = new Intent(mContext,
+                                    com.android.mms.ui.SelectMmsSubscription.class);
+                            silentIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            silentIntent.putExtras(intent); //copy all extras
+                            mContext.startService(silentIntent);
+                        } else {
+                            mContext.startService(intent);
+                        }
 
                         DownloadManager.getInstance().markState(
-                                    mMessageItem.mMessageUri, DownloadManager.STATE_PRE_DOWNLOADING);
+                                 mMessageItem.mMessageUri, DownloadManager.STATE_PRE_DOWNLOADING);
                     }
                 });
                 break;
@@ -335,6 +357,7 @@ public class MessageListItem extends LinearLayout implements
         if (formattedMessage == null) {
             formattedMessage = formatMessage(mMessageItem,
                                              mMessageItem.mBody,
+                                             mMessageItem.mSubscription,
                                              mMessageItem.mSubject,
                                              mMessageItem.mHighlight,
                                              mMessageItem.mTextContentType);
@@ -365,9 +388,16 @@ public class MessageListItem extends LinearLayout implements
         // If we're in the process of sending a message (i.e. pending), then we show a "SENDING..."
         // string in place of the timestamp.
         if (!sameItem || haveLoadedPdu) {
-            mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
-                    mContext.getResources().getString(R.string.sending_message) :
+            if (MessagingPreferenceActivity.getMessageSendDelayDuration(mContext) > 0
+                    && mMessageItem.getCountDown() > 0) {
+                mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
+                        mContext.getResources().getString(R.string.sent_countdown) :
                         mMessageItem.mTimestamp));
+            } else {
+                mDateView.setText(buildTimestampLine(mMessageItem.isSending() ?
+                        mContext.getResources().getString(R.string.sending_message) :
+                        mMessageItem.mTimestamp));
+            }
         }
         if (mMessageItem.isSms()) {
             showMmsView(false);
@@ -531,13 +561,19 @@ public class MessageListItem extends LinearLayout implements
     ForegroundColorSpan mColorSpan = null;  // set in ctor
 
     private CharSequence formatMessage(MessageItem msgItem, String body,
-                                       String subject, Pattern highlight,
+                                       int subId, String subject, Pattern highlight,
                                        String contentType) {
         SpannableStringBuilder buf = new SpannableStringBuilder();
 
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
         boolean enableEmojis = prefs.getBoolean(MessagingPreferenceActivity.ENABLE_EMOJIS, false);
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            int subscription = subId + 1;
+            buf.append("SUB" + subscription + ":");
+            buf.append("\n");
+        }
 
         boolean hasSubject = !TextUtils.isEmpty(subject);
         SmileyParser parser = SmileyParser.getInstance();
@@ -626,6 +662,11 @@ public class MessageListItem extends LinearLayout implements
     }
 
     public void onMessageListItemClick() {
+        if (mMessageItem != null && mMessageItem.isSending() && mMessageItem.isSms()) {
+            SmsReceiverService.cancelSendingMessage(mMessageItem.mMessageUri);
+            return;
+        }
+
         // If the message is a failed one, clicking it should reload it in the compose view,
         // regardless of whether it has links in it
         if (mMessageItem != null &&
@@ -855,5 +896,19 @@ public class MessageListItem extends LinearLayout implements
     public void seekVideo(int seekTo) {
         // TODO Auto-generated method stub
 
+    }
+
+    public void updateDelayCountDown() {
+        if (mMessageItem.isSms() && mMessageItem.getCountDown() > 0 && mMessageItem.isSending()) {
+            String content = mContext.getResources().getQuantityString(
+                    R.plurals.remaining_delay_time,
+                    mMessageItem.getCountDown(), mMessageItem.getCountDown());
+            Spanned spanned = Html.fromHtml(buildTimestampLine(content));
+            mDateView.setText(spanned);
+        } else {
+            mDateView.setText(buildTimestampLine(mMessageItem.isSending()
+                    ? mContext.getResources().getString(R.string.sending_message)
+                    : mMessageItem.mTimestamp));
+        }
     }
 }

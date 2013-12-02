@@ -116,4 +116,32 @@
     <string name="menu_mobile">Nur Mobilnummern anzeigen</string>
     <string name="menu_groups">Gruppen anzeigen</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+    <string name="pref_title_send_delay">Versandverzögerung</string>
+    <string name="send_delay_immediate">Sofort versenden</string>
+    <string name="send_delay_3seconds">3 Sekunden</string>
+    <string name="send_delay_5seconds">5 Sekunden</string>
+    <string name="send_delay_10seconds">10 Sekunden</string>
+    <string name="send_delay_20seconds">20 Sekunden</string>
+    <string name="send_delay_30seconds">30 Sekunden</string>
+    <string name="sent_countdown">Zeit bis zum Versand</string>
+
+    <!-- CAF strings -->
+    <string name="mms1">MMS1</string>
+    <string name="mms2">MMS2</string>
+    <string name="mms3">MMS3</string>
+    <string name="sub1">VERT.1</string>
+    <string name="sub2">VERT.2</string>
+    <string name="sub3">VERT.3</string>
+    <string name="select_subscription_title">Vertrag auswählen</string>
+    <string name="subscription1_title">Vertrag 1</string>
+    <string name="subscription2_title">Vertrag 2</string>
+    <string name="subscription3_title">Vertrag 3</string>
+    <string name="pending_mms_title">Auf einem anderen Vertrag stehen MMS aus</string>
+    <string name="pending_mms">Nachrichten: Eine oder mehrere MMS stehen noch aus</string>
+    <string name="pending_mms_text">Berühren, um den Vertrag zu wechseln</string>
+    <string name="abort_mms">Nachrichten: MMS abbrechen</string>
+    <string name="abort_mms_text">Berühren, um abzubrechen</string>
+    <string name="progress_mms_title">Auf einem anderen Vertrag ist ein MMS-Versand aktiv</string>
+    <string name="progress_mms">Nachrichten: MMS wird versandt\u2026</string>
+    <string name="progress_mms_text">Zum Wiederholen berühren</string>
 </resources>

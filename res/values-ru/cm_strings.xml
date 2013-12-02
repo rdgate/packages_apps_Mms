@@ -116,4 +116,30 @@
     <string name="menu_mobile">Только мобильные</string>
     <string name="menu_groups">Показывать группы</string>
     <string name="fastscroll_index_groups">Грп</string> <!-- CHAR LIMIT=3 -->
+    <string name="pref_title_send_delay">Задержка отправки</string>
+    <string name="send_delay_immediate">Без задержки</string>
+    <string name="send_delay_3seconds">3 секунды</string>
+    <string name="send_delay_5seconds">5 секунд</string>
+    <string name="send_delay_10seconds">10 секунд</string>
+    <string name="send_delay_20seconds">20 секунд</string>
+    <string name="send_delay_30seconds">30 секунд</string>
+    <string name="sent_countdown">Обратный отсчёт</string>
+    <string name="mms1">MMS1</string>
+    <string name="mms2">MMS2</string>
+    <string name="mms3">MMS3</string>
+    <string name="sub1">ПОДП. 1</string>
+    <string name="sub2">ПОДП. 2</string>
+    <string name="sub3">ПОДП. 3</string>
+    <string name="select_subscription_title">Выберите подписку</string>
+    <string name="subscription1_title">Подписка 1</string>
+    <string name="subscription2_title">Подписка 2</string>
+    <string name="subscription3_title">Подписка 3</string>
+    <string name="pending_mms_title">Ожидающие MMS на другой подписке</string>
+    <string name="pending_mms">Сообщения: Имеется одно или более ожидающих MMS</string>
+    <string name="pending_mms_text">Нажмите, чтобы переключить подписку.</string>
+    <string name="abort_mms">Сообщения: Отмена MMS</string>
+    <string name="abort_mms_text">Нажмите, чтобы отменить и вернуться обратно.</string>
+    <string name="progress_mms_title">Идёт обработка MMS из другой подписки</string>
+    <string name="progress_mms">Сообщения: Обработка MMS\u2026</string>
+    <string name="progress_mms_text">Нажмите, чтобы повторить попытку.</string>
 </resources>

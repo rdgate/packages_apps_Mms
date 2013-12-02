@@ -93,5 +93,35 @@
     <string name="insert_contact_info_positive_button">插入</string>
     <string name="label_mms_push">彩信推送</string>
     <string name="desc_mms_push">将彩信从发件箱推送到移动网络</string>
+    <string name="blacklist_title">黑名单</string>
+    <string name="blacklist_summary_disabled">禁用</string>
+    <string name="blacklist_summary">来自于黑名单中电话号码的短信信息将会被阻止</string>
+    <string name="blacklist_notification">来自于 %s 的信息已被阻止</string>
+    <string name="blacklist_notification_private_number">阻止来自于私人号码的信息</string>
+    <string name="blacklist_notification_list_private">私人号码</string>
+    <string name="blacklist_notification_unknown_number">来自于未知号码 %s 的信息已阻止</string>
+    <string name="blacklist_notification_multiple">已阻止<xliff:g id="count">%d</xliff:g> 条信息</string>
+    <string name="unblock_number">解除阻止</string>
+    <string name="add_to_blacklist">添加到黑名单</string>
+    <string name="add_to_blacklist_message">未来来自于 %s 的信息将会被阻止</string>
+    <string name="alert_dialog_yes">是</string>
+    <string name="alert_dialog_no">否</string>
+    <string name="storage_is_full">信息数据库已满. 请删除一些会话.</string>
     <string name="menu_resend">"重新发送"</string>
+    <string name="select_recipients">选择收件人</string>
+    <string name="groups_header">组</string>
+    <string name="no_recipients">未找到联系人</string>
+    <string name="no_recipients_mobile_only">没有找到匹配的联系人. 请尝试取消\'仅限手机号码\'过滤器</string>
+    <string name="menu_done">完成</string>
+    <string name="menu_mobile">仅限手机号码</string>
+    <string name="menu_groups">显示组</string>
+    <string name="fastscroll_index_groups">GR</string>
+    <string name="pref_title_send_delay">延迟发送短信</string>
+    <string name="send_delay_immediate">立即发送</string>
+    <string name="send_delay_3seconds">3 秒</string>
+    <string name="send_delay_5seconds">5 秒</string>
+    <string name="send_delay_10seconds">10 秒</string>
+    <string name="send_delay_20seconds">20 秒</string>
+    <string name="send_delay_30seconds">30 秒</string>
+    <string name="sent_countdown">延迟发送倒计时</string>
 </resources>

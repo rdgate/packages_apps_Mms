@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -116,4 +117,30 @@
     <string name="menu_mobile">Μόνο κινητά τηλέφωνα</string>
     <string name="menu_groups">Εμφάνιση ομάδων</string>
     <string name="fastscroll_index_groups">OM</string> <!-- CHAR LIMIT=3 -->
+    <string name="pref_title_send_delay">Καθυστέρηση παράδοσης</string>
+    <string name="send_delay_immediate">Άμεση αποστολή</string>
+    <string name="send_delay_3seconds">3 δευτερόλεπτα</string>
+    <string name="send_delay_5seconds">5 δευτερόλεπτα</string>
+    <string name="send_delay_10seconds">10 δευτερόλεπτα</string>
+    <string name="send_delay_20seconds">20 δευτερόλεπτα</string>
+    <string name="send_delay_30seconds">30 δευτερόλεπτα</string>
+    <string name="sent_countdown">Αντίστροφη μέτρηση παράδοσης μηνύματος</string>
+    <string name="mms1">MMS 1</string>
+    <string name="mms2">MMS 2</string>
+    <string name="mms3">MMS 3</string>
+    <string name="sub1">ΣΥΝΔΡ. 1</string>
+    <string name="sub2">ΣΥΝΔΡ. 2</string>
+    <string name="sub3">ΣΥΝΔΡ. 3</string>
+    <string name="select_subscription_title">Επιλογή συνδρομής</string>
+    <string name="subscription1_title">Συνδρομή 1</string>
+    <string name="subscription2_title">Συνδρομή 2</string>
+    <string name="subscription3_title">Συνδρομή 3</string>
+    <string name="pending_mms_title">Εκκρεμεί MMS σε άλλη συνδρομή.</string>
+    <string name="pending_mms">Μηνύματα: Ένα ή περισσότερα MMS εκκρεμούν.</string>
+    <string name="pending_mms_text">Πιέστε για να αλλάξετε τη συνδρομή.</string>
+    <string name="abort_mms">Μηνύματα: Ματαίωση MMS</string>
+    <string name="abort_mms_text">Πιέστε για να εγκαταλείψετε και να επιστρέψετε.</string>
+    <string name="progress_mms_title">Συναλλαγή MMS σε άλλη συνδρομή σε εξέλιξη</string>
+    <string name="progress_mms">Μηνύματα: MMS σε εξέλιξη\u2026</string>
+    <string name="progress_mms_text">Πιέστε για επανάληψη</string>
 </resources>

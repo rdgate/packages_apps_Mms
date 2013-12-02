@@ -117,4 +117,30 @@
     <string name="menu_mobile">Slegs mobiele nommers</string>
     <string name="menu_groups">Wys groepe</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+    <string name="mms1">MMS1</string>
+    <string name="mms2">MMS2</string>
+    <string name="mms3">MMS3</string>
+    <string name="sub1">SUB 1</string>
+    <string name="sub2">SUB 2</string>
+    <string name="sub3">SUB 3</string>
+    <string name="select_subscription_title">Selekteur subskripsie</string>
+    <string name="subscription1_title">Subskripsie 1</string>
+    <string name="subscription2_title">Subskripsie 2</string>
+    <string name="subscription3_title">Subskripsie 3</string>
+    <string name="pending_mms_title">Hangende MMS op ander subskripsie.</string>
+    <string name="pending_mms">Boodskappe: Een of meer MMS hangende.</string>
+    <string name="pending_mms_text">Raak om die subskripsie te verander.</string>
+    <string name="abort_mms">Boodskappe: Staak MMS</string>
+    <string name="abort_mms_text">Raak om te staak en terug skakel.</string>
+    <string name="progress_mms_title">MMS transaksie op ander sub aan die gang</string>
+    <string name="progress_mms">Boodskappe: MMS aan die gang\u2026</string>
+    <string name="progress_mms_text">Raak om om weer te herprobeer</string>
+    <string name="pref_title_send_delay">Vertraag aflewering</string>
+    <string name="send_delay_immediate">Stuur onmiddellik</string>
+    <string name="send_delay_3seconds">3 sekondes</string>
+    <string name="send_delay_5seconds">5 sekondes</string>
+    <string name="send_delay_10seconds">10 sekondes</string>
+    <string name="send_delay_20seconds">20 sekondes</string>
+    <string name="send_delay_30seconds">30 sekondes</string>
+    <string name="sent_countdown">Boodskap aflewering wag tydperk</string>
 </resources>

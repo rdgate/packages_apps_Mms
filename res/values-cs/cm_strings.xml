@@ -14,6 +14,19 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="select_subscription_title">Vybrat sledování</string>
+    <string name="subscription1_title">Sledování 1</string>
+    <string name="subscription2_title">Sledování 2</string>
+    <string name="subscription3_title">Sledování 3</string>
+    <string name="pending_mms_title">MMS závislé na sledování.</string>
+    <string name="pending_mms">Zprávy: Čekají jedna nebo více MMS.</string>
+    <string name="pending_mms_text">Dotykem změníte sledování.</string>
+    <string name="abort_mms">Zprávy: Zrušení MMS</string>
+    <string name="abort_mms_text">Dotykem zrušíte a přepnete zpět.</string>
+    <string name="progress_mms_title">Na jiném sledování již probíhá MMS transakce</string>
+    <string name="progress_mms">Zprávy: Probíhá MMS\u2026</string>
+    <string name="progress_mms_text">Dotykem opakovat</string>
+
     <string name="menu_add_to_calendar">Přidat do kalendáře</string>
     <string name="button_close">Zavřít</string>
     <string name="button_view">Zobrazit</string>
@@ -123,4 +136,13 @@
     <string name="menu_mobile">Pouze mobilní čísla</string>
     <string name="menu_groups">Zobrazit skupiny</string>
     <string name="fastscroll_index_groups">SK</string>
+
+    <string name="pref_title_send_delay">Zpožděné doručení</string>
+    <string name="send_delay_immediate">Odeslat okamžitě</string>
+    <string name="send_delay_3seconds">3 sekundy</string>
+    <string name="send_delay_5seconds">5 sekund</string>
+    <string name="send_delay_10seconds">10 sekund</string>
+    <string name="send_delay_20seconds">20 sekund</string>
+    <string name="send_delay_30seconds">30 sekund</string>
+    <string name="sent_countdown">Odpočet doručení zprávy</string>
 </resources>

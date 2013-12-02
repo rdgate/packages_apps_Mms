@@ -140,7 +140,7 @@
     <item msgid="7786079681602275449">"باشقا"</item>
   </string-array>
     <string name="menu_view_contact" msgid="1414670584423909451">"ئالاقەداشنى كۆرسەت"</string>
-    <string name="menu_add_to_contacts" msgid="1258127580972228970">"&lt;x0&gt;%s&lt;/x0&gt;نى ئالاقەداشقا قوش"</string>
+    <string name="menu_add_to_contacts" msgid="1258127580972228970">"ئالاقەداشقا قوش"</string>
     <string name="hidden_sender_address" msgid="2776075636669924968">"يوشۇرۇن ئەۋەتكۈچى ئادرېسى"</string>
     <string name="yes" msgid="3246158147503160811">"جەزملە"</string>
     <string name="no" msgid="4289742508556913860">"ۋاز كەچ"</string>
@@ -202,19 +202,19 @@
     <string name="multimedia_message" msgid="1512644521083533071">"كۆپ ۋاسىتە ئۇچۇر"</string>
     <string name="multimedia_notification" msgid="4124031788554972308">"كۆپ ۋاسىتە ئۇچۇر ئۇقتۇرۇشى"</string>
     <string name="from_label" msgid="2055117571548171397">"يوللىغۇچى:"</string>
-    <string name="to_address_label" msgid="5837363600471845801">"قوبۇللىغۇچى"</string>
+    <string name="to_address_label" msgid="5837363600471845801">"قوبۇللىغۇچى:"</string>
     <string name="bcc_label" msgid="530867161453958774">"مەخپىي كۆچۈرۈپ يوللا:"</string>
     <string name="sent_label" msgid="2722190650145251584">"ئەۋەتكەن ۋاقىت:"</string>
     <string name="received_label" msgid="8618029024731693906">"تاپشۇرۇۋالغان ۋاقىت:"</string>
     <string name="saved_label" msgid="4183160415593488207">"ساقلانغان ۋاقىت:"</string>
     <string name="subject_label" msgid="8721241914144101631">"تېما:"</string>
     <string name="message_size_label" msgid="4698016210013319786">"ئۇچۇر چوڭلۇقى:"</string>
-    <string name="priority_label" msgid="7397600367853359607">"ئالدىنلىق"</string>
+    <string name="priority_label" msgid="7397600367853359607">"ئالدىنلىق:"</string>
     <string name="priority_high" msgid="5627897207952009214">"يۇقىرى"</string>
     <string name="priority_normal" msgid="5715227727384683550">"ئادەتتىكى"</string>
     <string name="priority_low" msgid="8928782666023373987">"تۆۋەن"</string>
     <string name="message_class_label" msgid="5115748690481550562">"ئۇچۇر خىلى:"</string>
-    <string name="error_code_label" msgid="5810068247647058769">"خاتالىق كودى"</string>
+    <string name="error_code_label" msgid="5810068247647058769">"خاتالىق كودى:"</string>
     <string name="menu_edit" msgid="3056513240155967777">"تەھرىر"</string>
     <string name="menu_delete_messages" msgid="2610286783513247420">"ئۇچۇرلارنى ئۆچۈر"</string>
     <string name="menu_lock" msgid="7603793126077557472">"قۇلۇپلا"</string>

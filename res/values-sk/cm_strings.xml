@@ -28,12 +28,12 @@
     <string name="notification_single_title_privacy_mode">Nová správa</string>
     <string name="notification_single_text_privacy_mode">1 neprečítaná správa</string>
     <string name="notification_multiple_title_privacy_mode">Nové správy</string>
-    <string name="notification_multiple_text_privacy_mode"><xliff:g id="number" example="3">%1$s</xliff:g> neprečítané správy</string>
+    <string name="notification_multiple_text_privacy_mode">Neprečítané správy: <xliff:g id="number" example="3">%1$s</xliff:g></string>
     <string name="notification_ticker_privacy_mode">Bola prijatá nová správa</string>
     <string name="pref_title_mms_notification_vibrate_pattern">Štýl vibrovania</string>
     <string name="pref_summary_mms_notification_vibrate_pattern">Zmení štýl vibrovania</string>
     <string name="pref_title_mms_notification_vibrate_custom">Vlastný štýl vibrovania</string>
-    <string name="pref_text_mms_notification_vibrate_custom">Formát off(vyp)/on(zap) v milisekundách: off, on, off, on\u2026</string>
+    <string name="pref_text_mms_notification_vibrate_custom">Formát off (vyp.)/on (zap.) v milisekundách: off, on, off, on\u2026</string>
     <string name="pref_quickmessage">Rýchla odpoveď</string>
     <string name="pref_dark_theme_title">Použiť tmavú tému</string>
     <string name="pref_dark_theme_summary">Ak nie je zvolené, bude použitá predvolená \'svetlá\' téma</string>
@@ -116,4 +116,30 @@
     <string name="menu_mobile">Iba mobilné čísla</string>
     <string name="menu_groups">Zobraziť skupiny</string>
     <string name="fastscroll_index_groups">SK</string>
+    <string name="pref_title_send_delay">Meškanie odosielania</string>
+    <string name="send_delay_immediate">Ihneď odoslať</string>
+    <string name="send_delay_3seconds">3 sekundy</string>
+    <string name="send_delay_5seconds">5 sekúnd</string>
+    <string name="send_delay_10seconds">10 sekúnd</string>
+    <string name="send_delay_20seconds">20 sekúnd</string>
+    <string name="send_delay_30seconds">30 sekúnd</string>
+    <string name="sent_countdown">Odpočítavanie odoslania správy</string>
+    <string name="mms1">MMS 1</string>
+    <string name="mms2">MMS 2</string>
+    <string name="mms3">MMS 3</string>
+    <string name="sub1">Odber 1</string>
+    <string name="sub2">Odber 2</string>
+    <string name="sub3">Odber 3</string>
+    <string name="select_subscription_title">Vyberte odber</string>
+    <string name="subscription1_title">Odber 1</string>
+    <string name="subscription2_title">Odber 2</string>
+    <string name="subscription3_title">Odber 3</string>
+    <string name="pending_mms_title">Čakajúca MMS na ďalšom odbere.</string>
+    <string name="pending_mms">Správy: Čaká jedna alebo viac MMS.</string>
+    <string name="pending_mms_text">Dotykom prepnete odber.</string>
+    <string name="abort_mms">Správy: Prerušiť MMS</string>
+    <string name="abort_mms_text">Dotykom prerušíte a prepnete sa späť.</string>
+    <string name="progress_mms_title">Prebieha MMS transakcia na ďalšom odbere</string>
+    <string name="progress_mms">Správy: Prebieha MMS ...</string>
+    <string name="progress_mms_text">Dotykom skúste znovu</string>
 </resources>

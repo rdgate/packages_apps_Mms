@@ -1,6 +1,8 @@
 /*
  * Copyright (C) 2007-2008 Esmertec AG.
  * Copyright (C) 2007-2008 The Android Open Source Project
+ * Copyright (C) 2010-2013, The Linux Foundation. All rights reserved.
+ * Not a Contribution.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,6 +37,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
 import android.net.Uri;
@@ -44,10 +47,12 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.preference.PreferenceManager;
 import android.provider.Telephony.Sms;
 import android.provider.Telephony.Sms.Inbox;
 import android.provider.Telephony.Sms.Intents;
 import android.provider.Telephony.Sms.Outbox;
+import android.telephony.MSimSmsManager;
 import android.telephony.ServiceState;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
@@ -67,6 +72,7 @@ import com.android.mms.data.Contact;
 import com.android.mms.data.Conversation;
 import com.android.mms.ui.ClassZeroActivity;
 import com.android.mms.util.AddressUtils;
+import com.android.mms.ui.MessagingPreferenceActivity;
 import com.android.mms.util.Recycler;
 import com.android.mms.util.SendingProgressTokenManager;
 import com.android.mms.widget.MmsWidgetProvider;
@@ -80,6 +86,7 @@ import com.google.android.mms.MmsException;
 public class SmsReceiverService extends Service {
     private static final String TAG = "SmsReceiverService";
     private boolean DEBUG = false;
+    private final String SUBSCRIPTION_KEY = "subscription";
 
     private ServiceHandler mServiceHandler;
     private Looper mServiceLooper;
@@ -103,6 +110,7 @@ public class SmsReceiverService extends Service {
         Sms.ADDRESS,    //2
         Sms.BODY,       //3
         Sms.STATUS,     //4
+        Sms.SUB_ID,     //5
 
     };
 
@@ -114,8 +122,16 @@ public class SmsReceiverService extends Service {
     private static final int SEND_COLUMN_ADDRESS    = 2;
     private static final int SEND_COLUMN_BODY       = 3;
     private static final int SEND_COLUMN_STATUS     = 4;
+    private static final int SEND_COLUMN_SUB_ID     = 5;
 
     private int mResultCode;
+
+    // SMS sending delay
+    private static Uri sCurrentSendingUri = Uri.EMPTY;
+    public static final String ACTION_SEND_COUNTDOWN ="com.android.mms.transaction.SEND_COUNTDOWN";
+    public static final String DATA_COUNTDOWN = "DATA_COUNTDOWN";
+    public static final String DATA_MESSAGE_URI = "DATA_MESSAGE_URI";
+    private static final long TIMER_DURATION = 1000;
 
     // Blacklist support
     private static final String REMOVE_BLACKLIST = "com.android.mms.action.REMOVE_BLACKLIST";
@@ -261,10 +277,24 @@ public class SmsReceiverService extends Service {
         }
     }
 
+    public static void cancelSendingMessage(Uri messageUri) {
+        synchronized (sCurrentSendingUri) {
+            if (sCurrentSendingUri.equals(messageUri)) {
+                sCurrentSendingUri.notifyAll();
+            }
+        }
+    }
+
     private void handleServiceStateChanged(Intent intent) {
         // If service just returned, start sending out the queued messages
         ServiceState serviceState = ServiceState.newFromBundle(intent.getExtras());
-        if (serviceState.getState() == ServiceState.STATE_IN_SERVICE) {
+        int subscription = intent.getIntExtra(SUBSCRIPTION_KEY, 0);
+        int prefSubscription = MSimSmsManager.getDefault().getPreferredSmsSubscription();
+        // if service state is IN_SERVICE & current subscription is same as
+        // preferred SMS subscription.i.e.as set under MultiSIM Settings,then
+        // sendFirstQueuedMessage.
+        if (serviceState.getState() == ServiceState.STATE_IN_SERVICE &&
+            subscription == prefSubscription) {
             sendFirstQueuedMessage();
         }
     }
@@ -273,6 +303,57 @@ public class SmsReceiverService extends Service {
         if (!mSending) {
             sendFirstQueuedMessage();
         }
+    }
+
+    private boolean maybeDelaySendingAndCheckForCancel(Uri msgUri) {
+        long sendDelay = MessagingPreferenceActivity.getMessageSendDelayDuration(
+                getApplicationContext());
+        if (sendDelay <= 0) {
+            return false;
+        }
+
+        boolean oldSending = mSending;
+        boolean sendingCancelled = false;
+
+        try {
+            sCurrentSendingUri = msgUri;
+            mSending = true;
+
+            int countDown = (int) sendDelay / 1000;
+            while (countDown >= 0 && !sendingCancelled) {
+                Intent intent = new Intent(SmsReceiverService.ACTION_SEND_COUNTDOWN);
+                intent.putExtra(DATA_COUNTDOWN, countDown);
+                intent.putExtra(DATA_MESSAGE_URI, msgUri);
+                sendBroadcast(intent);
+
+                if (countDown > 0) {
+                    long start = System.currentTimeMillis();
+                    synchronized (sCurrentSendingUri) {
+                        sCurrentSendingUri.wait(SmsReceiverService.TIMER_DURATION);
+                    }
+                    long end = System.currentTimeMillis();
+                    if (end - start < SmsReceiverService.TIMER_DURATION) {
+                        sendingCancelled = true;
+                    }
+                    Log.d(TAG, "Delayed send: wait returned after " + (end - start) + " ms");
+                }
+                countDown--;
+            }
+        } catch (InterruptedException e) {
+            Log.d(TAG, "sendFirstQueuedMessage: user cancelled sending " + msgUri);
+            sendingCancelled = true;
+        } finally {
+            sCurrentSendingUri = Uri.EMPTY;
+        }
+
+        mSending = oldSending && !sendingCancelled;
+        if (sendingCancelled) {
+            messageFailedToSend(msgUri, SmsManager.RESULT_ERROR_GENERIC_FAILURE);
+            unRegisterForServiceStateChanges();
+            return true;
+        }
+
+        return false;
     }
 
     private void handleSendInactiveMessage() {
@@ -299,11 +380,16 @@ public class SmsReceiverService extends Service {
                     int status = c.getInt(SEND_COLUMN_STATUS);
 
                     int msgId = c.getInt(SEND_COLUMN_ID);
+                    int subId = c.getInt(SEND_COLUMN_SUB_ID);
                     Uri msgUri = ContentUris.withAppendedId(Sms.CONTENT_URI, msgId);
+
+                    if (maybeDelaySendingAndCheckForCancel(msgUri)) {
+                        return;
+                    }
 
                     SmsMessageSender sender = new SmsSingleRecipientSender(this,
                             address, msgText, threadId, status == Sms.STATUS_PENDING,
-                            msgUri);
+                            msgUri, subId);
 
                     if (LogTag.DEBUG_SEND ||
                             LogTag.VERBOSE ||
@@ -685,12 +771,19 @@ public class SmsReceiverService extends Service {
         ContentResolver resolver = context.getContentResolver();
         String originatingAddress = sms.getOriginatingAddress();
         int protocolIdentifier = sms.getProtocolIdentifier();
-        String selection =
-                Sms.ADDRESS + " = ? AND " +
-                Sms.PROTOCOL + " = ?";
-        String[] selectionArgs = new String[] {
-            originatingAddress, Integer.toString(protocolIdentifier)
-        };
+        String selection;
+        String[] selectionArgs;
+
+        if (Log.isLoggable(LogTag.TRANSACTION, Log.VERBOSE)) {
+            Log.v(TAG, " SmsReceiverService: replaceMessage:");
+        }
+        selection = Sms.ADDRESS + " = ? AND " +
+                    Sms.PROTOCOL + " = ? AND " +
+                    Sms.SUB_ID +  " = ? ";
+        selectionArgs = new String[] {
+                originatingAddress, Integer.toString(protocolIdentifier),
+                Integer.toString(sms.getSubId())
+            };
 
         Cursor cursor = SqliteWrapper.query(context, resolver, Inbox.CONTENT_URI,
                             REPLACE_PROJECTION, selection, selectionArgs, null);
@@ -726,6 +819,8 @@ public class SmsReceiverService extends Service {
         // Store the message in the content provider.
         ContentValues values = extractContentValues(sms);
         values.put(Sms.ERROR_CODE, error);
+        values.put(Sms.SUB_ID, sms.getSubId());
+
         int pduCount = msgs.length;
 
         if (pduCount == 1) {

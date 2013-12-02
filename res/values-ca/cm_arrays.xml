@@ -14,12 +14,26 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <plurals name="template_confirm_delete_conversation">
-        <item quantity="one">One template will be deleted.</item>
-        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> templates will be deleted.</item>
-    </plurals>
-    <plurals name="remaining_delay_time">
-        <item quantity="one">Sending in 1 second, touch to cancel.</item>
-        <item quantity="other">Sending in %1$d seconds, touch to cancel.</item>
-    </plurals>
+    <string-array name="pref_templates_gestures_sensitivity_entries">
+      <item>1 (més ampli)</item>
+      <item>2</item>
+      <item>3</item>
+      <item>4</item>
+      <item>5</item>
+      <item>6</item>
+      <item>7</item>
+      <item>8</item>
+      <item>9</item>
+      <item>10</item>
+      <item>11</item>
+      <item>12 (més estricte)</item>
+    </string-array>
+    <string-array name="pref_mms_notification_vibrate_pattern_entries">
+        <item>Normal</item>
+        <item>Vibració mitjana</item>
+        <item>Vibració llarga</item>
+        <item>Multiple curta</item>
+        <item>Multiple llarga</item>
+        <item>@string/pref_title_mms_notification_vibrate_custom</item>
+    </string-array>
 </resources>

@@ -15,7 +15,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <plurals name="template_confirm_delete_conversation">
-        <item quantity="one">Egy sablon törlésre kerül.</item>
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> sablon törlésre kerül.</item>
+    </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="other">Küldés %1$d másodperc múlva, érintse meg a megszakításhoz.</item>
     </plurals>
 </resources>

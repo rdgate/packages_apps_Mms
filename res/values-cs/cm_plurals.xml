@@ -19,4 +19,9 @@
         <item quantity="few"><xliff:g id="number" example="3">%1$s</xliff:g> šablony budou smazány.</item>
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> šablon bude smazáno.</item>
     </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="one">Odeslání za 1 sekundu - dotykem zrušíte.</item>
+        <item quantity="few">Odeslání za %1$d sekundy - dotykem zrušíte.</item>
+        <item quantity="other">Odeslání za %1$d sekund - dotykem zrušíte.</item>
+    </plurals>
 </resources>

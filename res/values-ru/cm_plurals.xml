@@ -17,6 +17,11 @@
     <plurals name="template_confirm_delete_conversation">
         <item quantity="one">Будет удалён <xliff:g id="number" example="1">%1$s</xliff:g> шаблон.</item>
         <item quantity="few">Будет удалено <xliff:g id="number" example="2">%1$s</xliff:g> шаблона.</item>
-        <item quantity="many">Будет удалено <xliff:g id="number" example="5">%1$s</xliff:g> шаблонов.</item>
+        <item quantity="other">Будет удалено <xliff:g id="number" example="5">%1$s</xliff:g> шаблонов.</item>
+    </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="one">Отправка через %1$d секунду, нажмите для отмены.</item>
+        <item quantity="few">Отправка через %1$d секунды, нажмите для отмены.</item>
+        <item quantity="other">Отправка через %1$d секунд, нажмите для отмены.</item>
     </plurals>
 </resources>

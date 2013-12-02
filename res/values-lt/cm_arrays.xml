@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     Copyright (C) 2013 The CyanogenMod Project
+<!-- Copyright (C) 2013 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -15,8 +14,16 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="pref_mms_notification_vibrate_pattern_entries">
+        <item>Normali</item>
+        <item>Vidutinė vibracija</item>
+        <item>Ilga vibracija</item>
+        <item>Kartotinis trumpas</item>
+        <item>Kartotinis ilgas</item>
+        <item>@string/pref_title_mms_notification_vibrate_custom</item>
+    </string-array>
     <string-array name="pref_templates_gestures_sensitivity_entries">
-        <item>1 (ευρύτερη)</item>
+        <item>1 (labai jautrus)</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
@@ -27,14 +34,6 @@
         <item>9</item>
         <item>10</item>
         <item>11</item>
-        <item>12 (αυστηρότερη)</item>
-    </string-array>
-    <string-array name="pref_mms_notification_vibrate_pattern_entries">
-        <item>Κανονική</item>
-        <item>Μεσαία δόνηση</item>
-        <item>Εκτενής δόνηση</item>
-        <item>Πολλαπλές μικρές</item>
-        <item>Πολλαπλές εκτενείς</item>
-        <item>@string/pref_title_mms_notification_vibrate_custom</item>
+        <item>12 (mažiau jautrūs)</item>
     </string-array>
 </resources>

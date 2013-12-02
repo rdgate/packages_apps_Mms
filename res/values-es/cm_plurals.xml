@@ -19,4 +19,8 @@
         <item quantity="one">Una plantilla va a ser borrada.</item>
         <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> plantillas van a ser borradas.</item>
     </plurals>
+    <plurals name="remaining_delay_time">
+        <item quantity="one">Enviando en 1 segundo, toca para cancelar.</item>
+        <item quantity="other">Enviando en %1$d segundos, toca para cancelar.</item>
+    </plurals>
 </resources>

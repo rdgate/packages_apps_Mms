@@ -76,6 +76,7 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 
+import com.android.internal.telephony.MSimConstants;
 import com.android.internal.telephony.util.BlacklistUtils;
 import com.android.mms.MmsConfig;
 import com.android.mms.R;
@@ -173,6 +174,8 @@ public class QuickMessagePopup extends Activity implements
     private AlertDialog mSmileyDialog;
     private AlertDialog mEmojiDialog;
     private View mEmojiView;
+
+    public static int mCurrentConvSub = MSimConstants.SUB1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -835,7 +838,7 @@ public class QuickMessagePopup extends Activity implements
         if (message != null && qm != null) {
             long threadId = qm.getThreadId();
             SmsMessageSender sender = new SmsMessageSender(getBaseContext(),
-                    qm.getFromNumber(), message, threadId);
+                    qm.getFromNumber(), message, threadId, mCurrentConvSub);
             try {
                 if (DEBUG)
                     Log.d(LOG_TAG, "sendQuickMessage(): Sending message to " + qm.getFromName()

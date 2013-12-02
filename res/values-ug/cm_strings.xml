@@ -116,4 +116,12 @@
     <string name="menu_mobile">يان تېلېفون نومۇرلا</string>
     <string name="menu_groups">گۇرۇپپىلارنى كۆرسەت</string>
     <string name="fastscroll_index_groups">GR</string>
+    <string name="pref_title_send_delay">قىسقا ئۇچۇرنى كېچىكتۈرۈپ يوللا</string>
+    <string name="send_delay_immediate">دەرھال يوللا</string>
+    <string name="send_delay_3seconds">3 سېكۇنت</string>
+    <string name="send_delay_5seconds">5 سېكۇنت</string>
+    <string name="send_delay_10seconds">10 سېكۇنت</string>
+    <string name="send_delay_20seconds">20 سېكۇنت</string>
+    <string name="send_delay_30seconds">30 سېكۇنت</string>
+    <string name="sent_countdown">كېچىكتۈرۈپ يوللاش تەتۈر سانىقى</string>
 </resources>

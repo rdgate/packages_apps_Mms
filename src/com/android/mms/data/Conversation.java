@@ -402,6 +402,7 @@ public class Conversation {
                         } catch (SQLiteFullException e) {
                             Log.e(TAG, "Database is full", e);
                             showStorageFullToast(mContext);
+                        } finally {
                             return null;
                         }
                     }

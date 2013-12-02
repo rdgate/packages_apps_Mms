@@ -15,11 +15,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <plurals name="template_confirm_delete_conversation">
-        <item quantity="one">One template will be deleted.</item>
-        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> templates will be deleted.</item>
+        <item quantity="one">S\'ha esborrat una plantilla.</item>
+        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g> plantilles s\'esborraran.</item>
     </plurals>
     <plurals name="remaining_delay_time">
-        <item quantity="one">Sending in 1 second, touch to cancel.</item>
-        <item quantity="other">Sending in %1$d seconds, touch to cancel.</item>
+        <item quantity="one">Enviament en 1 segon, toca per cancel·lar.</item>
+        <item quantity="other">Enviament en %1$d segons, toca per cancel·lar.</item>
     </plurals>
 </resources>
