@@ -120,7 +120,7 @@
     <string name="pref_summary_enable_quick_emojis">絵文字を素早く入力するためにテキスト入力エリアの横に絵文字ボタンを表示する</string>
 
     <!-- Enable SoftBank emoji encoding -->
-    <string name="pref_title_enable_softbank_encoding">Softbank絵文字</string>
+    <string name="pref_title_enable_softbank_encoding">SoftBank絵文字</string>
     <string name="pref_summary_enable_softbank_encoding">SoftBankの絵文字変換ルールを使用する</string>
 
     <!-- Full timestamps -->
@@ -200,5 +200,15 @@
     <string name="menu_mobile">携帯番号のみ</string>
     <string name="menu_groups">グループを表示</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
+
+    <!-- Delay delivery -->
+    <string name="pref_title_send_delay">送信ディレイ</string>
+    <string name="send_delay_immediate">すぐに送信</string>
+    <string name="send_delay_3seconds">3 秒</string>
+    <string name="send_delay_5seconds">5 秒</string>
+    <string name="send_delay_10seconds">10 秒</string>
+    <string name="send_delay_20seconds">20 秒</string>
+    <string name="send_delay_30seconds">30 秒</string>
+    <string name="sent_countdown">送信カウントダウン</string>
 
 </resources>
