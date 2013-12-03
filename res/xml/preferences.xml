@@ -141,7 +141,7 @@
             android:dependency="pref_key_enable_notifications"
             android:defaultValue="false" />
 
-        <com.android.mms.preferences.CustomVibrateListPreference
+        <com.android.mms2.preferences.CustomVibrateListPreference
             android:layout="?android:attr/preferenceLayoutChild"
             android:key="pref_key_mms_notification_vibrate_pattern"
             android:dependency="pref_key_vibrate"
@@ -265,7 +265,7 @@
             android:entries="@array/pref_entries_input_type"
             android:entryValues="@array/pref_values_input_type" />
 
-        <com.android.mms.preferences.UserAgentListPreference
+        <com.android.mms2.preferences.UserAgentListPreference
             android:key="pref_key_mms_user_agent"
             android:defaultValue="default"
             android:title="@string/pref_title_mms_user_agent"

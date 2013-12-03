@@ -18,13 +18,13 @@
  */
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.android.mms">
+        package="com.android.mms2">
 
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="16" />
 
-    <original-package android:name="com.android.mms" />
+    <original-package android:name="com.android.mms2" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
@@ -267,7 +267,7 @@
         <receiver android:name=".transaction.PrivilegedSmsReceiver"
             android:permission="android.permission.SEND_SMS">
             <intent-filter>
-                <action android:name="com.android.mms.transaction.SEND_MESSAGE" />
+                <action android:name="com.android.mms2.transaction.SEND_MESSAGE" />
             </intent-filter>
         </receiver>
 
@@ -275,10 +275,10 @@
         <receiver android:name=".transaction.SmsReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="com.android.mms.action.REMOVE_BLACKLIST" />
+                <action android:name="com.android.mms2.action.REMOVE_BLACKLIST" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.android.mms.transaction.MESSAGE_SENT" />
+                <action android:name="com.android.mms2.transaction.MESSAGE_SENT" />
                 <!-- TODO Do a better data match here. -->
                 <data android:scheme="content" />
             </intent-filter>
@@ -286,13 +286,13 @@
                 <action android:name="android.intent.action.SEND_MESSAGE" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.android.mms.transaction.SEND_MESSAGE" />
+                <action android:name="com.android.mms2.transaction.SEND_MESSAGE" />
             </intent-filter>
         </receiver>
 
         <receiver android:name=".transaction.MessageStatusReceiver">
             <intent-filter>
-                <action android:name="com.android.mms.transaction.MessageStatusReceiver.MESSAGE_STATUS_RECEIVED" />
+                <action android:name="com.android.mms2.transaction.MessageStatusReceiver.MESSAGE_STATUS_RECEIVED" />
             </intent-filter>
         </receiver>
 
@@ -313,7 +313,7 @@
         <activity android:name=".ui.ConfirmRateLimitActivity"
                   android:theme="@android:style/Theme.Dialog">
             <intent-filter>
-                <action android:name="com.android.mms.RATE_LIMIT_SURPASSED" />
+                <action android:name="com.android.mms2.RATE_LIMIT_SURPASSED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -337,7 +337,7 @@
         <provider android:name="SuggestionsProvider"
             android:exported="true"
             android:readPermission="android.permission.READ_SMS"
-            android:authorities="com.android.mms.SuggestionsProvider" >
+            android:authorities="com.android.mms2.SuggestionsProvider" >
             <path-permission
                     android:pathPrefix="/search_suggest_query"
                     android:readPermission="android.permission.GLOBAL_SEARCH" />
@@ -359,12 +359,12 @@
 
         <provider android:name="TempFileProvider"
                   android:exported="true"
-                  android:authorities="mms_temp_file"
+                  android:authorities="mms2_temp_file"
                   android:multiprocess="true" />
 
         <activity android:name=".ui.MiniPreferenceActivity" >
             <intent-filter>
-                <action android:name="com.android.mms.intent.action.MESSAGING_APP_NOTIFICATIONS" />
+                <action android:name="com.android.mms2.intent.action.MESSAGING_APP_NOTIFICATIONS" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -375,7 +375,7 @@
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <intent-filter>
-                <action android:name="com.android.mms.intent.action.ACTION_NOTIFY_DATASET_CHANGED" />
+                <action android:name="com.android.mms2.intent.action.ACTION_NOTIFY_DATASET_CHANGED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
                        android:resource="@xml/widget_info" />

@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <com.android.mms.ui.RecipientsEditor
+    <com.android.mms2.ui.RecipientsEditor
         android:id="@+id/recipients_editor"
         android:hint="@string/to_hint"
         android:layout_width="match_parent"

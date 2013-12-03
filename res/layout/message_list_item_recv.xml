@@ -18,7 +18,7 @@
  */
 -->
 
-<com.android.mms.ui.MessageListItem
+<com.android.mms2.ui.MessageListItem
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/msg_list_item_recv"
     android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:layout_height="wrap_content">
 
             <view xmlns:android="http://schemas.android.com/apk/res/android"
-                class="com.android.mms.ui.QuickContactDivot"
+                class="com.android.mms2.ui.QuickContactDivot"
                 android:id="@+id/avatar"
                 position="right_upper"
                 android:layout_alignParentLeft="true"
@@ -118,4 +118,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-</com.android.mms.ui.MessageListItem>
+</com.android.mms2.ui.MessageListItem>
