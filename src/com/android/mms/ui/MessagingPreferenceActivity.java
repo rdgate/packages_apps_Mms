@@ -239,12 +239,20 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mInputTypeEntries = getResources().getTextArray(R.array.pref_entries_input_type);
         mInputTypeValues = getResources().getTextArray(R.array.pref_values_input_type);
 
-        // Blacklist screen - Needed for setting summary
-        mBlacklist = (PreferenceScreen) findPreference(BLACKLIST);
-
         // SMS Sending Delay
         mMessageSendDelayPref = (ListPreference) findPreference(SEND_DELAY_DURATION);
         mMessageSendDelayPref.setSummary(mMessageSendDelayPref.getEntry());
+
+        // Blacklist screen - Needed for setting summary
+        mBlacklist = (PreferenceScreen) findPreference(BLACKLIST);
+
+        // Remove the Blacklist item if we are not running on CyanogenMod
+        // This allows the app to be run on non-blacklist enabled roms (including Stock)
+        if (!MessageUtils.isCyanogenMod(this)) {
+            PreferenceCategory extraCategory = (PreferenceCategory) findPreference("pref_key_extra_settings");
+            extraCategory.removePreference(mBlacklist);
+            mBlacklist = null;
+        }
 
         setMessagePreferences();
     }
