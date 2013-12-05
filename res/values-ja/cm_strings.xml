@@ -128,8 +128,8 @@
 
     <!-- Soft keyboard type -->
     <string name="pref_title_input_type">ソフトキーボードタイプ</string>
-    <string name="pref_keyboard_emoji">顔文字キーを表示</string>
-    <string name="pref_keyboard_new_line">エンターキーを表示</string>
+    <string name="pref_keyboard_emoji">顔文字 (エンターで送信)</string>
+    <string name="pref_keyboard_new_line">エンターで改行</string>
     <string name="pref_keyboard_unknown">不明です、再選択してください</string>
 
     <!-- Settings item for boolean option for SMS Split Counter -->
