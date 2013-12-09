@@ -98,7 +98,7 @@ public class QuickContactDivot extends QuickContactBadge implements Divot{
         super.onDraw(c);
         c.save();
         computeBounds(c);
-        mDrawable.draw(c);
+//        mDrawable.draw(c);
         c.restore();
     }
 

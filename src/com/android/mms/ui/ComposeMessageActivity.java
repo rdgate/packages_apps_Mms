@@ -423,6 +423,8 @@ public class ComposeMessageActivity extends Activity
     public final static String THREAD_ID = "thread_id";
     private final static String RECIPIENTS = "recipients";
 
+    private boolean mSpeechBubbles;
+
     @SuppressWarnings("unused")
     public static void log(String logMsg) {
         Thread current = Thread.currentThread();
@@ -2089,10 +2091,12 @@ public class ComposeMessageActivity extends Activity
         mGestureSensitivity = prefs
                 .getInt(MessagingPreferenceActivity.GESTURE_SENSITIVITY_VALUE, 3);
         boolean showGesture = prefs.getBoolean(MessagingPreferenceActivity.SHOW_GESTURE, false);
+        boolean mSpeechBubbles = prefs.getBoolean(MessagingPreferenceActivity.SPEECH_BUBBLES, false);
 
         mLibrary = TemplateGesturesLibrary.getStore(this);
 
-        int layout = R.layout.compose_message_activity;
+        int layout = mSpeechBubbles ? R.layout.compose_message_activity_bubbles :
+                                      R.layout.compose_message_activity;
 
         GestureOverlayView gestureOverlayView = new GestureOverlayView(this);
         View inflate = getLayoutInflater().inflate(layout, null);

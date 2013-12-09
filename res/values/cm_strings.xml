@@ -98,6 +98,10 @@
     <!-- EXTRA SETTINGS -->
     <string name="pref_extra_settings">Extra settings</string>
 
+    <!-- Speech bubbles -->
+    <string name="pref_title_speech_bubbles">Speech bubbles</string>
+    <string name="pref_summary_speech_bubbles">Use speech bubbles theme</string>
+
     <!-- Strip unicode -->
     <string name="pref_title_unicode_stripping">Strip unicode</string>
     <string name="pref_unicode_stripping_leave_intact">Leave characters intact</string>
