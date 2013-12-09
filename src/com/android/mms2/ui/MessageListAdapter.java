@@ -124,6 +124,7 @@ public class MessageListAdapter extends CursorAdapter {
     private Pattern mHighlight;
     private Context mContext;
     private boolean mIsGroupConversation;
+    private boolean mSpeechBubbles;
     private boolean mFullTimestamp;
     private boolean mSentTimestamp;
 
@@ -145,6 +146,7 @@ public class MessageListAdapter extends CursorAdapter {
         }
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+        mSpeechBubbles = prefs.getBoolean(MessagingPreferenceActivity.SPEECH_BUBBLES, false);
         mFullTimestamp = prefs.getBoolean(MessagingPreferenceActivity.FULL_TIMESTAMP, false);
         mSentTimestamp = prefs.getBoolean(MessagingPreferenceActivity.SENT_TIMESTAMP, false);
 
@@ -227,7 +229,10 @@ public class MessageListAdapter extends CursorAdapter {
         int boxType = getItemViewType(cursor);
         View view = mInflater.inflate((boxType == INCOMING_ITEM_TYPE_SMS ||
                 boxType == INCOMING_ITEM_TYPE_MMS) ?
-                        R.layout.message_list_item_recv : R.layout.message_list_item_send,
+                    (mSpeechBubbles ? R.layout.message_list_item_recv_bubbles :
+                                      R.layout.message_list_item_recv ) :
+                    (mSpeechBubbles ? R.layout.message_list_item_send_bubbles :
+                                      R.layout.message_list_item_send ) ,
                         parent, false);
         if (boxType == INCOMING_ITEM_TYPE_MMS || boxType == OUTGOING_ITEM_TYPE_MMS) {
             // We've got an mms item, pre-inflate the mms portion of the view

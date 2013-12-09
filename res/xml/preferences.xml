@@ -239,6 +239,12 @@
             android:summary="@string/pref_summary_mms_use_sent_timestamp"
             android:defaultValue="false" />
 
+        <CheckBoxPreference
+            android:key="pref_key_speech_bubbles"
+            android:title="@string/pref_title_speech_bubbles"
+            android:summary="@string/pref_summary_speech_bubbles"
+            android:defaultValue="false" />
+
         <ListPreference
             android:key="pref_key_mms_input_type"
             android:title="@string/pref_title_input_type"
