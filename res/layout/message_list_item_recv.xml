@@ -23,6 +23,7 @@
     android:id="@+id/msg_list_item_recv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#ff000000"
     android:orientation="horizontal">
 
     <LinearLayout android:id="@+id/mms_layout_view_parent"
@@ -50,7 +51,6 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/avatar"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/hairline_left"
                 android:orientation="vertical" >
 
                 <TextView android:id="@+id/text_view"
@@ -63,6 +63,7 @@
                     android:linksClickable="false"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/message_received"
+                    android:textColorLink="#FF5C5C"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -78,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="3dip"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/text_hairline" />
+                        android:textColor="#5f5f5f" />
 
                     <ImageView
                         android:id="@+id/locked_indicator"
