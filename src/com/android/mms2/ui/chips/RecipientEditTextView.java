@@ -580,7 +580,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
             } else if (!leaveBlankIconSpacer || isPhoneQuery()) {
                 iconWidth = 0;
             }
-            paint.setColor(getContext().getResources().getColor(android.R.color.black));
+            paint.setColor(getContext().getResources().getColor(android.R.color.white));
             // Vertically center the text in the chip.
             canvas.drawText(ellipsizedText, 0, ellipsizedText.length(), mChipPadding,
                     getTextYOffset((String)ellipsizedText, paint, height), paint);

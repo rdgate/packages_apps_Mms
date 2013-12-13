@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#7f7f7f"
         android:singleLine="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true" />
@@ -77,6 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#7f7f7f"
         android:singleLine="true"
         android:layout_marginBottom="10dip"
         android:layout_marginLeft="10dip"

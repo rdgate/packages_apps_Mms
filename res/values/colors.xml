@@ -24,20 +24,30 @@
     <drawable name="text_color_red">#ffff4444</drawable>
     <drawable name="text_color_black">#ff000000</drawable>
     <color name="text_hairline">#ffcccccc</color>
-    <color name="message_count_color">#66333333</color>
+    <color name="message_count_color">#76cfcfcf</color>
 
     <!-- Chat "sent time" text background -->
-    <color name="timestamp_color">#bf000000</color>
+    <color name="timestamp_color">#7cefefef</color>
 
-    <color name="original_bgcolor">#fff3f3f3</color>
-    <color name="bubbles_bgcolor">#ffbfbfbf</color>
+    <color name="original_bgcolor">#ff000000</color>
+    <color name="bubbles_bgcolor">#ff000000</color>
 
     <!-- the background color used for unread conversation -->
-    <color name="unread_bgcolor">#ffffffff</color>
-    <color name="read_bgcolor">#ffeeeeee</color>
+    <color name="unread_bgcolor">#655e5e5e</color>
+    <color name="read_bgcolor">#55000000</color>
 
-    <color name="widget_sender_text_color_read">#555555</color>
-    <color name="widget_sender_text_color_unread">#333333</color>
-    <color name="widget_subject_text_color_read">#777777</color>
-    <color name="widget_subject_text_color_unread">#555555</color>
+    <color name="widget_sender_text_color_read">#ffdfdfdf</color>
+    <color name="widget_sender_text_color_unread">#ffefefef</color>
+    <color name="widget_subject_text_color_read">#ffbfbfbf</color>
+    <color name="widget_subject_text_color_unread">#ffcfcfcf</color>
+
+    <color name="translucent_white">#ccffffff</color>
+
+    <color name="banner_item_transparent">#00000000</color>
+    <color name="banner_item_activated">#670099cc</color>
+    <color name="banner_item_selected">#cc0099cc</color>
+    <color name="banner_item_pressed">#6733b5e5</color>
+
+    <color name="text_shadow_color_light">#33000000</color>
+    <color name="solid_white">#ffffffff</color>
 </resources>
