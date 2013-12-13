@@ -183,7 +183,7 @@
                     <TextView
                         android:id="@+id/send_button_mms"
                         style="?android:attr/borderlessButtonStyle"
-                        android:drawableBottom="@drawable/send_button_selector"
+                        android:drawableBottom="@drawable/send_button_selector_dark"
                         android:drawablePadding="0dip"
                         android:layout_width="wrap_content"
                         android:textSize="11sp"
@@ -199,7 +199,7 @@
                     <ImageButton
                         android:id="@+id/send_button_sms"
                         style="?android:attr/borderlessButtonStyle"
-                        android:src="@drawable/send_button_selector"
+                        android:src="@drawable/send_button_selector_dark"
                         android:drawablePadding="0dip"
                         android:layout_width="wrap_content"
                         android:layout_height="0dip"

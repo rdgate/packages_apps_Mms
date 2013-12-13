@@ -64,7 +64,8 @@
                     android:linksClickable="false"
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/message_sent"
+                    android:textColor="#000000"
+                    android:textColorLink="#CF1F1F"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -105,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="3dip"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="@color/message_count_color" />
+                        android:textColor="#763f3f3f" />
                 </LinearLayout>
 
                 <ViewStub android:id="@+id/mms_layout_view_stub"
