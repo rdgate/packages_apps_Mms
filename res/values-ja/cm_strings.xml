@@ -101,6 +101,8 @@
     <!-- Speech bubbles -->
     <string name="pref_title_speech_bubbles">スピーチバブル</string>
     <string name="pref_summary_speech_bubbles">スピーチバブルテーマを使用する</string>
+    <string name="pref_title_no_avatars">アバター非表示</string>
+    <string name="pref_summary_no_avatars">スピーチバブルテーマでアバターを表示しない</string>
 
     <!-- Strip unicode -->
     <string name="pref_title_unicode_stripping">ユニコードを取り除く</string>

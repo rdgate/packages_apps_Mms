@@ -30,8 +30,10 @@
     <!-- Chat "sent time" text background -->
     <color name="timestamp_color">#bf000000</color>
 
-    <!-- the background color used for unread conversation -->
+    <color name="original_bgcolor">#fff3f3f3</color>
     <color name="bubbles_bgcolor">#ffbfbfbf</color>
+
+    <!-- the background color used for unread conversation -->
     <color name="unread_bgcolor">#ffffffff</color>
     <color name="read_bgcolor">#ffeeeeee</color>
 

@@ -273,6 +273,13 @@
             android:title="@string/pref_title_speech_bubbles"
             android:summary="@string/pref_summary_speech_bubbles"
             android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="pref_key_no_avatars"
+            android:title="@string/pref_title_no_avatars"
+            android:summary="@string/pref_summary_no_avatars"
+            android:layout="?android:attr/preferenceLayoutChild"
+            android:dependency="pref_key_speech_bubbles"
+            android:defaultValue="false" />
 
         <ListPreference
             android:key="pref_key_mms_input_type"
