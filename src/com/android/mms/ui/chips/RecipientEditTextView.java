@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.app.Dialog;
 import android.content.ClipData;
@@ -83,10 +83,10 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.android.ex.chips.RecipientAlternatesAdapter.RecipientMatchCallback;
-import com.android.ex.chips.recipientchip.DrawableRecipientChip;
-import com.android.ex.chips.recipientchip.InvisibleRecipientChip;
-import com.android.ex.chips.recipientchip.VisibleRecipientChip;
+import com.android.mms.ui.chips.RecipientAlternatesAdapter.RecipientMatchCallback;
+import com.android.mms.ui.chips.recipientchip.DrawableRecipientChip;
+import com.android.mms.ui.chips.recipientchip.InvisibleRecipientChip;
+import com.android.mms.ui.chips.recipientchip.VisibleRecipientChip;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -99,6 +99,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import android.provider.Telephony.Mms;
+import com.android.ex.chips.R;
 
 /**
  * RecipientEditTextView is an auto complete text view for use with applications
@@ -1511,8 +1514,14 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     }
 
     private ListAdapter createAlternatesAdapter(DrawableRecipientChip chip) {
+        int queryMode;
+        if (Mms.isEmailAddress(chip.getEntry().getDestination())) {
+            queryMode = BaseRecipientAdapter.QUERY_TYPE_EMAIL;
+        } else {
+            queryMode = BaseRecipientAdapter.QUERY_TYPE_PHONE;
+        }
         return new RecipientAlternatesAdapter(getContext(), chip.getContactId(), chip.getDataId(),
-                ((BaseRecipientAdapter)getAdapter()).getQueryType(), this);
+                queryMode, this);
     }
 
     private ListAdapter createSingleAddressAdapter(DrawableRecipientChip currentChip) {
@@ -2883,8 +2892,9 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     }
 
     protected boolean isPhoneQuery() {
+        final int queryType = ((BaseRecipientAdapter) getAdapter()).getQueryType();
         return getAdapter() != null
-                && ((BaseRecipientAdapter) getAdapter()).getQueryType()
-                    == BaseRecipientAdapter.QUERY_TYPE_PHONE;
+                && (queryType == BaseRecipientAdapter.QUERY_TYPE_PHONE ||
+                    queryType == BaseRecipientAdapter.QUERY_TYPE_BOTH);
     }
 }

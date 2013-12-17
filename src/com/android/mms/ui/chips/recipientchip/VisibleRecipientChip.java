@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips.recipientchip;
+package com.android.mms.ui.chips.recipientchip;
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -22,7 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.text.style.DynamicDrawableSpan;
 import android.text.style.ImageSpan;
 
-import com.android.ex.chips.RecipientEntry;
+import com.android.mms.ui.chips.RecipientEntry;
 
 /**
  * VisibleRecipientChip defines an ImageSpan that contains information relevant to a

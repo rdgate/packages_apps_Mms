@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.content.Context;
 import android.text.util.Rfc822Tokenizer;

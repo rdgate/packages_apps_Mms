@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.accounts.Account;
 import android.content.ContentResolver;
@@ -34,9 +34,9 @@ import android.widget.CursorAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.ex.chips.BaseRecipientAdapter.DirectoryListQuery;
-import com.android.ex.chips.BaseRecipientAdapter.DirectorySearchParams;
-import com.android.ex.chips.Queries.Query;
+import com.android.mms.ui.chips.BaseRecipientAdapter.DirectoryListQuery;
+import com.android.mms.ui.chips.BaseRecipientAdapter.DirectorySearchParams;
+import com.android.mms.ui.chips.Queries.Query;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,6 +44,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.android.ex.chips.R;
 
 /**
  * RecipientAlternatesAdapter backs the RecipientEditTextView for managing contacts
