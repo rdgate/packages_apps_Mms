@@ -34,7 +34,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="right">
 
             <view xmlns:android="http://schemas.android.com/apk/res/android"
                 class="com.android.mms.ui.QuickContactDivot"
