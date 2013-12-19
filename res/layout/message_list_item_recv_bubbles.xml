@@ -74,8 +74,8 @@
                     android:layout_height="wrap_content"
                     android:linksClickable="false"
                     android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="#000000"
-                    android:textColorLink="#CF1F1F"
+                    android:textColor="#FFFFFF"
+                    android:textColorLink="#FFDF5C"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -91,7 +91,7 @@
                         android:layout_height="wrap_content"
                         android:paddingRight="3dip"
                         android:textAppearance="?android:attr/textAppearanceSmall"
-                        android:textColor="#763f3f3f" />
+                        android:textColor="#76FFFFFF" />
 
                     <ImageView
                         android:id="@+id/locked_indicator"
