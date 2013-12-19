@@ -45,13 +45,24 @@
                 android:layout_width="@dimen/avatar_mini_width_height"
                 android:layout_height="@dimen/avatar_mini_width_height" />
 
+            <Space
+                android:id="@+id/bubble_space"
+                android:layout_width="@dimen/avatar_mini_width_height"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toLeftOf="@id/avatar"
+                android:layout_toRightOf="@id/bubble_space"
+                android:gravity="right">
+
             <LinearLayout
                 android:id="@+id/message_block"
                 android:layout_marginLeft="8dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/avatar"
-                android:layout_alignParentLeft="false"
                 android:background="@drawable/bubble_right"
                 android:orientation="vertical" >
 
@@ -113,6 +124,7 @@
                     android:layout="@layout/mms_layout_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+            </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
