@@ -77,7 +77,7 @@
                     android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000"
-                    android:textColorLink="#CF1F1F"
+                    android:textColorLink="#5C5CFF"
                     android:textSize="16sp" />
 
                 <LinearLayout
