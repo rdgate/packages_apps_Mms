@@ -89,6 +89,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 
+import android.provider.Telephony.Mms;
 import com.android.ex.chips.R;
 
 /**
@@ -1423,8 +1424,14 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     }
 
     private ListAdapter createAlternatesAdapter(RecipientChip chip) {
+        int queryMode;
+        if (Mms.isEmailAddress(chip.getEntry().getDestination())) {
+            queryMode = BaseRecipientAdapter.QUERY_TYPE_EMAIL;
+        } else {
+            queryMode = BaseRecipientAdapter.QUERY_TYPE_PHONE;
+        }
         return new RecipientAlternatesAdapter(getContext(), chip.getContactId(), chip.getDataId(),
-                mAlternatesLayout, ((BaseRecipientAdapter)getAdapter()).getQueryType(), this);
+                mAlternatesLayout, queryMode, this);
     }
 
     private ListAdapter createSingleAddressAdapter(RecipientChip currentChip) {
@@ -2617,8 +2624,10 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     }
 
     protected boolean isPhoneQuery() {
+        final int queryType = ((BaseRecipientAdapter) getAdapter()).getQueryType();
         return getAdapter() != null
-                && ((BaseRecipientAdapter) getAdapter()).getQueryType()
-                    == BaseRecipientAdapter.QUERY_TYPE_PHONE;
+                && (queryType == BaseRecipientAdapter.QUERY_TYPE_PHONE ||
+                    queryType == BaseRecipientAdapter.QUERY_TYPE_BOTH);
+
     }
 }
