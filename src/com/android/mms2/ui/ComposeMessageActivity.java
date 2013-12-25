@@ -1955,8 +1955,7 @@ public class ComposeMessageActivity extends Activity
 
         mLibrary = TemplateGesturesLibrary.getStore(this);
 
-        int layout = mSpeechBubbles ? R.layout.compose_message_activity_bubbles :
-                                      R.layout.compose_message_activity;
+        int layout = R.layout.compose_message_activity;
 
         GestureOverlayView gestureOverlayView = new GestureOverlayView(this);
         View inflate = getLayoutInflater().inflate(layout, null);
@@ -2202,6 +2201,9 @@ public class ComposeMessageActivity extends Activity
     protected void onRestart() {
         super.onRestart();
 
+        mMsgListAdapter = null;
+        initMessageList();
+
         // hide the compose panel to reduce jank when re-entering this activity.
         // if we don't hide it here, the compose panel will flash before the keyboard shows
         // (when keyboard is suppose to be shown).
@@ -2232,6 +2234,16 @@ public class ComposeMessageActivity extends Activity
     @Override
     protected void onStart() {
         super.onStart();
+
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences((Context) ComposeMessageActivity.this);
+        boolean mSpeechBubbles = prefs.getBoolean(MessagingPreferenceActivity.SPEECH_BUBBLES, false);
+
+        if (mSpeechBubbles) {
+            mMsgListView.setBackgroundColor(getResources().getColor(R.color.bubbles_bgcolor));
+        } else {
+            mMsgListView.setBackgroundColor(getResources().getColor(R.color.original_bgcolor));
+        }
 
         initFocus();
 
