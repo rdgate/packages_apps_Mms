@@ -107,6 +107,8 @@
     <!-- Speech bubbles -->
     <string name="pref_title_speech_bubbles">Speech bubbles</string>
     <string name="pref_summary_speech_bubbles">Use speech bubbles theme</string>
+    <string name="pref_title_no_avatars">No avatars</string>
+    <string name="pref_summary_no_avatars">Hide avatars with speech bubbles theme</string>
 
     <!-- Strip unicode -->
     <string name="pref_title_unicode_stripping">Strip unicode</string>

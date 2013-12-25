@@ -78,6 +78,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
     // Speech bubbles
     public static final String SPEECH_BUBBLES           = "pref_key_speech_bubbles";
+    public static final String NO_AVATARS               = "pref_key_no_avatars";
 
     // Emoji
     public static final String ENABLE_EMOJIS            = "pref_key_enable_emojis";

@@ -304,6 +304,11 @@ public class MessageListItem extends LinearLayout implements
     }
 
     private void updateAvatarView(String addr, boolean isSelf) {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        boolean mSpeechBubbles = prefs.getBoolean(MessagingPreferenceActivity.SPEECH_BUBBLES, false);
+        boolean mNoAvatars = prefs.getBoolean(MessagingPreferenceActivity.NO_AVATARS, false);
+
         Drawable avatarDrawable;
         if (isSelf || !TextUtils.isEmpty(addr)) {
             Contact contact = isSelf ? Contact.getMe(false) : Contact.get(addr, false);
@@ -322,6 +327,11 @@ public class MessageListItem extends LinearLayout implements
             avatarDrawable = sDefaultContactImage;
         }
         mAvatar.setImageDrawable(avatarDrawable);
+        if (mSpeechBubbles && mNoAvatars) {
+            mAvatar.setVisibility(View.GONE);
+        } else {
+            mAvatar.setVisibility(View.VISIBLE);
+        }
     }
 
     private void bindCommonMessage(final boolean sameItem) {
