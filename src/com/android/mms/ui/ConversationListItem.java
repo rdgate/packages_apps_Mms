@@ -141,6 +141,10 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
     }
 
     private void updateAvatarView() {
+        SharedPreferences prefs = PreferenceManager
+                .getDefaultSharedPreferences(mContext);
+        boolean mHideListAvatars = prefs.getBoolean(MessagingPreferenceActivity.HIDE_LIST_AVATARS, false);
+
         Drawable avatarDrawable;
         if (mConversation.getRecipients().size() == 1) {
             Contact contact = mConversation.getRecipients().get(0);
@@ -157,7 +161,11 @@ public class ConversationListItem extends RelativeLayout implements Contact.Upda
             mAvatarView.assignContactUri(null);
         }
         mAvatarView.setImageDrawable(avatarDrawable);
-        mAvatarView.setVisibility(View.VISIBLE);
+        if(mHideListAvatars) {
+            mAvatarView.setVisibility(View.GONE);
+        } else {
+            mAvatarView.setVisibility(View.VISIBLE);
+        }
     }
 
     private void updateFromView() {

@@ -274,11 +274,14 @@
             android:summary="@string/pref_summary_speech_bubbles"
             android:defaultValue="false" />
         <CheckBoxPreference
-            android:key="pref_key_no_avatars"
-            android:title="@string/pref_title_no_avatars"
-            android:summary="@string/pref_summary_no_avatars"
-            android:layout="?android:attr/preferenceLayoutChild"
-            android:dependency="pref_key_speech_bubbles"
+            android:key="pref_key_hide_message_avatars"
+            android:title="@string/pref_title_hide_message_avatars"
+            android:summary="@string/pref_summary_hide_message_avatars"
+            android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="pref_key_hide_list_avatars"
+            android:title="@string/pref_title_hide_list_avatars"
+            android:summary="@string/pref_summary_hide_list_avatars"
             android:defaultValue="false" />
 
         <ListPreference
