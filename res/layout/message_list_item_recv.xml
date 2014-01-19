@@ -63,7 +63,7 @@
                     android:linksClickable="false"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/message_received"
-                    android:textColorLink="#5C5CFF"
+                    android:textColorLink="#7C7CFF"
                     android:textSize="16sp" />
 
                 <LinearLayout
