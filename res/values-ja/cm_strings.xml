@@ -101,8 +101,10 @@
     <!-- Speech bubbles -->
     <string name="pref_title_speech_bubbles">スピーチバブル</string>
     <string name="pref_summary_speech_bubbles">スピーチバブルテーマを使用する</string>
-    <string name="pref_title_no_avatars">アバター非表示</string>
-    <string name="pref_summary_no_avatars">スピーチバブルテーマでアバターを表示しない</string>
+    <string name="pref_title_hide_message_avatars">メッセージアバター非表示</string>
+    <string name="pref_summary_hide_message_avatars">メッセージスレッドのアバターを表示しない</string>
+    <string name="pref_title_hide_list_avatars">リストアバター非表示</string>
+    <string name="pref_summary_hide_list_avatars">会話リストのアバターを表示しない</string>
 
     <!-- Strip unicode -->
     <string name="pref_title_unicode_stripping">ユニコードを取り除く</string>
@@ -173,7 +175,7 @@
     <string name="menu_mobile">携帯番号のみ</string>
     <string name="menu_groups">グループを表示</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
-    
+
     <!-- MMS push permission -->
     <string name="label_mms_push">MMSプッシュ</string>
     <string name="desc_mms_push">送信箱からネットワークにMMSをプッシュする</string>

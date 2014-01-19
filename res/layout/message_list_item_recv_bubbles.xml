@@ -45,7 +45,7 @@
                 android:layout_height="@dimen/avatar_mini_width_height" />
 
             <Space
-                android:id="@+id/bubble_space"
+                android:id="@+id/message_space"
                 android:layout_width="@dimen/avatar_mini_width_height"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"/>
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@id/avatar"
-                android:layout_toLeftOf="@id/bubble_space"
+                android:layout_toLeftOf="@id/message_space"
                 android:gravity="left">
 
             <LinearLayout

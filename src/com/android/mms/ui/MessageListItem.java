@@ -106,7 +106,7 @@ public class MessageListItem extends LinearLayout implements
     private TextView mDateView;
     public View mMessageBlock;
     private QuickContactDivot mAvatar;
-    private View mBubbleSpace;
+    private View mMessageSpace;
     static private Drawable sDefaultContactImage;
     private Presenter mPresenter;
     private int mPosition;      // for debugging
@@ -144,7 +144,7 @@ public class MessageListItem extends LinearLayout implements
         mDeliveredIndicator = (ImageView) findViewById(R.id.delivered_indicator);
         mDetailsIndicator = (ImageView) findViewById(R.id.details_indicator);
         mAvatar = (QuickContactDivot) findViewById(R.id.avatar);
-        mBubbleSpace = (View) findViewById(R.id.bubble_space);
+        mMessageSpace = (View) findViewById(R.id.message_space);
         mMessageBlock = findViewById(R.id.message_block);
     }
 
@@ -286,8 +286,7 @@ public class MessageListItem extends LinearLayout implements
     private void updateAvatarView(String addr, boolean isSelf) {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(mContext);
-        boolean mSpeechBubbles = prefs.getBoolean(MessagingPreferenceActivity.SPEECH_BUBBLES, false);
-        boolean mNoAvatars = prefs.getBoolean(MessagingPreferenceActivity.NO_AVATARS, false);
+        boolean mHideAvatars = prefs.getBoolean(MessagingPreferenceActivity.HIDE_MESSAGE_AVATARS, false);
 
         Drawable avatarDrawable;
         if (isSelf || !TextUtils.isEmpty(addr)) {
@@ -307,16 +306,12 @@ public class MessageListItem extends LinearLayout implements
             avatarDrawable = sDefaultContactImage;
         }
         mAvatar.setImageDrawable(avatarDrawable);
-        if (mSpeechBubbles) {
-            if (mNoAvatars) {
-                mAvatar.setVisibility(View.GONE);
-                mBubbleSpace.setVisibility(View.VISIBLE);
-            } else {
-                mAvatar.setVisibility(View.VISIBLE);
-                mBubbleSpace.setVisibility(View.GONE);
-            }
+        if (mHideAvatars) {
+            mAvatar.setVisibility(View.GONE);
+            mMessageSpace.setVisibility(View.VISIBLE);
         } else {
             mAvatar.setVisibility(View.VISIBLE);
+            mMessageSpace.setVisibility(View.GONE);
         }
     }
 
