@@ -75,7 +75,7 @@
                     android:linksClickable="false"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#FFFFFF"
-                    android:textColorLink="#FFDF5C"
+                    android:textColorLink="#5FDFFF"
                     android:textSize="16sp" />
 
                 <LinearLayout
