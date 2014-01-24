@@ -14,14 +14,6 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string-array name="pref_mms_notification_vibrate_pattern_entries">
-        <item>ノーマル</item>
-        <item>中くらいの振動</item>
-        <item>長い振動</item>
-        <item>複数の短い振動</item>
-        <item>複数の長い振動</item>
-    </string-array>
-
   <string-array name="default_smiley_names">
     <item>"ハッピー"</item>
     <item>"悲しい"</item>

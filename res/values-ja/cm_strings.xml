@@ -176,10 +176,6 @@
     <string name="menu_groups">グループを表示</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
 
-    <!-- MMS push permission -->
-    <string name="label_mms_push">MMSプッシュ</string>
-    <string name="desc_mms_push">送信箱からネットワークにMMSをプッシュする</string>
-
     <!-- Custom user-agent -->
     <string name="pref_mms_ua_default_android">Androidデフォルト</string>
     <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
@@ -193,5 +189,24 @@
     <string name="pref_title_mms_user_agent">カスタムUser-Agent</string>
     <string name="pref_summary_mms_user_agent">MMSクライアントのUser-Agent文字列を変更する</string>
     <string name="pref_mms_user_agent_custom_set">設定されているUser-Agent:\n</string>
+
+    <!-- Delay delivery -->
+    <string name="pref_title_send_delay">送信ディレイ</string>
+    <string name="send_delay_immediate">すぐに送信</string>
+    <string name="send_delay_3seconds">3 秒</string>
+    <string name="send_delay_5seconds">5 秒</string>
+    <string name="send_delay_10seconds">10 秒</string>
+    <string name="send_delay_20seconds">20 秒</string>
+    <string name="send_delay_30seconds">30 秒</string>
+    <string name="sent_countdown">メッセージ送信カウントダウン</string>
+
+    <!-- Vibrate pattern -->
+    <string name="pref_title_mms_notification_vibrate_pattern">バイブレーションパターン</string>
+    <string name="pref_summary_mms_notification_vibrate_pattern">バイブレーションパターンを変更する</string>
+    <string name="pref_mms_notification_vibrate_normal">ノーマル</string>
+    <string name="pref_mms_notification_vibrate_med_vib">中くらいの振動</string>
+    <string name="pref_mms_notification_vibrate_long_vib">長い振動</string>
+    <string name="pref_mms_notification_vibrate_mult_short">複数の短い振動</string>
+    <string name="pref_mms_notification_vibrate_mult_long">複数の長い振動</string>
 
 </resources>

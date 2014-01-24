@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -141,6 +142,40 @@
         <item>Mad</item>                     <!-- 18: x-( -->
         <item>Smirk</item>                   <!-- 19: :-/ -->
         <item>Poker face</item>              <!-- 20: :-I -->
+    </string-array>
+
+    <string-array name="send_delay_duration_values" translatable="false">
+        <item>0</item>
+        <item>3000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>20000</item>
+        <item>30000</item>
+    </string-array>
+
+    <string-array name="send_delay_duration_entries" translatable="false">
+        <item>@string/send_delay_immediate</item>
+        <item>@string/send_delay_3seconds</item>
+        <item>@string/send_delay_5seconds</item>
+        <item>@string/send_delay_10seconds</item>
+        <item>@string/send_delay_20seconds</item>
+        <item>@string/send_delay_30seconds</item>
+    </string-array>
+
+    <string-array name="pref_mms_notification_vibrate_pattern_entries" translatable="false">
+        <item>@string/pref_mms_notification_vibrate_normal</item>
+        <item>@string/pref_mms_notification_vibrate_med_vib</item>
+        <item>@string/pref_mms_notification_vibrate_long_vib</item>
+        <item>@string/pref_mms_notification_vibrate_mult_short</item>
+        <item>@string/pref_mms_notification_vibrate_mult_long</item>
+    </string-array>
+
+    <string-array name="pref_mms_notification_vibrate_pattern_values" translatable="false">
+        <item></item>
+        <item>0,1200</item>
+        <item>0,2500</item>
+        <item>0,300,100,300,100,300,100,300,100,300</item>
+        <item>0,800,200,800,200,800</item>
     </string-array>
 
 </resources>

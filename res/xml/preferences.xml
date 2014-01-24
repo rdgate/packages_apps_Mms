@@ -75,6 +75,15 @@
     <PreferenceCategory android:title="@string/pref_sms_settings_title"
         android:key="pref_key_sms_settings" >
 
+        <ListPreference
+            android:key="pref_key_send_delay"
+            android:persistent="true"
+            android:dialogTitle="@string/pref_title_send_delay"
+            android:title="@string/pref_title_send_delay"
+            android:entries="@array/send_delay_duration_entries"
+            android:entryValues="@array/send_delay_duration_values"
+            android:defaultValue="0"/>
+
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="pref_key_sms_delivery_reports"
@@ -160,6 +169,16 @@
             android:title="@string/pref_title_notification_vibrateWhen"
             android:dependency="pref_key_enable_notifications"
             android:defaultValue="false" />
+
+        <ListPreference
+            android:key="pref_key_mms_notification_vibrate_pattern"
+            android:dependency="pref_key_vibrate"
+            android:defaultValue=""
+            android:title="@string/pref_title_mms_notification_vibrate_pattern"
+            android:summary="@string/pref_summary_mms_notification_vibrate_pattern"
+            android:entries="@array/pref_mms_notification_vibrate_pattern_entries"
+            android:entryValues="@array/pref_mms_notification_vibrate_pattern_values"
+            android:dialogTitle="@string/pref_title_mms_notification_vibrate_pattern" />
     </PreferenceCategory>
 
     <!-- QuickMessage settings -->
