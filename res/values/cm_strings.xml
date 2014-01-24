@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<!--
+     Copyright (C) 2013-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -176,10 +177,6 @@
     <string name="menu_groups">Show groups</string>
     <string name="fastscroll_index_groups">GR</string> <!-- CHAR LIMIT=3 -->
 
-    <!-- MMS push permission -->
-    <string name="label_mms_push">MMS Push</string>
-    <string name="desc_mms_push">Pushes MMS from outbox to the network</string>
-
     <!-- Custom user-agent -->
     <string name="pref_mms_ua_default_android">Default Android</string>
     <string name="pref_mms_ua_nokia_n95">Nokia N95</string>
@@ -193,5 +190,24 @@
     <string name="pref_title_mms_user_agent">Custom User-Agent</string>
     <string name="pref_summary_mms_user_agent">Spoof phone as a different model for MMS</string>
     <string name="pref_mms_user_agent_custom_set">Custom User Agent set to:\n</string>
+
+    <!-- Delay delivery -->
+    <string name="pref_title_send_delay">Delivery delay</string>
+    <string name="send_delay_immediate">Send immediately</string>
+    <string name="send_delay_3seconds">3 seconds</string>
+    <string name="send_delay_5seconds">5 seconds</string>
+    <string name="send_delay_10seconds">10 seconds</string>
+    <string name="send_delay_20seconds">20 seconds</string>
+    <string name="send_delay_30seconds">30 seconds</string>
+    <string name="sent_countdown">Message delivery countdown</string>
+
+    <!-- Vibrate pattern -->
+    <string name="pref_title_mms_notification_vibrate_pattern">Vibrate pattern</string>
+    <string name="pref_summary_mms_notification_vibrate_pattern">Change vibrate pattern</string>
+    <string name="pref_mms_notification_vibrate_normal">Normal</string>
+    <string name="pref_mms_notification_vibrate_med_vib">Medium vibrate</string>
+    <string name="pref_mms_notification_vibrate_long_vib">Long vibrate</string>
+    <string name="pref_mms_notification_vibrate_mult_short">Multiple short</string>
+    <string name="pref_mms_notification_vibrate_mult_long">Multiple long</string>
 
 </resources>
