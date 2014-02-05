@@ -263,7 +263,7 @@
             android:key="pref_key_enable_emojis"
             android:title="@string/pref_title_enable_emojis"
             android:summary="@string/pref_summary_enable_emojis"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <CheckBoxPreference
             android:key="pref_key_enable_quick_emojis"
@@ -271,7 +271,7 @@
             android:summary="@string/pref_summary_enable_quick_emojis"
             android:layout="?android:attr/preferenceLayoutChild"
             android:dependency="pref_key_enable_emojis"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <CheckBoxPreference
             android:key="pref_key_enable_softbank_encoding"
@@ -279,7 +279,7 @@
             android:summary="@string/pref_summary_enable_softbank_encoding"
             android:layout="?android:attr/preferenceLayoutChild"
             android:dependency="pref_key_enable_emojis"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <CheckBoxPreference
             android:key="pref_key_mms_full_timestamp"
@@ -297,7 +297,7 @@
             android:key="pref_key_speech_bubbles"
             android:title="@string/pref_title_speech_bubbles"
             android:summary="@string/pref_summary_speech_bubbles"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
         <CheckBoxPreference
             android:key="pref_key_hide_message_avatars"
             android:title="@string/pref_title_hide_message_avatars"
@@ -311,13 +311,14 @@
 
         <ListPreference
             android:key="pref_key_mms_input_type"
+            android:defaultValue="80"
             android:title="@string/pref_title_input_type"
             android:entries="@array/pref_entries_input_type"
             android:entryValues="@array/pref_values_input_type" />
 
         <com.android.mms.preferences.UserAgentListPreference
             android:key="pref_key_mms_user_agent"
-            android:defaultValue="default"
+            android:defaultValue="Nexus5"
             android:title="@string/pref_title_mms_user_agent"
             android:summary="@string/pref_summary_mms_user_agent"
             android:entries="@array/pref_mms_user_agent_entries"
