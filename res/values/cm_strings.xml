@@ -202,8 +202,4 @@
     <string name="pref_mms_notification_vibrate_mult_short">Multiple short</string>
     <string name="pref_mms_notification_vibrate_mult_long">Multiple long</string>
 
-    <!-- Text Edit maximum number of lines -->
-    <string name="pref_compose_edit_lines">SMS edit max lines</string>
-    <string name="pref_compose_edit_lines_summary">Maximum number of lines for editing an SMS</string>
-
 </resources>
