@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.NumberPicker;
-import android.widget.TextView;
 
 import com.android.mms.R;
 
@@ -48,7 +47,6 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
 
     private final NumberPicker mNumberPicker;
     private final OnNumberSetListener mCallback;
-    private final TextView mSummaryTextView;
 
     /**
      * @param context Parent.
@@ -60,10 +58,8 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
             int number,
             int rangeMin,
             int rangeMax,
-            int title,
-            int summary) {
-        this(context, AlertDialog.THEME_HOLO_LIGHT, callBack, number,
-                rangeMin, rangeMax, title, summary);
+            int title) {
+        this(context, AlertDialog.THEME_HOLO_LIGHT, callBack, number, rangeMin, rangeMax, title);
     }
 
     /**
@@ -78,8 +74,7 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
             int number,
             int rangeMin,
             int rangeMax,
-            int title,
-            int summary) {
+            int title) {
         super(context, theme);
         mCallback = callBack;
 
@@ -93,8 +88,6 @@ public class NumberPickerDialog extends AlertDialog implements OnClickListener {
                 (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.number_picker_dialog, null);
         setView(view);
-        mSummaryTextView =(TextView) view.findViewById(R.id.number_picker_summary);
-        mSummaryTextView.setText(summary);
         mNumberPicker = (NumberPicker) view.findViewById(R.id.number_picker);
 
         // initialize state
