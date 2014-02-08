@@ -201,8 +201,4 @@
     <string name="pref_mms_notification_vibrate_mult_short">複数の短い振動</string>
     <string name="pref_mms_notification_vibrate_mult_long">複数の長い振動</string>
 
-    <!-- Text Edit maximum number of lines -->
-    <string name="pref_compose_edit_lines">メッセージ編集最大行数</string>
-    <string name="pref_compose_edit_lines_summary">メッセージ編集テキストボックスの最大行数</string>
-
 </resources>
