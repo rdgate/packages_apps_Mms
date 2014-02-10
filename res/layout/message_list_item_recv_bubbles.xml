@@ -67,6 +67,7 @@
                 android:layout_marginRight="8dip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:background="@drawable/bubble_left"
                 android:orientation="vertical" >
 
@@ -120,11 +121,11 @@
             </LinearLayout>
 
             <TextView android:id="@+id/date_view"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="16dip"
                 android:paddingBottom="8dip"
-                android:gravity="left"
+                android:layout_gravity="left"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textColor="@color/message_count_color" />
             </LinearLayout>
