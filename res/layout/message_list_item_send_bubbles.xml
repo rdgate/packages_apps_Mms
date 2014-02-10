@@ -74,7 +74,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:linksClickable="false"
-                    android:gravity="left"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="#000000"
                     android:textColorLink="#33B5E5"
