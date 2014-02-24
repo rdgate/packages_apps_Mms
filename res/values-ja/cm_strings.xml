@@ -201,4 +201,9 @@
     <string name="pref_mms_notification_vibrate_mult_short">複数の短い振動</string>
     <string name="pref_mms_notification_vibrate_mult_long">複数の長い振動</string>
 
+    <!-- Insert contact information -->
+    <string name="menu_insert_contact_info">連絡帳情報を挿入</string>
+    <string name="cannot_find_contact">選択した連絡帳の情報を挿入できません。</string>
+    <string name="insert_contact_info_positive_button">挿入</string>
+
 </resources>
