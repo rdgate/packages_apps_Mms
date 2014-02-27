@@ -464,10 +464,11 @@ public class MessageUtils {
 
         // If the message is from a different year, show the date and year.
         if (then.year != now.year) {
-            format_flags |= DateUtils.FORMAT_SHOW_YEAR | DateUtils.FORMAT_SHOW_DATE;
+            format_flags |= DateUtils.FORMAT_SHOW_YEAR |
+            DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE;
         } else if (then.yearDay != now.yearDay) {
             // If it is from a different day than today, show only the date.
-            format_flags |= DateUtils.FORMAT_SHOW_DATE;
+            format_flags |= DateUtils.FORMAT_SHOW_WEEKDAY | DateUtils.FORMAT_SHOW_DATE;
         } else {
             // Otherwise, if the message is from today, show the time.
             format_flags |= DateUtils.FORMAT_SHOW_TIME;
@@ -477,7 +478,8 @@ public class MessageUtils {
         // and time no matter what we've determined above (but still make showing
         // the year only happen if it is a different year from today).
         if (fullFormat) {
-            format_flags |= (DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME);
+            format_flags |= (DateUtils.FORMAT_SHOW_WEEKDAY |
+                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_TIME);
         }
 
         return DateUtils.formatDateTime(context, when, format_flags);
