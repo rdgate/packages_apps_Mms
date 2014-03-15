@@ -491,16 +491,13 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
 
         MenuItem cellBroadcastItem = menu.findItem(R.id.action_cell_broadcasts);
         if (cellBroadcastItem != null) {
-            // Enable link to Cell broadcast activity depending on the value in config.xml.
-            boolean isCellBroadcastAppLinkEnabled = this.getResources().getBoolean(
-                    com.android.internal.R.bool.config_cellBroadcastAppLinks);
+            // Eable link to Cell broadcast activity forcibly
+            boolean isCellBroadcastAppLinkEnabled = true;
             try {
-                if (isCellBroadcastAppLinkEnabled) {
-                    PackageManager pm = getPackageManager();
-                    if (pm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
-                            == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
-                        isCellBroadcastAppLinkEnabled = false;  // CMAS app disabled
-                    }
+                PackageManager pm = getPackageManager();
+                if (pm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
+                        == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
+                    isCellBroadcastAppLinkEnabled = false;  // CMAS app disabled
                 }
             } catch (IllegalArgumentException ignored) {
                 isCellBroadcastAppLinkEnabled = false;  // CMAS app not installed
