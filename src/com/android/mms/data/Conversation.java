@@ -30,6 +30,7 @@ import android.util.Log;
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
 import com.android.mms.R;
+import com.android.mms.data.cm.CMConversationSettings;
 import com.android.mms.transaction.MessagingNotification;
 import com.android.mms.transaction.MmsMessageSender;
 import com.android.mms.ui.ComposeMessageActivity;
@@ -60,6 +61,9 @@ public class Conversation {
     public static final String[] UNREAD_PROJECTION = {
         Threads._ID,
         Threads.READ
+    };
+
+    public static final String[] CONVERSATION_SETTING = {
     };
 
     private static final String UNREAD_SELECTION = "(read=0 OR seen=0)";
@@ -950,6 +954,8 @@ public class Conversation {
                 handler.startDelete(token, new Long(threadId), uri, selection, null);
 
                 DraftCache.getInstance().setDraftState(threadId, false);
+
+                CMConversationSettings.delete(MmsApp.getApplication(), threadId);
             }
         }
     }
@@ -980,6 +986,8 @@ public class Conversation {
 
             handler.setDeleteToken(token);
             handler.startDelete(token, new Long(-1), Threads.CONTENT_URI, selection, null);
+
+            CMConversationSettings.deleteAll(app);
         }
     }
 

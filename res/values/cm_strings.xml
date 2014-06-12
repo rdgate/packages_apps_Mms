@@ -206,4 +206,9 @@
     <!-- Extra message options -->
     <string name="message_share">Share</string>
     <string name="message_share_intent_title">Share message</string>
+
+    <!-- Conversation options -->
+    <string name="menu_conversation_options">Conversation options</string>
+    <string name="pref_title_reset_convopt_to_default">Reset to default</string>
+    <string name="pref_summary_reset_convopt_to_default">Resets the conversation setting to the application level setting</string>
 </resources>
