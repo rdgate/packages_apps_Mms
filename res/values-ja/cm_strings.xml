@@ -190,4 +190,6 @@
     <!-- Extra message options -->
     <string name="message_share">共有</string>
     <string name="message_share_intent_title">メッセージの共有</string>
+
+    <string name="menu_copy_url">URLをコピー <xliff:g id="extractedurl">%s</xliff:g></string>
 </resources>

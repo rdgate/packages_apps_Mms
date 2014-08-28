@@ -190,4 +190,6 @@
     <!-- Extra message options -->
     <string name="message_share">Share</string>
     <string name="message_share_intent_title">Share message</string>
+
+    <string name="menu_copy_url">Copy url <xliff:g id="extractedurl">%s</xliff:g></string>
 </resources>
