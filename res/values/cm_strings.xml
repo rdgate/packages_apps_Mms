@@ -172,4 +172,5 @@
     <string name="pref_summary_mms_message_font_size">Change font size of message view</string>
     <string name="pref_dialogtitle_mms_message_font_size">Select font size</string>
 
+    <string name="start_new_message_button">New message</string>
 </resources>
