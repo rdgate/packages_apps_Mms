@@ -1033,9 +1033,9 @@ public class MessageUtils {
         Log.d(TAG, "[MsgUtils] " + msg);
     }
 
-    public static boolean isCyanogenMod(Context context) {
+    public static boolean isEos(Context context) {
         try {
-            String version = SystemProperties.get("ro.cm.version");
+            String version = SystemProperties.get("ro.eos.version");
             if (!version.isEmpty()) {
                 return true;
             }

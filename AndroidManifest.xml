@@ -360,12 +360,12 @@
         <!-- Templates support -->
         <activity
             android:name=".templates.TemplatesListActivity"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@style/MmsTheme"
             android:label="@string/template_list_title" >
         </activity>
 
         <activity android:name=".templates.TemplateEditor"
-            android:theme="@style/MmsHoloTheme"
+            android:theme="@style/MmsTheme"
             android:label="@string/template_new_title">
         </activity>
 
