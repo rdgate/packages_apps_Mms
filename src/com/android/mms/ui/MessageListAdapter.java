@@ -120,6 +120,7 @@ public class MessageListAdapter extends CursorAdapter {
     public static final int OUTGOING_ITEM_TYPE_MMS = 3;
 
     protected LayoutInflater mInflater;
+    private final ListView mListView;
     private final MessageItemCache mMessageItemCache;
     private final ColumnsMap mColumnsMap;
     private OnDataSetChangedListener mOnDataSetChangedListener;
@@ -141,6 +142,7 @@ public class MessageListAdapter extends CursorAdapter {
         mInflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         mMessageItemCache = new MessageItemCache(CACHE_SIZE);
+        mListView = listView;
 
         if (useDefaultColumnsMap) {
             mColumnsMap = new ColumnsMap();
@@ -186,7 +188,8 @@ public class MessageListAdapter extends CursorAdapter {
                     accentColor = res.getColor(R.color.incoming_message_bg_default);
                 }
 
-                mli.bind(msgItem, accentColor, mIsGroupConversation, position);
+                mli.bind(msgItem, accentColor, mIsGroupConversation, position,
+                        mListView.isItemChecked(position));
                 mli.setMsgListItemHandler(mMsgListItemHandler);
             }
         }

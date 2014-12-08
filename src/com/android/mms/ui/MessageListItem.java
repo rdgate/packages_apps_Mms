@@ -66,9 +66,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
+import com.android.contacts.common.widget.CheckableQuickContactBadge;
 import com.android.mms.LogTag;
 import com.android.mms.MmsApp;
 import com.android.mms.MmsConfig;
@@ -117,7 +117,7 @@ public class MessageListItem extends ZoomMessageListItem implements
     private String mDefaultCountryIso;
     private TextView mDateView;
     public View mMessageBlock;
-    private QuickContactBadge mAvatar;
+    private CheckableQuickContactBadge mAvatar;
     static private RoundedBitmapDrawable sDefaultContactImage;
     private Presenter mPresenter;
     private int mPosition;      // for debugging
@@ -154,7 +154,7 @@ public class MessageListItem extends ZoomMessageListItem implements
         mLockedIndicator = (ImageView) findViewById(R.id.locked_indicator);
         mDeliveredIndicator = (ImageView) findViewById(R.id.delivered_indicator);
         mDetailsIndicator = (ImageView) findViewById(R.id.details_indicator);
-        mAvatar = (QuickContactBadge) findViewById(R.id.avatar);
+        mAvatar = (CheckableQuickContactBadge) findViewById(R.id.avatar);
         mMessageBlock = findViewById(R.id.message_block);
 
         // Add the views to be managed by the zoom control
@@ -163,7 +163,7 @@ public class MessageListItem extends ZoomMessageListItem implements
     }
 
     public void bind(MessageItem msgItem, int accentColor,
-            boolean convHasMultiRecipients, int position) {
+            boolean convHasMultiRecipients, int position, boolean selected) {
         if (DEBUG) {
             Log.v(TAG, "bind for item: " + position + " old: " +
                    (mMessageItem != null ? mMessageItem.toString() : "NULL" ) +
@@ -190,6 +190,8 @@ public class MessageListItem extends ZoomMessageListItem implements
                 break;
         }
         tintBackground(mMessageBlock.getBackground(), accentColor);
+        mMessageBlock.setSelected(selected);
+        mAvatar.setChecked(selected, sameItem);
     }
 
     private void tintBackground(Drawable background, int color) {
@@ -892,8 +894,8 @@ public class MessageListItem extends ZoomMessageListItem implements
             mDateView.setText(spanned);
         } else {
             mDateView.setText(buildTimestampLine(mMessageItem.isSending()
-                    ? mContext.getResources().getString(R.string.sending_message)
-                    : mMessageItem.mTimestamp));
+                ? mContext.getResources().getString(R.string.sending_message)
+                : mMessageItem.mTimestamp));
         }
     }
 }
