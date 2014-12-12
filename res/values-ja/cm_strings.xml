@@ -195,4 +195,10 @@
     <string name="message_share_intent_title">メッセージの共有</string>
 
     <string name="menu_copy_url">URLをコピー <xliff:g id="extractedurl">%s</xliff:g></string>
+
+    <!-- QuickMessage Wear-->
+    <string name="qm_wear_sending_message"><xliff:g id="name">%s</xliff:g>宛に送信中</string>
+    <string name="qm_wear_messaged_failed"><xliff:g id="name">%s</xliff:g>宛の送信に失敗しました。再送信してください。</string>
+    <string name="qm_wear_voice_reply">返信内容は？</string>
+    <string name="qm_wear_reply_by_voice">声で返信する</string>
 </resources>

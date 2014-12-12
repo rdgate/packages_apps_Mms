@@ -195,4 +195,10 @@
     <string name="message_share_intent_title">Share message</string>
 
     <string name="menu_copy_url">Copy url <xliff:g id="extractedurl">%s</xliff:g></string>
+
+    <!-- QuickMessage Wear-->
+    <string name="qm_wear_sending_message">Sending reply to <xliff:g id="name">%s</xliff:g></string>
+    <string name="qm_wear_messaged_failed">Your text message to <xliff:g id="name">%s</xliff:g> has failed to send please try again.</string>
+    <string name="qm_wear_voice_reply">What\'s your reply?</string>
+    <string name="qm_wear_reply_by_voice">Reply using voice</string>
 </resources>

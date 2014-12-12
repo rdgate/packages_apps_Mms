@@ -390,7 +390,7 @@
              from a notification will not bring the rest of the messaging app
              to the foreground.We exclude from recent apps since this is accessible
              through a notification when appropriate. -->
-         <activity
+        <activity
             android:name=".quickmessage.QuickMessagePopup"
             android:theme="@android:style/Theme.Material.Dialog"
             android:configChanges="orientation|screenSize"
@@ -399,11 +399,22 @@
             android:excludeFromRecents="true"
             android:exported="true" />
 
-         <receiver
+        <receiver
             android:name=".quickmessage.QmMarkRead"
             android:exported="true" />
 
-         <receiver android:name=".quickmessage.ClearAllReceiver" />
+        <!--QuickMessage for wear-->
+        <!-- This allows for users to reply to a message
+             via voice using there Android Wear device.
+             Make Transparent so that nothing shows on
+             screen but toasts for sending and errors-->
+        <activity android:name=".quickmessage.QuickMessageWear"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.Transparent"
+            android:excludeFromRecents="true"
+            android:exported="true"/>
+
+        <receiver android:name=".quickmessage.ClearAllReceiver" />
 
     </application>
 </manifest>
