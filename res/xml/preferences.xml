@@ -100,6 +100,10 @@
             android:key="pref_key_manage_sim_messages"
             android:summary="@string/pref_summary_manage_sim_messages"
             android:title="@string/pref_title_manage_sim_messages" />
+
+        <Preference 
+            android:key="pref_key_manage_sdcard_messages"
+            android:title="@string/manage_sdcard_messages" />
     </PreferenceCategory>
 
     <!-- MMS Settings -->
