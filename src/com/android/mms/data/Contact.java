@@ -394,7 +394,7 @@ public class Contact {
                 return palette.getVibrantSwatch().getRgb();
             }
         }
-        LetterTileDrawable lt = new LetterTileDrawable(context, null);
+        LetterTileDrawable lt = new LetterTileDrawable(null);
         String name = getName();
         String identifier = getPhotoIdentifier();
 
