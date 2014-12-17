@@ -52,30 +52,29 @@ public class AttachmentTypeSelectorAdapter extends IconListAdapter {
     protected static List<IconListItem> getData(int mode, Context context) {
         List<IconListItem> data = new ArrayList<IconListItem>(7);
         addItem(data, context.getString(R.string.attach_image),
-                R.drawable.ic_attach_picture_holo_light, ADD_IMAGE);
+                R.drawable.ic_attach_picture, ADD_IMAGE);
 
         addItem(data, context.getString(R.string.attach_take_photo),
-                R.drawable.ic_attach_capture_picture_holo_light, TAKE_PICTURE);
+                R.drawable.ic_attach_capture_photo, TAKE_PICTURE);
 
         addItem(data, context.getString(R.string.attach_video),
-                R.drawable.ic_attach_video_holo_light, ADD_VIDEO);
+                R.drawable.ic_attach_video, ADD_VIDEO);
 
         addItem(data, context.getString(R.string.attach_record_video),
-                R.drawable.ic_attach_capture_video_holo_light, RECORD_VIDEO);
+                R.drawable.ic_attach_capture_video, RECORD_VIDEO);
 
         if (MmsConfig.getAllowAttachAudio()) {
             addItem(data, context.getString(R.string.attach_sound),
-                    R.drawable.ic_attach_audio_holo_light, ADD_SOUND);
+                    R.drawable.ic_attach_audio, ADD_SOUND);
         }
 
         addItem(data, context.getString(R.string.attach_record_sound),
-                R.drawable.ic_attach_capture_audio_holo_light, RECORD_SOUND);
+                R.drawable.ic_attach_capture_audio, RECORD_SOUND);
 
         if (mode == MODE_WITH_SLIDESHOW) {
             addItem(data, context.getString(R.string.attach_slideshow),
-                    R.drawable.ic_attach_slideshow_holo_light, ADD_SLIDESHOW);
+                    R.drawable.ic_attach_slideshow, ADD_SLIDESHOW);
         }
-
         return data;
     }
 

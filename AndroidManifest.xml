@@ -20,9 +20,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
         package="com.android.mms">
 
-    <original-package android:name="com.android.mms" />
-    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="21" />
-
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -93,7 +90,7 @@
         <activity android:name=".ui.ComposeMessageActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden|adjustResize"
-                  android:theme="@style/MmsTheme"
+                  android:theme="@style/MmsTheme.NoActionBar"
                   android:parentActivityName=".ui.ConversationList"
                   android:launchMode="singleTop" >
             <intent-filter>
@@ -133,13 +130,13 @@
                   android:targetActivity=".ui.ComposeMessageActivity"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden"
-                  android:theme="@style/MmsTheme" >
+                  android:theme="@style/MmsTheme.NoActionBar" >
         </activity-alias>
 
         <activity android:name=".ui.ComposeMessageActivityNoLockScreen"
                   android:configChanges="orientation|screenSize|keyboardHidden"
                   android:windowSoftInputMode="stateHidden"
-                  android:theme="@style/MmsTheme"
+                  android:theme="@style/MmsTheme.NoActionBar"
                   android:exported="false"
                   android:launchMode="singleTop" >
         </activity>
@@ -383,7 +380,7 @@
              through a notification when appropriate. -->
          <activity
             android:name=".quickmessage.QuickMessagePopup"
-            android:theme="@android:style/Theme.Holo.Dialog"
+            android:theme="@android:style/Theme.Material.Dialog"
             android:configChanges="orientation|screenSize"
             android:launchMode="singleTop"
             android:taskAffinity=""

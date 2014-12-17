@@ -1017,8 +1017,6 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
     }
 
     private class ModeCallback implements ListView.MultiChoiceModeListener {
-        private View mMultiSelectActionBarView;
-        private TextView mSelectedConvCount;
         private HashSet<Long> mSelectedThreadIds;
 
         @Override
@@ -1027,28 +1025,11 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
             mSelectedThreadIds = new HashSet<Long>();
             inflater.inflate(R.menu.conversation_multi_select_menu, menu);
 
-            if (mMultiSelectActionBarView == null) {
-                mMultiSelectActionBarView = LayoutInflater.from(ConversationList.this)
-                    .inflate(R.layout.conversation_list_multi_select_actionbar, null);
-
-                mSelectedConvCount =
-                    (TextView)mMultiSelectActionBarView.findViewById(R.id.selected_conv_count);
-            }
-            mode.setCustomView(mMultiSelectActionBarView);
-            ((TextView)mMultiSelectActionBarView.findViewById(R.id.title))
-                .setText(R.string.select_conversations);
             return true;
         }
 
         @Override
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-            if (mMultiSelectActionBarView == null) {
-                ViewGroup v = (ViewGroup)LayoutInflater.from(ConversationList.this)
-                    .inflate(R.layout.conversation_list_multi_select_actionbar, null);
-                mode.setCustomView(v);
-
-                mSelectedConvCount = (TextView)v.findViewById(R.id.selected_conv_count);
-            }
             return true;
         }
 
@@ -1080,7 +1061,6 @@ public class ConversationList extends ListActivity implements DraftCache.OnDraft
                 int position, long id, boolean checked) {
             ListView listView = getListView();
             final int checkedCount = listView.getCheckedItemCount();
-            mSelectedConvCount.setText(Integer.toString(checkedCount));
 
             Cursor cursor  = (Cursor)listView.getItemAtPosition(position);
             Conversation conv = Conversation.from(ConversationList.this, cursor);

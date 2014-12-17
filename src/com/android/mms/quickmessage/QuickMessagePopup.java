@@ -597,10 +597,9 @@ public class QuickMessagePopup extends Activity implements
      * @param isSelf
      */
     private void updateContactBadge(QuickContactBadge badge, String addr, boolean isSelf) {
-        Drawable avatarDrawable;
         if (isSelf || !TextUtils.isEmpty(addr)) {
             Contact contact = isSelf ? Contact.getMe(false) : Contact.get(addr, false);
-            avatarDrawable = contact.getAvatar(mContext, mDefaultContactImage);
+            contact.bindAvatar(badge);
 
             if (isSelf) {
                 badge.assignContactUri(Profile.CONTENT_URI);
@@ -612,9 +611,8 @@ public class QuickMessagePopup extends Activity implements
                 }
             }
         } else {
-            avatarDrawable = mDefaultContactImage;
+            badge.setImageDrawable(mDefaultContactImage);
         }
-        badge.setImageDrawable(avatarDrawable);
     }
 
     /**

@@ -20,8 +20,10 @@ package com.android.mms.ui;
 import java.util.regex.Pattern;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
@@ -127,6 +129,7 @@ public class MessageListAdapter extends CursorAdapter {
     private boolean mIsGroupConversation;
     private boolean mFullTimestamp;
     private boolean mSentTimestamp;
+    private int mAccentColor = 0;
 
     public MessageListAdapter(
             Context context, Cursor c, ListView listView,
@@ -171,7 +174,19 @@ public class MessageListAdapter extends CursorAdapter {
             if (msgItem != null) {
                 MessageListItem mli = (MessageListItem) view;
                 int position = cursor.getPosition();
-                mli.bind(msgItem, mIsGroupConversation, position);
+                int boxType = getItemViewType(cursor);
+                final Resources res = context.getResources();
+                final int accentColor;
+
+                if (boxType == OUTGOING_ITEM_TYPE_SMS || boxType == OUTGOING_ITEM_TYPE_MMS) {
+                    accentColor = res.getColor(R.color.outgoing_message_bg);
+                } else if (mAccentColor != 0) {
+                    accentColor = mAccentColor;
+                } else {
+                    accentColor = res.getColor(R.color.incoming_message_bg_default);
+                }
+
+                mli.bind(msgItem, accentColor, mIsGroupConversation, position);
                 mli.setMsgListItemHandler(mMsgListItemHandler);
             }
         }
@@ -192,6 +207,14 @@ public class MessageListAdapter extends CursorAdapter {
 
     public void setIsGroupConversation(boolean isGroup) {
         mIsGroupConversation = isGroup;
+    }
+
+    public void setAccentColor(int accentColor) {
+        float[] hsv = new float[3];
+        Color.colorToHSV(accentColor, hsv);
+        hsv[2] = Math.min(1F, hsv[2] + 0.1F);
+        mAccentColor = Color.HSVToColor(Color.alpha(accentColor), hsv);
+        notifyDataSetChanged();
     }
 
     public void cancelBackgroundLoading() {
@@ -226,10 +249,12 @@ public class MessageListAdapter extends CursorAdapter {
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         int boxType = getItemViewType(cursor);
-        View view = mInflater.inflate((boxType == INCOMING_ITEM_TYPE_SMS ||
-                boxType == INCOMING_ITEM_TYPE_MMS) ?
-                        R.layout.message_list_item_recv : R.layout.message_list_item_send,
-                        parent, false);
+        boolean isIncoming =
+                boxType == INCOMING_ITEM_TYPE_SMS || boxType == INCOMING_ITEM_TYPE_MMS;
+        int layoutResourceId = isIncoming
+                ? R.layout.message_list_item_recv : R.layout.message_list_item_send;
+        View view = mInflater.inflate(layoutResourceId, parent, false);
+
         if (boxType == INCOMING_ITEM_TYPE_MMS || boxType == OUTGOING_ITEM_TYPE_MMS) {
             // We've got an mms item, pre-inflate the mms portion of the view
             view.findViewById(R.id.mms_layout_view_stub).setVisibility(View.VISIBLE);

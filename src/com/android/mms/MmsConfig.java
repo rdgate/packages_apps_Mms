@@ -24,6 +24,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.preference.PreferenceManager;
 import android.provider.Telephony;
@@ -117,6 +118,8 @@ public class MmsConfig {
     // If mEnableGroupMms is false, the group MMS setting/preference will be hidden in the settings
     // activity.
     private static boolean mEnableGroupMms = true;
+
+    private static float sMmsCornerRadius = 5;
 
     public static void init(Context context) {
         if (LOCAL_LOGV) {
@@ -274,6 +277,10 @@ public class MmsConfig {
 
     public static int getMaxSizeScaleForPendingMmsAllowed() {
         return mMaxSizeScaleForPendingMmsAllowed;
+    }
+
+    public static float getMmsCornerRadius() {
+        return sMmsCornerRadius;
     }
 
     public static boolean isAliasEnabled() {

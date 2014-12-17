@@ -916,59 +916,28 @@ public class MessagingNotification {
 
         final Resources res = context.getResources();
         String title = null;
-        String privateModeContentText = null;
         Bitmap avatar = null;
-        if (uniqueThreadCount > 1) {    // messages from multiple threads
-            Intent mainActivityIntent = new Intent(Intent.ACTION_MAIN);
-
-            mainActivityIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                    | Intent.FLAG_ACTIVITY_SINGLE_TOP
-                    | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            mainActivityIntent.setType("vnd.android-dir/mms-sms");
-            taskStackBuilder.addNextIntent(mainActivityIntent);
-            if (!privacyMode) {
-                title = context.getString(R.string.message_count_notification, messageCount);
-            } else {
-                title = context.getString(R.string.notification_multiple_title_privacy_mode);
-                privateModeContentText = context.getString(R.string.notification_multiple_text_privacy_mode, messageCount);
-            }
-        } else {    // same thread, single or multiple messages
-            if (!privacyMode) {
-                title = mostRecentNotification.mTitle;
-                BitmapDrawable contactDrawable = (BitmapDrawable)mostRecentNotification.mSender
-                        .getAvatar(context, null);
-                if (contactDrawable != null) {
-                    // Show the sender's avatar as the big icon. Contact bitmaps are 96x96 so we
-                    // have to scale 'em up to 128x128 to fill the whole notification large icon.
-                    avatar = contactDrawable.getBitmap();
-                    if (avatar != null) {
-                        final int idealIconHeight =
-                            res.getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
-                        final int idealIconWidth =
-                             res.getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
-                        if (avatar.getHeight() < idealIconHeight) {
-                            // Scale this image to fit the intended size
-                            avatar = Bitmap.createScaledBitmap(
-                                    avatar, idealIconWidth, idealIconHeight, true);
-                        }
-                        if (avatar != null) {
-                            noti.setLargeIcon(avatar);
-                        }
-                    }
+        PendingIntent pendingIntent = null;
+            title = mostRecentNotification.mTitle;
+            avatar = mostRecentNotification.mSender.getAvatar(context);
+            if (avatar != null) {
+                // Show the sender's avatar as the big icon. Contact bitmaps are 96x96 so we
+                // have to scale 'em up to 128x128 to fill the whole notification large icon.
+                final int idealIconHeight =
+                    res.getDimensionPixelSize(android.R.dimen.notification_large_icon_height);
+                final int idealIconWidth =
+                        res.getDimensionPixelSize(android.R.dimen.notification_large_icon_width);
+                if (avatar.getHeight() < idealIconHeight) {
+                    // Scale this image to fit the intended size
+                    avatar = Bitmap.createScaledBitmap(
+                            avatar, idealIconWidth, idealIconHeight, true);
                 }
-            } else {
-                if (messageCount > 1) {
-                    title = context.getString(R.string.notification_multiple_title_privacy_mode);
-                    privateModeContentText = context.getString(R.string.notification_multiple_text_privacy_mode, messageCount);
-                } else {
-                    title = context.getString(R.string.notification_single_title_privacy_mode);
-                    privateModeContentText = context.getString(R.string.notification_single_text_privacy_mode);
+                if (avatar != null) {
+                    noti.setLargeIcon(avatar);
                 }
-            }
 
-            taskStackBuilder.addParentStack(ComposeMessageActivity.class);
-            taskStackBuilder.addNextIntent(mostRecentNotification.mClickIntent);
+            pendingIntent = PendingIntent.getActivity(context, 0,
+                    mostRecentNotification.mClickIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         }
         // Always have to set the small icon or the notification is ignored
         noti.setSmallIcon(R.drawable.stat_notify_sms);
@@ -1071,15 +1040,6 @@ public class MessagingNotification {
                             PendingIntent.FLAG_UPDATE_CURRENT);
                     noti.addAction(R.drawable.ic_reply, qmText, qmPendingIntent);
                 }
-
-                // Add the 'Mark as read' action
-                CharSequence markReadText = context.getText(R.string.qm_mark_read);
-                Intent mrIntent = new Intent();
-                mrIntent.setClass(context, QmMarkRead.class);
-                mrIntent.putExtra(QmMarkRead.SMS_THREAD_ID, mostRecentNotification.mThreadId);
-                PendingIntent mrPendingIntent = PendingIntent.getBroadcast(context, 0, mrIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT);
-                noti.addAction(R.drawable.ic_mark_read_holo_dark, markReadText, mrPendingIntent);
 
                 // Add the Call action
                 CharSequence callText = context.getText(R.string.menu_call);
@@ -1202,14 +1162,7 @@ public class MessagingNotification {
                     context.startActivity(qmIntent);
                 }
             }
-        } else {
-            // Show a standard notification in privacy mode
-            noti.setContentText(privateModeContentText);
-            notification = noti.build();
         }
-
-        // Post the notification
-        nm.notify(NOTIFICATION_ID, notification);
     }
 
     protected static CharSequence buildTickerMessage(

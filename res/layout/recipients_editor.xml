@@ -19,27 +19,42 @@
 -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="horizontal">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <com.android.mms.ui.RecipientsEditor
-        android:id="@+id/recipients_editor"
-        android:hint="@string/to_hint"
+    <TextView
+        android:id="@+id/to_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Caption"
+        android:textAllCaps="true"
+        android:text="@string/to_hint" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textFilter"
-        android:layout_weight="1"
-        android:textColor="#000000"
-    />
+        android:orientation="horizontal">
 
-    <ImageButton android:id="@+id/recipients_picker"
-        android:src="@mipmap/ic_launcher_contacts"
-        android:layout_marginLeft="5dip"
-        android:layout_width="50dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="0"
-        android:visibility="gone"
-    />
+        <com.android.mms.ui.RecipientsEditor
+            android:id="@+id/recipients_editor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="textFilter"
+            android:nextFocusRight="@+id/recipients_selector" />
+
+        <ImageView
+            android:id="@+id/recipients_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:padding="4dp"
+            android:src="@drawable/ic_person_add_tinted_24dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:nextFocusLeft="@id/recipients_editor" />
+
+    </LinearLayout>
 
 </LinearLayout>
