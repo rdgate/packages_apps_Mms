@@ -186,6 +186,7 @@
     <string name="backup_file_name_message">ファイルパス : %1s</string>
     <string name="manage_sdcard_messages">SDカードのメッセージ</string>
     <string name="no_backups_found">バックアップが見つかりません</string>
+    <string name="remove_subject">件名を削除</string>
 
     <!-- Extra message options -->
     <string name="message_share">共有</string>
