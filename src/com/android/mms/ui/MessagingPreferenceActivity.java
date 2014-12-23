@@ -35,7 +35,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Message;
 import android.os.Vibrator;
-import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -45,6 +44,7 @@ import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.RingtonePreference;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.SwitchPreference;
 import android.provider.SearchRecentSuggestions;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -150,7 +150,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private ListPreference mMessageSendDelayPref;
     private Preference mSmsLimitPref;
     private Preference mSmsDeliveryReportPref;
-    private CheckBoxPreference mSmsSplitCounterPref;
+    private SwitchPreference mSmsSplitCounterPref;
     private Preference mMmsLimitPref;
     private Preference mMmsDeliveryReportPref;
     private Preference mMmsGroupMmsPref;
@@ -158,10 +158,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private Preference mManageSimPref;
     private Preference mManageSdcardSMSPref;
     private Preference mClearHistoryPref;
-    private CheckBoxPreference mVibratePref;
-    private CheckBoxPreference mEnableNotificationsPref;
-    private CheckBoxPreference mEnablePrivacyModePref;
-    private CheckBoxPreference mMmsAutoRetrievialPref;
+    private SwitchPreference mVibratePref;
+    private SwitchPreference mEnableNotificationsPref;
+    private SwitchPreference mEnablePrivacyModePref;
+    private SwitchPreference mMmsAutoRetrievialPref;
     private RingtonePreference mRingtonePref;
     private Recycler mSmsRecycler;
     private Recycler mMmsRecycler;
@@ -183,10 +183,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     private boolean mIsSmsEnabled;
 
     // QuickMessage
-    private CheckBoxPreference mEnableQuickMessagePref;
-    private CheckBoxPreference mEnableQmLockscreenPref;
-    private CheckBoxPreference mEnableQmCloseAllPref;
-    private CheckBoxPreference mEnableQmDarkThemePref;
+    private SwitchPreference mEnableQuickMessagePref;
+    private SwitchPreference mEnableQmLockscreenPref;
+    private SwitchPreference mEnableQmCloseAllPref;
+    private SwitchPreference mEnableQmDarkThemePref;
 
     // Blacklist
     private PreferenceScreen mBlacklist;
@@ -285,16 +285,16 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mManageSdcardSMSPref = findPreference("pref_key_manage_sdcard_messages");
         mSmsLimitPref = findPreference("pref_key_sms_delete_limit");
         mSmsDeliveryReportPref = findPreference("pref_key_sms_delivery_reports");
-        mSmsSplitCounterPref = (CheckBoxPreference) findPreference("pref_key_sms_split_counter");
+        mSmsSplitCounterPref = (SwitchPreference) findPreference("pref_key_sms_split_counter");
         mMmsDeliveryReportPref = findPreference("pref_key_mms_delivery_reports");
         mMmsGroupMmsPref = findPreference("pref_key_mms_group_mms");
         mMmsReadReportPref = findPreference("pref_key_mms_read_reports");
         mMmsLimitPref = findPreference("pref_key_mms_delete_limit");
         mClearHistoryPref = findPreference("pref_key_mms_clear_history");
-        mEnableNotificationsPref = (CheckBoxPreference) findPreference(NOTIFICATION_ENABLED);
-        mMmsAutoRetrievialPref = (CheckBoxPreference) findPreference(AUTO_RETRIEVAL);
-        mEnablePrivacyModePref = (CheckBoxPreference) findPreference(PRIVACY_MODE_ENABLED);
-        mVibratePref = (CheckBoxPreference) findPreference(NOTIFICATION_VIBRATE);
+        mEnableNotificationsPref = (SwitchPreference) findPreference(NOTIFICATION_ENABLED);
+        mMmsAutoRetrievialPref = (SwitchPreference) findPreference(AUTO_RETRIEVAL);
+        mEnablePrivacyModePref = (SwitchPreference) findPreference(PRIVACY_MODE_ENABLED);
+        mVibratePref = (SwitchPreference) findPreference(NOTIFICATION_VIBRATE);
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (mVibratePref != null && (vibrator == null || !vibrator.hasVibrator())) {
             mNotificationPrefCategory.removePreference(mVibratePref);
@@ -308,10 +308,10 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         mUnicodeStrippingEntries = getResources().getTextArray(R.array.pref_unicode_stripping_entries);
 
         // QuickMessage
-        mEnableQuickMessagePref = (CheckBoxPreference) findPreference(QUICKMESSAGE_ENABLED);
-        mEnableQmLockscreenPref = (CheckBoxPreference) findPreference(QM_LOCKSCREEN_ENABLED);
-        mEnableQmCloseAllPref = (CheckBoxPreference) findPreference(QM_CLOSE_ALL_ENABLED);
-        mEnableQmDarkThemePref = (CheckBoxPreference) findPreference(QM_DARK_THEME_ENABLED);
+        mEnableQuickMessagePref = (SwitchPreference) findPreference(QUICKMESSAGE_ENABLED);
+        mEnableQmLockscreenPref = (SwitchPreference) findPreference(QM_LOCKSCREEN_ENABLED);
+        mEnableQmCloseAllPref = (SwitchPreference) findPreference(QM_CLOSE_ALL_ENABLED);
+        mEnableQmDarkThemePref = (SwitchPreference) findPreference(QM_DARK_THEME_ENABLED);
 
         // Keyboard input type
         mInputTypePref = (ListPreference) findPreference(INPUT_TYPE);
@@ -485,7 +485,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
     private void setEnabledNotificationsPref() {
         // The "enable notifications" setting is really stored in our own prefs. Read the
-        // current value and set the checkbox to match.
+        // current value and set the Switch to match.
         mEnableNotificationsPref.setChecked(getNotificationEnabled(this));
     }
 
@@ -506,25 +506,25 @@ public class MessagingPreferenceActivity extends PreferenceActivity
 
     private void setEnabledQuickMessagePref() {
         // The "enable quickmessage" setting is really stored in our own prefs. Read the
-        // current value and set the checkbox to match.
+        // current value and set the Switch to match.
         mEnableQuickMessagePref.setChecked(getQuickMessageEnabled(this));
     }
 
     private void setEnabledQmLockscreenPref() {
         // The "enable quickmessage on lock screen " setting is really stored in our own prefs. Read the
-        // current value and set the checkbox to match.
+        // current value and set the Switch to match.
         mEnableQmLockscreenPref.setChecked(getQmLockscreenEnabled(this));
     }
 
     private void setEnabledQmCloseAllPref() {
         // The "enable close all" setting is really stored in our own prefs. Read the
-        // current value and set the checkbox to match.
+        // current value and set the Switch to match.
         mEnableQmCloseAllPref.setChecked(getQmCloseAllEnabled(this));
     }
 
     private void setEnabledQmDarkThemePref() {
         // The "Use dark theme" setting is really stored in our own prefs. Read the
-        // current value and set the checkbox to match.
+        // current value and set the Switch to match.
         mEnableQmDarkThemePref.setChecked(getQmDarkThemeEnabled(this));
     }
 
