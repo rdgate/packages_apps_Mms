@@ -1081,6 +1081,22 @@ public class MessagingNotification {
             if (messageCount == 1) {
                 // We've got a single message
 
+            // Add the 'Mark as read' action
+            CharSequence markReadText = context.getText(R.string.qm_mark_read);
+            Intent mrIntent = new Intent();
+            mrIntent.setClass(context, QmMarkRead.class);
+            mrIntent.putExtra(QmMarkRead.SMS_THREAD_ID, mostRecentNotification.mThreadId);
+            PendingIntent mrPendingIntent = PendingIntent.getBroadcast(context, 0, mrIntent,
+                    PendingIntent.FLAG_UPDATE_CURRENT);
+            noti.addAction(R.drawable.ic_mark_read, markReadText, mrPendingIntent);
+        }
+
+        if (messageCount == 1) {
+            // We've got a single message
+
+            // This sets the text for the collapsed form:
+            noti.setContentText(mostRecentNotification.formatBigMessage(context));
+
                 // This sets the text for the collapsed form:
                 noti.setContentText(mostRecentNotification.formatBigMessage(context));
 

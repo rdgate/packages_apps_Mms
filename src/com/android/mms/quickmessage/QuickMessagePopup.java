@@ -88,8 +88,11 @@ import com.google.android.mms.MmsException;
 //import com.android.mms.util.EmojiParser;
 //import com.android.mms.util.SmileyParser;
 
+import java.util.Iterator;
+
 public class QuickMessagePopup extends Activity implements
     LoaderManager.LoaderCallbacks<Cursor> {
+
     private static final String LOG_TAG = "QuickMessagePopup";
 
     private boolean DEBUG = false;
@@ -283,7 +286,6 @@ public class QuickMessagePopup extends Activity implements
                         extras.getString(SMS_FROM_NUMBER_EXTRA), nm);
                 mMessageList.add(qm);
                 mPagerAdapter.notifyDataSetChanged();
-
                 // If triggered from Quick Reply the keyboard should be visible immediately
                 if (extras.getBoolean(QR_SHOW_KEYBOARD_EXTRA, false)) {
                     getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
