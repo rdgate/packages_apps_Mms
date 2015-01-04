@@ -1079,6 +1079,15 @@ public class MessagingNotification {
                         R.drawable.ic_reply, qmText, qmPendingIntent).build()));
                 }
 
+                // Add the 'Mark as read' action
+                CharSequence markReadText = context.getText(R.string.qm_mark_read);
+                Intent mrIntent = new Intent();
+                mrIntent.setClass(context, QmMarkRead.class);
+                mrIntent.putExtra(QmMarkRead.SMS_THREAD_ID, mostRecentNotification.mThreadId);
+                PendingIntent mrPendingIntent = PendingIntent.getBroadcast(context, 0, mrIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                noti.addAction(R.drawable.ic_mark_read, markReadText, mrPendingIntent);
+
                 // Add the Call action
                 CharSequence callText = context.getText(R.string.menu_call);
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
