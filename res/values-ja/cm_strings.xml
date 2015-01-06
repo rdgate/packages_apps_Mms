@@ -180,6 +180,8 @@
     <string name="delete_sms_toast">SMSを削除しました</string>
     <string name="import_sms_toast">SMSをインポートしました</string>
     <string name="export_sms_toast">SMSをエクスポートしました</string>
+    <string name="export_sms_failed_toast">SMSをエクスポートできません</string>
+    <string name="import_sms_failed_toast">SMSをインポートできません</string>
     <string name="perform_backup_title">バックアップ中</string>
     <string name="perform_restore_title">リストア中</string>
     <string name="wait_progress_message">お待ちください...</string>
