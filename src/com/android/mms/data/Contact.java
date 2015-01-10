@@ -11,6 +11,7 @@ import java.util.List;
 
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SqliteWrapper;
@@ -100,6 +101,7 @@ public class Contact {
     private boolean mIsMe;          // true if this contact is me!
     private boolean mSendToVoicemail;   // true if this contact should not put up notification
     private Uri mPeopleReferenceUri;
+    private Resources res;
 
     public interface UpdateListener {
         public void onUpdate(Contact updated);
@@ -388,13 +390,14 @@ public class Contact {
 
     private int determineAccentColor(Context context) {
         Bitmap avatar = getAvatar(context);
+        res = context.getResources();
         if (avatar != null) {
             final Palette palette = Palette.generate(avatar, 24);
             if (palette != null && palette.getVibrantSwatch() != null) {
                 return palette.getVibrantSwatch().getRgb();
             }
         }
-        LetterTileDrawable lt = new LetterTileDrawable(null);
+        LetterTileDrawable lt = new LetterTileDrawable(res);
         String name = getName();
         String identifier = getPhotoIdentifier();
 
