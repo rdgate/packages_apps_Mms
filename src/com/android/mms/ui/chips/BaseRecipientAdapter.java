@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.accounts.Account;
 import android.content.ContentResolver;
@@ -38,7 +38,7 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 
-import com.android.ex.chips.DropdownChipLayouter.AdapterType;
+import com.android.mms.ui.chips.DropdownChipLayouter.AdapterType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -47,6 +47,9 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import android.provider.Telephony.Mms;
+import com.android.ex.chips.R;
 
 /**
  * Adapter for showing a recipient list.
@@ -85,8 +88,10 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
 
     public static final int QUERY_TYPE_EMAIL = 0;
     public static final int QUERY_TYPE_PHONE = 1;
+    public static final int QUERY_TYPE_BOTH = 2;
 
     private final Queries.Query mQueryMode;
+    private final Queries.Query mQueryMode2;
     private final int mQueryType;
 
     /**
@@ -212,6 +217,7 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
 
             final FilterResults results = new FilterResults();
             Cursor defaultDirectoryCursor = null;
+            Cursor defaultDirectoryCursor2 = null;
             Cursor directoryCursor = null;
 
             if (TextUtils.isEmpty(constraint)) {
@@ -221,10 +227,12 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
             }
 
             try {
-                defaultDirectoryCursor = doQuery(constraint, mPreferredMaxResultCount,
+                defaultDirectoryCursor = doQuery(mQueryMode, constraint, mPreferredMaxResultCount,
+                        null /* directoryId */);
+                defaultDirectoryCursor2 = doQuery(mQueryMode2, constraint, mPreferredMaxResultCount,
                         null /* directoryId */);
 
-                if (defaultDirectoryCursor == null) {
+                if (defaultDirectoryCursor == null && defaultDirectoryCursor2 == null) {
                     if (DEBUG) {
                         Log.w(TAG, "null cursor returned for default Email filter query.");
                     }
@@ -238,12 +246,30 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
                             new ArrayList<RecipientEntry>();
                     final Set<String> existingDestinations = new HashSet<String>();
 
-                    while (defaultDirectoryCursor.moveToNext()) {
-                        // Note: At this point each entry doesn't contain any photo
-                        // (thus getPhotoBytes() returns null).
-                        putOneEntry(new TemporaryEntry(defaultDirectoryCursor,
-                                null /* directoryId */),
-                                true, entryMap, nonAggregatedEntries, existingDestinations);
+                    if (defaultDirectoryCursor != null) {
+                        while (defaultDirectoryCursor.moveToNext()) {
+                            if (mQueryMode == Queries.EMAIL &&
+                                    !Mms.isEmailAddress(defaultDirectoryCursor.getString(Queries.Query.DESTINATION)))
+                                continue;
+                            // Note: At this point each entry doesn't contain any photo
+                            // (thus getPhotoBytes() returns null).
+                            putOneEntry(new TemporaryEntry(defaultDirectoryCursor,
+                                    null /* isGalContact */),
+                                    true, entryMap, nonAggregatedEntries, existingDestinations);
+                        }
+                    }
+
+                    if (defaultDirectoryCursor2 != null) {
+                        while (defaultDirectoryCursor2.moveToNext()) {
+                            if (mQueryMode2 == Queries.EMAIL &&
+                                    !Mms.isEmailAddress(defaultDirectoryCursor2.getString(Queries.Query.DESTINATION)))
+                                continue;
+                            // Note: At this point each entry doesn't contain any photo
+                            // (thus getPhotoBytes() returns null).
+                            putOneEntry(new TemporaryEntry(defaultDirectoryCursor2,
+                                    null /* isGalContact */),
+                                    true, entryMap, nonAggregatedEntries, existingDestinations);
+                        }
                     }
 
                     // We'll copy this result to mEntry in publicResults() (run in the UX thread).
@@ -261,6 +287,9 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
             } finally {
                 if (defaultDirectoryCursor != null) {
                     defaultDirectoryCursor.close();
+                }
+                if (defaultDirectoryCursor2 != null) {
+                    defaultDirectoryCursor2.close();
                 }
                 if (directoryCursor != null) {
                     directoryCursor.close();
@@ -371,10 +400,13 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
                     // We don't want to pass this Cursor object to UI thread (b/5017608).
                     // Assuming the result should contain fairly small results (at most ~10),
                     // We just copy everything to local structure.
-                    cursor = doQuery(constraint, getLimit(), mParams.directoryId);
+                    cursor = doQuery(mQueryMode, constraint, getLimit(), mParams.directoryId);
 
                     if (cursor != null) {
                         while (cursor.moveToNext()) {
+                            if (mQueryMode == Queries.EMAIL &&
+                                    !Mms.isEmailAddress(cursor.getString(Queries.Query.DESTINATION)))
+                                continue;
                             tempEntries.add(new TemporaryEntry(cursor, mParams.directoryId));
                         }
                     }
@@ -383,6 +415,27 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
                         cursor.close();
                     }
                 }
+
+                try {
+                    // We don't want to pass this Cursor object to UI thread (b/5017608).
+                    // Assuming the result should contain fairly small results (at most ~10),
+                    // We just copy everything to local structure.
+                    cursor = doQuery(mQueryMode2, constraint, getLimit(), mParams.directoryId);
+
+                    if (cursor != null) {
+                        while (cursor.moveToNext()) {
+                            if (mQueryMode2 == Queries.EMAIL &&
+                                    !Mms.isEmailAddress(cursor.getString(Queries.Query.DESTINATION)))
+                                continue;
+                            tempEntries.add(new TemporaryEntry(cursor, mParams.directoryId));
+                        }
+                    }
+                } finally {
+                    if (cursor != null) {
+                        cursor.close();
+                    }
+                }
+
                 if (!tempEntries.isEmpty()) {
                     results.values = tempEntries;
                     results.count = 1;
@@ -543,10 +596,16 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
 
         if (queryMode == QUERY_TYPE_EMAIL) {
             mQueryMode = Queries.EMAIL;
+            mQueryMode2 = null;
         } else if (queryMode == QUERY_TYPE_PHONE) {
             mQueryMode = Queries.PHONE;
+            mQueryMode2 = null;
+        } else if (queryMode == QUERY_TYPE_BOTH) {
+            mQueryMode = Queries.PHONE;
+            mQueryMode2 = Queries.EMAIL;
         } else {
             mQueryMode = Queries.EMAIL;
+            mQueryMode2 = null;
             Log.e(TAG, "Unsupported query type: " + queryMode);
         }
     }
@@ -580,8 +639,8 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
     }
 
     /**
-     * If true, forces using the {@link com.android.ex.chips.SingleRecipientArrayAdapter}
-     * instead of {@link com.android.ex.chips.RecipientAlternatesAdapter} when
+     * If true, forces using the {@link com.android.mms.ui.chips.SingleRecipientArrayAdapter}
+     * instead of {@link com.android.mms.ui.chips.RecipientAlternatesAdapter} when
      * clicking on a chip. Default implementation returns {@code false}.
      */
     public boolean forceShowAddress() {
@@ -705,10 +764,10 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
     }
 
     /**
-     * Called whenever {@link com.android.ex.chips.BaseRecipientAdapter.DirectoryFilter}
+     * Called whenever {@link com.android.mms.ui.chips.BaseRecipientAdapter.DirectoryFilter}
      * wants to add an additional entry to the results. Derived classes should override
      * this method if they are not using the default data structures provided by
-     * {@link com.android.ex.chips.BaseRecipientAdapter} and are instead using their
+     * {@link com.android.mms.ui.chips.BaseRecipientAdapter} and are instead using their
      * own data structures to store and collate data.
      * @param entry the entry being added
      * @param isAggregatedEntry
@@ -834,8 +893,9 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
         mPhotoManager.populatePhotoBytesAsync(entry, cb);
     }
 
-    private Cursor doQuery(CharSequence constraint, int limit, Long directoryId) {
-        final Uri.Builder builder = mQueryMode.getContentFilterUri().buildUpon()
+    private Cursor doQuery(Queries.Query query, CharSequence constraint, int limit, Long directoryId) {
+        if (query == null) return null;
+        final Uri.Builder builder = query.getContentFilterUri().buildUpon()
                 .appendPath(constraint.toString())
                 .appendQueryParameter(ContactsContract.LIMIT_PARAM_KEY,
                         String.valueOf(limit + ALLOWANCE_FOR_DUPLICATES));
@@ -849,7 +909,7 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
         }
         final long start = System.currentTimeMillis();
         final Cursor cursor = mContentResolver.query(
-                builder.build(), mQueryMode.getProjection(), null, null, null);
+                builder.build(), query.getProjection(), null, null, null);
         final long end = System.currentTimeMillis();
         if (DEBUG) {
             Log.d(TAG, "Time for autocomplete (query: " + constraint

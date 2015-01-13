@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips.recipientchip;
+package com.android.mms.ui.chips.recipientchip;
 
-import com.android.ex.chips.RecipientEntry;
+import com.android.mms.ui.chips.RecipientEntry;
 
 import android.text.TextUtils;
 
