@@ -1,4 +1,4 @@
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,7 +16,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.android.ex.chips.Queries.Query;
+import com.android.mms.ui.chips.Queries.Query;
+
+import com.android.ex.chips.R;
 
 /**
  * A class that inflates and binds the views in the dropdown list from

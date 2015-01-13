@@ -1,4 +1,4 @@
-package com.android.ex.chips.recipientchip;
+package com.android.mms.ui.chips.recipientchip;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;

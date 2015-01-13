@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -29,8 +29,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Default implementation of {@link com.android.ex.chips.PhotoManager} that
- * queries for photo bytes by using the {@link com.android.ex.chips.RecipientEntry}'s
+ * Default implementation of {@link com.android.mms.ui.chips.PhotoManager} that
+ * queries for photo bytes by using the {@link com.android.mms.ui.chips.RecipientEntry}'s
  * photoThumbnailUri.
  */
 public class DefaultPhotoManager implements PhotoManager {

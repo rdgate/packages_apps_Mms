@@ -25,7 +25,7 @@
     android:gravity="center_vertical"
     android:background="?android:attr/activatedBackgroundIndicator">
 
-    <com.android.ex.chips.CircularImageView
+    <com.android.mms.ui.chips.CircularImageView
         android:id="@android:id/icon"
         android:layout_width="@dimen/avatar_width_height"
         android:layout_height="@dimen/avatar_width_height"
