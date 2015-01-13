@@ -43,9 +43,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.MultiAutoCompleteTextView;
 
-import com.android.ex.chips.DropdownChipLayouter;
-import com.android.ex.chips.RecipientEditTextView;
-import com.android.ex.chips.RecipientEntry;
+import com.android.mms.ui.chips.DropdownChipLayouter;
+import com.android.mms.ui.chips.RecipientEditTextView;
+import com.android.mms.ui.chips.RecipientEntry;
 import com.android.mms.MmsConfig;
 import com.android.mms.R;
 import com.android.mms.data.Contact;

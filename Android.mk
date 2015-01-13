@@ -32,7 +32,6 @@ LOCAL_STATIC_JAVA_LIBRARIES += android-support-v13
 
 LOCAL_AAPT_FLAGS := \
     --auto-add-overlay \
-    --extra-packages com.android.ex.chips \
     --extra-packages com.android.contacts.common \
     --extra-packages com.android.phone.common
 

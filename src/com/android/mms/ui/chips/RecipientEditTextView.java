@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.ex.chips;
+package com.android.mms.ui.chips;
 
 import android.app.Dialog;
 import android.content.ClipData;
@@ -88,11 +88,11 @@ import android.widget.MultiAutoCompleteTextView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.android.ex.chips.RecipientAlternatesAdapter.RecipientMatchCallback;
-import com.android.ex.chips.recipientchip.DrawableRecipientChip;
-import com.android.ex.chips.recipientchip.InvisibleRecipientChip;
-import com.android.ex.chips.recipientchip.ReplacementDrawableSpan;
-import com.android.ex.chips.recipientchip.VisibleRecipientChip;
+import com.android.mms.ui.chips.RecipientAlternatesAdapter.RecipientMatchCallback;
+import com.android.mms.ui.chips.recipientchip.DrawableRecipientChip;
+import com.android.mms.ui.chips.recipientchip.InvisibleRecipientChip;
+import com.android.mms.ui.chips.recipientchip.ReplacementDrawableSpan;
+import com.android.mms.ui.chips.recipientchip.VisibleRecipientChip;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -103,6 +103,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.android.ex.chips.R;
 
 /**
  * RecipientEditTextView is an auto complete text view for use with applications
