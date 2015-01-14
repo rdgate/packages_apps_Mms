@@ -781,6 +781,8 @@ public class QuickMessagePopup extends Activity implements
             TextView qmTimestamp = (TextView) layout.findViewById(R.id.timestampTextView);
             QuickContactBadge qmContactBadge = (QuickContactBadge) layout.findViewById(R.id.contactBadge);
 
+            qmContactBadge.setOverlay(null);
+
             // Retrieve the current message
             QuickMessage qm = mMessageList.get(position);
             if (qm != null) {
