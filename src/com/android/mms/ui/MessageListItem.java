@@ -61,8 +61,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Checkable;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -81,7 +79,6 @@ import com.android.mms.transaction.SmsReceiverService;
 import com.android.mms.transaction.Transaction;
 import com.android.mms.transaction.TransactionBundle;
 import com.android.mms.transaction.TransactionService;
-import com.android.mms.ui.zoom.ZoomMessageListItem;
 import com.android.mms.util.DownloadManager;
 import com.android.mms.util.ItemLoadedCallback;
 import com.android.mms.util.ThumbnailManager.ImageLoaded;
@@ -91,7 +88,7 @@ import com.google.android.mms.pdu.PduHeaders;
 /**
  * This class provides view of a message in the messages list.
  */
-public class MessageListItem extends ZoomMessageListItem implements
+public class MessageListItem extends LinearLayout implements
         SlideViewInterface, OnClickListener {
     public static final String EXTRA_URLS = "com.android.mms.ExtraUrls";
 
@@ -158,10 +155,6 @@ public class MessageListItem extends ZoomMessageListItem implements
         mMessageBlock = findViewById(R.id.message_block);
 
         mAvatar.setOverlay(null);
-
-        // Add the views to be managed by the zoom control
-        addZoomableTextView(mBodyTextView);
-        addZoomableTextView(mDateView);
     }
 
     public void bind(MessageItem msgItem, int accentColor,
