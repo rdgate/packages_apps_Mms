@@ -738,14 +738,14 @@ public class SmsReceiverService extends Service {
 
         if (pduCount == 1) {
             // There is only one part, so grab the body directly.
-            values.put(Inbox.BODY, replaceFormFeeds(sms.getDisplayMessageBody()));
+            values.put(Inbox.BODY, replaceFormFeeds(ConvUtils.convSBUnicode(sms.getDisplayMessageBody())));
         } else {
             // Build up the body from the parts.
             StringBuilder body = new StringBuilder();
             for (int i = 0; i < pduCount; i++) {
                 sms = msgs[i];
                 if (sms.mWrappedSmsMessage != null) {
-                    body.append(sms.getDisplayMessageBody());
+                    body.append(ConvUtils.convSBUnicode(sms.getDisplayMessageBody()));
                 }
             }
             values.put(Inbox.BODY, replaceFormFeeds(body.toString()));
@@ -799,14 +799,14 @@ public class SmsReceiverService extends Service {
 
         if (pduCount == 1) {
             // There is only one part, so grab the body directly.
-            values.put(Inbox.BODY, replaceFormFeeds(sms.getDisplayMessageBody()));
+            values.put(Inbox.BODY, replaceFormFeeds(ConvUtils.convSBUnicode(sms.getDisplayMessageBody())));
         } else {
             // Build up the body from the parts.
             StringBuilder body = new StringBuilder();
             for (int i = 0; i < pduCount; i++) {
                 sms = msgs[i];
                 if (sms.mWrappedSmsMessage != null) {
-                    body.append(sms.getDisplayMessageBody());
+                    body.append(ConvUtils.convSBUnicode(sms.getDisplayMessageBody()));
                 }
             }
             values.put(Inbox.BODY, replaceFormFeeds(body.toString()));
