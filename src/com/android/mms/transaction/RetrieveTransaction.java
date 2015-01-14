@@ -150,6 +150,8 @@ public class RetrieveTransaction extends Transaction implements Runnable {
                 mTransactionState.setState(TransactionState.FAILED);
                 mTransactionState.setContentUri(mUri);
             } else {
+                ConvUtils.convPduBody(retrieveConf);
+
                 // Store M-Retrieve.conf into Inbox
                 PduPersister persister = PduPersister.getPduPersister(mContext);
                 msgUri = persister.persist(retrieveConf, Inbox.CONTENT_URI, true,
