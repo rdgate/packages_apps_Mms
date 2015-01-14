@@ -733,7 +733,7 @@ public class MessageListItem extends ZoomMessageListItem implements
                 buf.append(Html.fromHtml(body));
             } else {
                 if (hasSubject) {
-                    buf.append(" - ");
+                    buf.append("\n");
                 }
                 buf.append(body);
             }
