@@ -658,7 +658,13 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
     public void getMatchingRecipients(ArrayList<String> inAddresses,
             RecipientAlternatesAdapter.RecipientMatchCallback callback) {
         RecipientAlternatesAdapter.getMatchingRecipients(
-                getContext(), this, inAddresses, getAccount(), callback);
+                getContext(), this, inAddresses,
+                isPhoneQuery() ? QUERY_TYPE_PHONE : QUERY_TYPE_EMAIL,
+                getAccount(), callback);
+    }
+
+    protected boolean isPhoneQuery() {
+        return getQueryType() == BaseRecipientAdapter.QUERY_TYPE_PHONE;
     }
 
     /**
