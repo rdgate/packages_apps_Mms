@@ -47,11 +47,17 @@
                 android:layout_height="@dimen/avatar_width_height" />
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/avatar"
+                android:gravity="right"
+                android:orientation="vertical" >
+
+            <LinearLayout
                 android:id="@+id/message_block"
                 android:minHeight="@dimen/avatar_width_height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/avatar"
                 android:paddingTop="@dimen/message_bubble_padding_vertical"
                 android:paddingBottom="@dimen/message_bubble_padding_vertical"
                 android:paddingStart="@dimen/message_bubble_padding_horizontal"
@@ -112,18 +118,19 @@
                         android:tint="@color/slot_indicator_background"
                         android:visibility="gone"
                         android:layout_gravity="center_vertical" />
-
-                    <TextView android:id="@+id/date_view"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end"
-                        android:textAppearance="@android:style/TextAppearance.Material.Caption" />
                 </LinearLayout>
 
                 <ViewStub android:id="@+id/mms_layout_view_stub"
                     android:layout="@layout/mms_layout_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <TextView android:id="@+id/date_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="10dip"
+                android:textAppearance="@android:style/TextAppearance.Material.Caption" />
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
