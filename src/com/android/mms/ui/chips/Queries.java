@@ -30,7 +30,7 @@ import android.provider.ContactsContract.Contacts;
 
     public static final Query PHONE = new Query(new String[] {
             Contacts.DISPLAY_NAME,                          // 0
-            Phone.NUMBER,                                   // 1
+            Phone.NORMALIZED_NUMBER,                        // 1
             Phone.TYPE,                                     // 2
             Phone.LABEL,                                    // 3
             Phone.CONTACT_ID,                               // 4
