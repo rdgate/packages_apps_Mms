@@ -157,6 +157,8 @@ public class MessageListItem extends ZoomMessageListItem implements
         mAvatar = (CheckableQuickContactBadge) findViewById(R.id.avatar);
         mMessageBlock = findViewById(R.id.message_block);
 
+        mAvatar.setOverlay(null);
+
         // Add the views to be managed by the zoom control
         addZoomableTextView(mBodyTextView);
         addZoomableTextView(mDateView);
