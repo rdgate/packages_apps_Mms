@@ -1075,6 +1075,13 @@ public class ConvUtils {
                     part.setData(text.getBytes());
                     part.setCharset(CharacterSets.UTF_8);
                 }
+
+                String text = new String(part.getData());
+                if (text.endsWith("\n")) {
+                    int last = text.lastIndexOf("\n");
+                    text = text.substring(0, last);
+                }
+                part.setData(text.getBytes());
             }
         }
     }
