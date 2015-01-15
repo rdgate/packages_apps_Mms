@@ -173,6 +173,10 @@
             android:theme="@style/MmsTheme"
             android:label="@string/recipient_list_activity" />
 
+        <activity android:name=".ui.RecipientsEditor"
+            android:theme="@style/MmsTheme"
+            android:label="@string/new_message" />
+
         <activity android:name=".ui.SlideEditorActivity"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/MmsTheme"
