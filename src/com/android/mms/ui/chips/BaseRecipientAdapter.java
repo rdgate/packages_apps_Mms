@@ -644,7 +644,7 @@ public class BaseRecipientAdapter extends BaseAdapter implements Filterable, Acc
      * clicking on a chip. Default implementation returns {@code false}.
      */
     public boolean forceShowAddress() {
-        return false;
+        return true;
     }
 
     /**
