@@ -1133,24 +1133,20 @@ public class ComposeMessageActivity extends Activity
 
             MsgListMenuClickListener l = new MsgListMenuClickListener(msgItem);
 
-            // It is unclear what would make most sense for copying an MMS message
-            // to the clipboard, so we currently do SMS only.
-            if (msgItem.isSms()) {
-                // Message type is sms. Only allow "edit" if the message has a single recipient
-                if (getRecipients().size() == 1 &&
-                        (msgItem.mBoxId == Sms.MESSAGE_TYPE_OUTBOX ||
-                                msgItem.mBoxId == Sms.MESSAGE_TYPE_FAILED)) {
-                    menu.add(0, MENU_EDIT_MESSAGE, 0, R.string.menu_edit)
-                    .setOnMenuItemClickListener(l);
-                }
-
-                menu.add(0, MENU_COPY_MESSAGE_TEXT, 0, R.string.copy_message_text)
+            // Message type is sms. Only allow "edit" if the message has a single recipient
+            if (getRecipients().size() == 1 &&
+                    (msgItem.mBoxId == Sms.MESSAGE_TYPE_OUTBOX ||
+                            msgItem.mBoxId == Sms.MESSAGE_TYPE_FAILED)) {
+                menu.add(0, MENU_EDIT_MESSAGE, 0, R.string.menu_edit)
                 .setOnMenuItemClickListener(l);
-
-                // Add SMS to calendar reminder
-                menu.add(0, MENU_ADD_TO_CALENDAR, 0, R.string.menu_add_to_calendar)
-                        .setOnMenuItemClickListener(l);
             }
+
+            menu.add(0, MENU_COPY_MESSAGE_TEXT, 0, R.string.copy_message_text)
+            .setOnMenuItemClickListener(l);
+
+            // Add SMS to calendar reminder
+            menu.add(0, MENU_ADD_TO_CALENDAR, 0, R.string.menu_add_to_calendar)
+                    .setOnMenuItemClickListener(l);
 
             addCallAndContactMenuItems(menu, l, msgItem);
 
