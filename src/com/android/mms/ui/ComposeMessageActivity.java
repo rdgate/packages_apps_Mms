@@ -1947,7 +1947,7 @@ public class ComposeMessageActivity extends Activity
             mRecipientsEditor.setVisibility(View.VISIBLE);
         }
         mRecipientsSelector = findViewById(R.id.recipients_selector);
-        mRecipientsSelector.setVisibility(View.VISIBLE);
+        mRecipientsSelector.setVisibility(View.GONE);
 
         mRecipientsSelector.setOnClickListener(this);
 
