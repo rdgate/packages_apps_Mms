@@ -186,6 +186,19 @@
     <string name="pref_summary_mms_auto_retrieval" msgid="925163257363757048">"メッセージを自動的に取得する"</string>
     <string name="pref_title_mms_retrieval_during_roaming" msgid="6016227402731817804">"ローミング時に自動取得"</string>
     <string name="pref_summary_mms_retrieval_during_roaming" msgid="2427892806582531020">"ローミング中にメッセージを自動的に取得する"</string>
+
+    <!-- Confirm Mark As Unread -->
+    <string name="confirm_mark_unread_dialog_title">未読にしますか?</string>
+    <plurals name="confirm_mark_unread_conversation">
+        <!-- Case of 1 result. -->
+        <item quantity="one">1件のスレッドを未読にします。</item>
+        <!-- Case of 0 or 2 or more results. -->
+        <item quantity="other"><xliff:g id="number" example="15">%1$s</xliff:g>件のスレッドを未読にします。</item>
+    </plurals>
+    <string name="confirm_mark_unread_conversation">スレッドを未読にします。</string>
+    <!-- Mark all threads confirmation dialog message -->
+    <string name="confirm_mark_unread_all_conversations">すべてのスレッドを未読にします。</string>
+
     <string name="confirm_dialog_title" msgid="2187213750475782725">"削除しますか？"</string>
     <string name="confirm_dialog_locked_title" msgid="8179085718150932242">"ロックされたメッセージを削除しますか？"</string>
   <plurals name="confirm_delete_conversation">
