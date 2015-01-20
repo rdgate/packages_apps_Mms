@@ -278,7 +278,7 @@
 
         <ListPreference
             android:key="pref_key_mms_message_font_size"
-            android:defaultValue="18"
+            android:defaultValue="16"
             android:title="@string/pref_title_mms_message_font_size"
             android:summary="@string/pref_summary_mms_message_font_size"
             android:entries="@array/pref_mms_message_font_size_entries"
