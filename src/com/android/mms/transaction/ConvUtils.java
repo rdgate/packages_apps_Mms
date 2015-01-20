@@ -1056,11 +1056,6 @@ public class ConvUtils {
                     }
                     part.setData(text.getBytes());
                     part.setCharset(CharacterSets.UTF_8);
-                } else if (part.getCharset() == CharacterSets.UTF_8) {
-                    String text = new String(part.getData());
-                    String convtext = convSBUnicode(text);
-                    part.setData(convtext.getBytes());
-                    part.setCharset(CharacterSets.UTF_8);
                 } else if ((ContentType.TEXT_HTML.equals(new String(part.getContentType())) ||
                         (ContentType.TEXT_PLAIN.equals(new String(part.getContentType())))) &&
                         part.getCharset() != CharacterSets.UTF_8) {
