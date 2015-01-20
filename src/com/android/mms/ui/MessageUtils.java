@@ -1046,7 +1046,9 @@ public class MessageUtils {
 
     public static boolean isEos(Context context) {
         try {
-            String version = SystemProperties.get("ro.eos.version");
+            String version =
+            	SystemProperties.get("ro.eos.version") +
+            	SystemProperties.get("ro.cm.version");
             if (!version.isEmpty()) {
                 return true;
             }
