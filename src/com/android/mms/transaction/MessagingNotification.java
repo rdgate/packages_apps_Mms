@@ -976,6 +976,7 @@ public class MessagingNotification {
         noti.setContentTitle(title)
             .setContentIntent(
                     taskStackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT))
+            .setColor(context.getResources().getColor(R.color.mms_theme_color))
             .setCategory(Notification.CATEGORY_MESSAGE)
             .setPriority(Notification.PRIORITY_DEFAULT);     // TODO: set based on contact coming
                                                              // from a favorite.
