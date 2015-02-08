@@ -54,7 +54,7 @@
 
     <!-- Show pop-up -->
     <string name="pref_quickmessage_title">ポップアップを表示</string>
-    <string name="pref_quickmessage_summary">SMSメッセージ受信時にクイックメッセージポップアップを表示する</string>
+    <string name="pref_quickmessage_summary">SMSメッセージ受信時に自動的にクイックメッセージポップアップを開く</string>
 
     <!-- Wake and unlock -->
     <string name="pref_wake_unlock_title">ウェイク&amp;アンロック</string>
@@ -171,22 +171,22 @@
     <string name="start_new_message_button">新規メッセージ</string>
 
     <!-- SMS backup -->
-    <string name="prefs_title_export_sms_messages">SMSエクスポート</string>
-    <string name="prefs_title_import_sms_messages">SMSインポート</string>
-    <string name="import_sms_title">SMSをインポート</string>
-    <string name="export_sms_title">SMSをエクスポート</string>
-    <string name="delete_sms_title">SMSを削除</string>
-    <string name="pick_sms_backup_title">SMSバックアップを選択</string>
-    <string name="delete_sms_toast">SMSを削除しました</string>
-    <string name="import_sms_toast">SMSをインポートしました</string>
-    <string name="export_sms_toast">SMSをエクスポートしました</string>
-    <string name="export_sms_failed_toast">SMSをエクスポートできません</string>
-    <string name="import_sms_failed_toast">SMSをインポートできません</string>
-    <string name="perform_backup_title">バックアップ中</string>
-    <string name="perform_restore_title">リストア中</string>
-    <string name="wait_progress_message">お待ちください...</string>
-    <string name="backup_file_name_message">ファイルパス : %1s</string>
-    <string name="manage_sdcard_messages">SDカードのメッセージ</string>
+    <string name="prefs_title_export_sms_messages">エクスポート</string>
+    <string name="prefs_title_import_sms_messages">インポート</string>
+    <string name="import_sms_title">ストレージからインポート</string>
+    <string name="export_sms_title">ストレージからインポート</string>
+    <string name="delete_sms_title">バックアップを削除</string>
+    <string name="pick_sms_backup_title">バックアップを選択</string>
+    <string name="delete_sms_toast">メッセージを削除しました</string>
+    <string name="import_sms_toast">メッセージをインポートしました</string>
+    <string name="export_sms_toast">メッセージをエクスポートしました</string>
+    <string name="export_sms_failed_toast">メッセージをエクスポートできません</string>
+    <string name="import_sms_failed_toast">メッセージをインポートできません</string>
+    <string name="perform_backup_title">エクスポート中</string>
+    <string name="perform_restore_title">インポート中</string>
+    <string name="wait_progress_message">お待ちください\u2026</string>
+    <string name="backup_file_name_message">メッセージをエクスポートしました : %1s</string>
+    <string name="manage_sdcard_messages">メッセージのインポート/エクスポート</string>
     <string name="no_backups_found">バックアップが見つかりません</string>
     <string name="remove_subject">件名を削除</string>
 
