@@ -39,10 +39,7 @@
         android:icon="@drawable/ic_menu_delete" />
 
     <item android:id="@+id/action_mark_all_as_unread"
-          android:title="@string/menu_all_as_unread" />
-
-    <item android:id="@+id/action_mark_all_as_read"
-          android:title="@string/menu_all_as_read" />
+        android:title="@string/menu_all_as_unread" />
 
     <item android:id="@+id/action_cell_broadcasts"
         android:title="@string/menu_cell_broadcasts" />
