@@ -1178,6 +1178,7 @@ public class MessagingNotification {
         // Update the notification.
         noti.setContentTitle(title)
             .setContentIntent(pendingIntent)
+            .setColor(context.getResources().getColor(R.color.mms_theme_color))
             .setCategory(Notification.CATEGORY_MESSAGE)
             .setPriority(Notification.PRIORITY_DEFAULT);     // TODO: set based on contact coming
                                                              // from a favorite.
@@ -1258,8 +1259,8 @@ public class MessagingNotification {
                 // This is a QR, we should show the keyboard when the user taps to reply
                 qmIntent.putExtra(QuickMessagePopup.QR_SHOW_KEYBOARD_EXTRA, true);
 
-                // Create the Quick reply pending intent and add it to the notification
-                CharSequence qmText = context.getText(R.string.qm_quick_reply);
+                // Create the pending intent and add it to the notification
+                CharSequence qmText = context.getText(R.string.menu_reply);
                 PendingIntent qmPendingIntent = PendingIntent.getActivity(context, 0, qmIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT);
                 noti.addAction(R.drawable.ic_reply, qmText, qmPendingIntent);
@@ -1281,7 +1282,7 @@ public class MessagingNotification {
             // Add the Call action
             CharSequence callText = context.getText(R.string.menu_call);
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(mostRecentNotification.mSender.getPhoneUri());
+            callIntent.setData(Uri.parse("tel:" + mostRecentNotification.mSender.getNumber()));
             PendingIntent callPendingIntent = PendingIntent.getActivity(context, 0, callIntent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
             noti.addAction(R.drawable.ic_menu_call, callText, callPendingIntent);
@@ -1984,7 +1985,7 @@ public class MessagingNotification {
                 Context.NOTIFICATION_SERVICE);
 
         String title = context.getString(R.string.sms_full_title);
-        String description = context.getString(R.string.sms_full_body_cm);
+        String description = context.getString(R.string.sms_full_body);
         PendingIntent intent = PendingIntent.getActivity(context, 0,  new Intent(), 0);
         Notification notification = new Notification();
         notification.icon = R.drawable.stat_notify_sms_failed;

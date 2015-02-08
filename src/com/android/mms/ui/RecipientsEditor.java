@@ -139,14 +139,10 @@ public class RecipientsEditor extends RecipientEditTextView {
             protected int getItemLayoutResId(AdapterType type) {
                 return R.layout.mms_chips_recipient_dropdown_item;
             }
+
             @Override
-            protected void bindIconToView(boolean showImage, RecipientEntry entry,
-                    ImageView view, AdapterType type) {
-                if (view != null && !showImage) {
-                    view.setVisibility(View.INVISIBLE);
-                } else {
-                    super.bindIconToView(showImage, entry, view, type);
-                }
+            protected int getAlternateItemLayoutResId(AdapterType type) {
+                return R.layout.mms_chips_recipient_dropdown_item;
             }
         });
     }
@@ -477,6 +473,9 @@ public class RecipientsEditor extends RecipientEditTextView {
     private class RecipientsEditorTokenizer
             implements MultiAutoCompleteTextView.Tokenizer {
 
+        private Spanned mPreviousSpanned;
+        private ArrayList<String> mPreviousSpannedNumbers;
+
         @Override
         public int findTokenStart(CharSequence text, int cursor) {
             int i = cursor;
@@ -546,8 +545,13 @@ public class RecipientsEditor extends RecipientEditTextView {
 
         public List<String> getNumbers() {
             Spanned sp = RecipientsEditor.this.getText();
+
+            if (mPreviousSpanned != null && mPreviousSpanned.equals(sp)) {
+                return (List<String>)mPreviousSpannedNumbers.clone();
+            }
+
             int len = sp.length();
-            List<String> list = new ArrayList<String>();
+            ArrayList<String> list = new ArrayList<String>();
 
             int start = 0;
             int i = 0;
@@ -581,6 +585,9 @@ public class RecipientsEditor extends RecipientEditTextView {
                     i++;
                 }
             }
+
+            mPreviousSpanned = sp;
+            mPreviousSpannedNumbers = list;
 
             return list;
         }

@@ -23,7 +23,7 @@
     android:paddingStart="8dp"
     android:paddingEnd="8dp"
     android:gravity="center_vertical"
-    android:background="?android:attr/activatedBackgroundIndicator">
+    android:background="@drawable/chips_dropdown_background">
 
     <com.android.mms.ui.chips.CircularImageView
         android:id="@android:id/icon"
@@ -77,5 +77,7 @@
             android:ellipsize="end" />
 
     </RelativeLayout>
+
+    <ImageView style="@style/ChipDeleteIconStyle" />
 
 </LinearLayout>
