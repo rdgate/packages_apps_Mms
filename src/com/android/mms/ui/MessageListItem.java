@@ -48,7 +48,6 @@ import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
-import android.text.style.AbsoluteSizeSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.LineHeightSpan;
 import android.text.style.StyleSpan;
@@ -247,7 +246,6 @@ public class MessageListItem extends ZoomMessageListItem implements
                                             mMessageItem.mHighlight,
                                             mMessageItem.mTextContentType));
 
-        mBodyTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, mZoomFontSize);
         mDateView.setText(buildTimestampLine(msgSizeText + " " + mMessageItem.mTimestamp));
 
         switch (mMessageItem.getMmsDownloadStatus()) {
@@ -463,7 +461,7 @@ public class MessageListItem extends ZoomMessageListItem implements
             }
         }
         drawRightStatusIndicator(mMessageItem);
-        mBodyTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, mZoomFontSize);
+
         requestLayout();
     }
 
