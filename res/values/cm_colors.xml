@@ -1,5 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2013 The CyanogenMod Project
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2015 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,9 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
 
     <!-- Color of the text for buttons in the action bar  -->
     <color name="action_bar_button_text_color">#FFFFFF</color>
@@ -43,4 +42,7 @@
     <color name="dividers">#eeeeee</color>
     <color name="transparent">#00000000</color>
 
+    <color name="compose_message_background_color">#ffffffff</color>
+    <color name="compose_message_text_color">#ff000000</color>
+    <color name="compose_message_divider_color">#ffeeeeee</color>
 </resources>
