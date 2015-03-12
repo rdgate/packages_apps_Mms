@@ -71,14 +71,13 @@ public class QTIBackupMMS {
     Context mContext;
     private final boolean DEBUG = false;
     private final String TAG = "QTIBackupMMS";
-    QMMSBackup mmsBackupSent, mmsBackupInbox, mmsBackupDraft;
+    QMMSBackup mmsBackupSent, mmsBackupInbox;
     FileOutputStream mFileOutputStream;
     FileInputStream mFileInputStream;
 
     private enum MsgBox{
         SENT,
-        INBOX,
-        DRAFT;
+            INBOX;
     }
 
     static final String[] MAILBOX_PROJECTION = new String[] {
@@ -97,14 +96,12 @@ public class QTIBackupMMS {
         vfile = _vfile;
         mmsBackupSent = new QMMSBackup();
         mmsBackupInbox = new QMMSBackup();
-        mmsBackupDraft = new QMMSBackup();
     }
 
     public void performBackup(){
         int numOfMmsSent = getMmsList(MsgBox.SENT);
         int numOfMmsInbox = getMmsList(MsgBox.INBOX);
-        int numOfMmsDraft = getMmsList(MsgBox.DRAFT);
-        writeMmsList(numOfMmsSent, numOfMmsInbox, numOfMmsDraft);
+        writeMmsList(numOfMmsSent, numOfMmsInbox);
     }
 
     public void performRestore(){
@@ -118,26 +115,15 @@ public class QTIBackupMMS {
             int numOfObjects = ois.readInt();
             mmsbk = (QMMSBackup) ois.readObject();
             if(numOfObjects > 0){
-                Log.d(TAG, "No messages to restore in Sent");
+                writeMMS(mmsbk, numOfObjects, Telephony.Mms.Sent.CONTENT_URI);
             }
-            writeMMS(mmsbk, Telephony.Mms.Sent.CONTENT_URI);
 
             //For inbox messages
             numOfObjects = ois.readInt();
             mmsbk = (QMMSBackup) ois.readObject();
             if(numOfObjects > 0){
-                Log.d(TAG, "No messages to restore in Inbox");
+                writeMMS(mmsbk, numOfObjects, Telephony.Mms.Inbox.CONTENT_URI);
             }
-            writeMMS(mmsbk, Telephony.Mms.Inbox.CONTENT_URI);
-
-            //For draft messages
-            numOfObjects = ois.readInt();
-            mmsbk = (QMMSBackup) ois.readObject();
-            if(numOfObjects > 0){
-                Log.d(TAG, "No messages to restore in Draft");
-            }
-            writeMMS(mmsbk, Telephony.Mms.Draft.CONTENT_URI);
-
         } catch (FileNotFoundException e) {
             Log.e(TAG, e.getLocalizedMessage());
         } catch (StreamCorruptedException e) {
@@ -152,7 +138,7 @@ public class QTIBackupMMS {
     /* Read the deserialized object contents and write them to database.
      * MMS data is also restored using PduPersister.
      */
-    private void writeMMS(QMMSBackup mmsbk, Uri uri) {
+    private void writeMMS(QMMSBackup mmsbk, int numOfObjects, Uri uri) {
         ContentResolver cr = mContext.getContentResolver();
         ContentValues values = new ContentValues();
         PduPersister pdup = PduPersister.getPduPersister(mContext);
@@ -191,7 +177,7 @@ public class QTIBackupMMS {
     }
 
     /* Serializes mmsBackup object. Writes it to mmsBackup file */
-    private void writeMmsList(int numSent, int numInbox, int numDraft) {
+    private void writeMmsList(int numSent, int numInbox) {
         try {
             mFileOutputStream =  mContext.openFileOutput(vfile, Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(mFileOutputStream);
@@ -199,8 +185,7 @@ public class QTIBackupMMS {
             oos.writeObject( mmsBackupSent );
             oos.writeInt(numInbox);
             oos.writeObject( mmsBackupInbox );
-            oos.writeInt(numDraft);
-            oos.writeObject( mmsBackupDraft );
+
             oos.flush();
             oos.close();
             mFileOutputStream.close();
@@ -228,13 +213,6 @@ public class QTIBackupMMS {
                 uri = Telephony.Mms.Inbox.CONTENT_URI;
                 cr = mContext.getContentResolver().query(uri, MAILBOX_PROJECTION, null, null, null);
                 numOfEntries = BackupMsg(cr, mmsBackupInbox);
-                cr.close();
-                break;
-
-            case DRAFT:
-                uri = Telephony.Mms.Draft.CONTENT_URI;
-                cr = mContext.getContentResolver().query(uri, MAILBOX_PROJECTION, null, null, null);
-                numOfEntries = BackupMsg(cr, mmsBackupDraft);
                 cr.close();
                 break;
         }

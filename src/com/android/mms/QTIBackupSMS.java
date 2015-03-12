@@ -118,7 +118,7 @@ public class QTIBackupSMS{
     Context mContext;
     private final boolean DEBUG = false;
     private final String TAG = "QTIBackupSMS";
-    SMSBackup smsBackupInbox, smsBackupSent, smsBackupDraft;
+    SMSBackup smsBackupInbox, smsBackupSent;
     FileOutputStream mFileOutputStream;
     FileInputStream mFileInputStream;
     BufferedOutputStream buf;
@@ -128,17 +128,16 @@ public class QTIBackupSMS{
         vfile = _vfile;
         smsBackupInbox = new SMSBackup();
         smsBackupSent = new SMSBackup();
-        smsBackupDraft = new SMSBackup();
     }
 
     private enum MsgBox{
         SENT,
-        INBOX,
-        DRAFT;
+            INBOX;
     }
 
     public void performRestore(){
         SMSBackup smsbk;
+
         try {
             mFileInputStream = mContext.openFileInput(vfile);
             ObjectInputStream ois = new ObjectInputStream(mFileInputStream);
@@ -150,25 +149,16 @@ public class QTIBackupSMS{
             }
             if(DEBUG) Log.d(TAG, "numOfObjects: " + numOfObjects);
             smsbk = (SMSBackup) ois.readObject();
-            writeSMS(smsbk, MsgBox.INBOX);
+            writeSMS(smsbk, numOfObjects, MsgBox.INBOX);
 
             //For Sent
             numOfObjects = ois.readInt();
             if(numOfObjects < 1){
-                if(DEBUG) Log.d(TAG, "No messages to restore in Sent");
+                if(DEBUG) Log.d(TAG, "No messages to restore in Inbox");
             }
             if(DEBUG) Log.d(TAG, "numOfObjects: " + numOfObjects);
             smsbk = (SMSBackup) ois.readObject();
-            writeSMS(smsbk, MsgBox.SENT);
-
-            //For Draft
-            numOfObjects = ois.readInt();
-            if(numOfObjects < 1){
-                if(DEBUG) Log.d(TAG, "No messages to restore in Draft");
-            }
-            if(DEBUG) Log.d(TAG, "numOfObjects: " + numOfObjects);
-            smsbk = (SMSBackup) ois.readObject();
-            writeSMS(smsbk, MsgBox.DRAFT);
+            writeSMS(smsbk, numOfObjects, MsgBox.SENT);
 
         } catch (FileNotFoundException e) {
             Log.e(TAG, e.getLocalizedMessage());
@@ -182,7 +172,7 @@ public class QTIBackupSMS{
     }
 
     /* Write all messages contained in smsbk back to content provider */
-    private void writeSMS(SMSBackup smsbk, MsgBox box){
+    private void writeSMS(SMSBackup smsbk, int numOfObjects, MsgBox box){
 
         ContentResolver cr = mContext.getContentResolver();
         ContentValues values = new ContentValues();
@@ -200,7 +190,6 @@ public class QTIBackupSMS{
                     cr.insert(Telephony.Sms.Inbox.CONTENT_URI, values);
                 }
                 break;
-
             case SENT:
                 for(SMSObject smsObj : smsbk.SMSList){
 
@@ -212,27 +201,13 @@ public class QTIBackupSMS{
 
                     cr.insert(Telephony.Sms.Sent.CONTENT_URI, values);
                 }
-                break;
-
-            case DRAFT:
-                for(SMSObject smsObj : smsbk.SMSList){
-
-                    values.put(Telephony.Sms.Draft._ID, smsObj.getId());
-                    values.put(Telephony.Sms.Draft.ADDRESS, smsObj.getAddr());
-                    values.put(Telephony.Sms.Draft.BODY, smsObj.getMsg());
-                    values.put(Telephony.Sms.Draft.DATE_SENT, smsObj.getTime());
-                    values.put(Telephony.Sms.Draft.READ, smsObj.getReadState());
-
-                    cr.insert(Telephony.Sms.Draft.CONTENT_URI, values);
-                }
         }
     }
 
     public void performBackup(){
         int numOfEntriesInbox = getSMSList(MsgBox.INBOX);
         int numOfEntriesSent = getSMSList(MsgBox.SENT);
-        int numOfEntriesDraft = getSMSList(MsgBox.DRAFT);
-        writeSMSList(numOfEntriesInbox, numOfEntriesSent ,numOfEntriesDraft);
+        writeSMSList(numOfEntriesInbox, numOfEntriesSent);
     }
 
     /* Returns number of messages retrieved */
@@ -281,21 +256,6 @@ public class QTIBackupSMS{
                     }
                 }
                 break;
-
-            case DRAFT:
-                for (int i = 0; ; i++) {
-                    smsObj = getSMS(cursor);
-                    smsBackupDraft.SMSList.add(smsObj);
-                    numOfEntries++;
-
-                    if(DEBUG) Log.d(TAG, "SMS " + (i + 1) + smsBackupDraft.SMSList.get(i));
-                    if(cursor.isLast()) {
-                        break;
-                    } else {
-                        cursor.moveToNext();
-                    }
-                }
-                break;
         }
 
         cursor.close();
@@ -303,7 +263,7 @@ public class QTIBackupSMS{
     }
 
     /* writes SMSBackup object to file. Note that we write number of objects at start.*/
-    public void writeSMSList(int numOfEntriesInbox, int numOfEntriesSent, int numOfEntriesDraft){
+    public void writeSMSList(int numOfEntriesInbox, int numOfEntriesSent){
         try {
             mFileOutputStream =  mContext.openFileOutput(vfile, Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(mFileOutputStream);
@@ -312,9 +272,6 @@ public class QTIBackupSMS{
 
             oos.writeInt(numOfEntriesSent);
             oos.writeObject( smsBackupSent );
-
-            oos.writeInt(numOfEntriesDraft);
-            oos.writeObject( smsBackupDraft );
 
             oos.flush();
             oos.close();
@@ -348,9 +305,6 @@ public class QTIBackupSMS{
                 break;
             case SENT:
                 c = cr.query(Telephony.Sms.Sent.CONTENT_URI, null, null, null, null);
-                break;
-            case DRAFT:
-                c = cr.query(Telephony.Sms.Draft.CONTENT_URI, null, null, null, null);
                 break;
         }
 
