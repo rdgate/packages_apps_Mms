@@ -41,12 +41,10 @@ import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.net.Uri;
 import android.provider.Telephony;
 import android.util.Log;
 
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -57,16 +55,12 @@ import java.io.Serializable;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
-class SMSObject implements Serializable {
-
-    private static final long serialVersionUID = 1L;
-
+class SMSObject implements Serializable{
     private String id;
     private String addr;
     private String msg;
     private String readState;
-    private String dateTime;
-    private String dateSentTime;
+    private String time;
 
     String getId() {
         return id;
@@ -84,12 +78,8 @@ class SMSObject implements Serializable {
         return readState;
     }
 
-    String getDateTime() {
-        return dateTime;
-    }
-
-    String getDateSentTime() {
-        return dateSentTime;
+    String getTime() {
+        return time;
     }
 
     void setId(String id){
@@ -108,16 +98,12 @@ class SMSObject implements Serializable {
         this.readState = readState;
     }
 
-    void setDateTime(String time) {
-        this.dateTime = time;
-    }
-
-    void setDateSentTime(String time) {
-        this.dateSentTime = time;
+    void setTime(String time) {
+        this.time = time;
     }
 }
 
-class SMSBackup implements Serializable {
+class SMSBackup implements Serializable{
 
     public ArrayList<SMSObject> SMSList;
     public SMSBackup() {
@@ -128,7 +114,7 @@ class SMSBackup implements Serializable {
 public class QTIBackupSMS{
 
     Cursor cursor;
-    File vfile;
+    String vfile;
     Context mContext;
     private final boolean DEBUG = false;
     private final String TAG = "QTIBackupSMS";
@@ -137,7 +123,7 @@ public class QTIBackupSMS{
     FileInputStream mFileInputStream;
     BufferedOutputStream buf;
 
-    public QTIBackupSMS(Context context, File _vfile) {
+    public QTIBackupSMS(Context context, String _vfile) {
         mContext = context;
         vfile = _vfile;
         smsBackupInbox = new SMSBackup();
@@ -154,7 +140,7 @@ public class QTIBackupSMS{
     public void performRestore(){
         SMSBackup smsbk;
         try {
-            mFileInputStream = new FileInputStream(vfile);
+            mFileInputStream = mContext.openFileInput(vfile);
             ObjectInputStream ois = new ObjectInputStream(mFileInputStream);
 
             //FOR Inbox
@@ -193,12 +179,6 @@ public class QTIBackupSMS{
         } catch (ClassNotFoundException e) {
             Log.e(TAG, e.getLocalizedMessage());
         }
-
-        // thread dates + states might be wrong, we need to force a full update
-        // unfortunately there's no direct way to do that in the SDK, but passing a
-        // negative conversation id to delete should to the trick
-        Uri deleteInvalidUri = Uri.withAppendedPath(Telephony.Sms.Conversations.CONTENT_URI, "-1");
-        mContext.getContentResolver().delete(deleteInvalidUri, null, null);
     }
 
     /* Write all messages contained in smsbk back to content provider */
@@ -214,8 +194,7 @@ public class QTIBackupSMS{
                     values.put(Telephony.Sms.Inbox._ID, smsObj.getId());
                     values.put(Telephony.Sms.Inbox.ADDRESS, smsObj.getAddr());
                     values.put(Telephony.Sms.Inbox.BODY, smsObj.getMsg());
-                    values.put(Telephony.Sms.Inbox.DATE, smsObj.getDateTime());
-                    values.put(Telephony.Sms.Inbox.DATE_SENT, smsObj.getDateSentTime());
+                    values.put(Telephony.Sms.Inbox.DATE_SENT, smsObj.getTime());
                     values.put(Telephony.Sms.Inbox.READ, smsObj.getReadState());
 
                     cr.insert(Telephony.Sms.Inbox.CONTENT_URI, values);
@@ -228,8 +207,7 @@ public class QTIBackupSMS{
                     values.put(Telephony.Sms.Sent._ID, smsObj.getId());
                     values.put(Telephony.Sms.Sent.ADDRESS, smsObj.getAddr());
                     values.put(Telephony.Sms.Sent.BODY, smsObj.getMsg());
-                    values.put(Telephony.Sms.Inbox.DATE, smsObj.getDateTime());
-                    values.put(Telephony.Sms.Sent.DATE_SENT, smsObj.getDateSentTime());
+                    values.put(Telephony.Sms.Sent.DATE_SENT, smsObj.getTime());
                     values.put(Telephony.Sms.Sent.READ, smsObj.getReadState());
 
                     cr.insert(Telephony.Sms.Sent.CONTENT_URI, values);
@@ -242,8 +220,7 @@ public class QTIBackupSMS{
                     values.put(Telephony.Sms.Draft._ID, smsObj.getId());
                     values.put(Telephony.Sms.Draft.ADDRESS, smsObj.getAddr());
                     values.put(Telephony.Sms.Draft.BODY, smsObj.getMsg());
-                    values.put(Telephony.Sms.Inbox.DATE, smsObj.getDateTime());
-                    values.put(Telephony.Sms.Draft.DATE_SENT, smsObj.getDateSentTime());
+                    values.put(Telephony.Sms.Draft.DATE_SENT, smsObj.getTime());
                     values.put(Telephony.Sms.Draft.READ, smsObj.getReadState());
 
                     cr.insert(Telephony.Sms.Draft.CONTENT_URI, values);
@@ -328,7 +305,7 @@ public class QTIBackupSMS{
     /* writes SMSBackup object to file. Note that we write number of objects at start.*/
     public void writeSMSList(int numOfEntriesInbox, int numOfEntriesSent, int numOfEntriesDraft){
         try {
-            mFileOutputStream =  new FileOutputStream(vfile);
+            mFileOutputStream =  mContext.openFileOutput(vfile, Context.MODE_PRIVATE);
             ObjectOutputStream oos = new ObjectOutputStream(mFileOutputStream);
             oos.writeInt(numOfEntriesInbox);
             oos.writeObject( smsBackupInbox );
@@ -354,8 +331,7 @@ public class QTIBackupSMS{
         sms.setId(c.getString(c.getColumnIndexOrThrow("_id")));
         sms.setAddr(c.getString(c.getColumnIndexOrThrow("address")));
         sms.setMsg(c.getString(c.getColumnIndexOrThrow("body")));
-        sms.setDateTime(c.getString(c.getColumnIndexOrThrow("date")));
-        sms.setDateSentTime(c.getString(c.getColumnIndexOrThrow("date_sent")));
+        sms.setTime(c.getString(c.getColumnIndexOrThrow("date")));
         sms.setReadState(c.getString(c.getColumnIndexOrThrow("read")));
 
         return sms;
